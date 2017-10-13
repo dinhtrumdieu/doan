@@ -31,7 +31,7 @@ export const MainTabRouter = TabNavigator({
             tabBarIcon: ({focused}) => (
                 focused
                     ? <BottomTabItem icon={require('../res/img/ic_category_active.png')}/>
-                    : <BottomTabItem icon={require('../res/img/ic_me.png')}/>
+                    : <BottomTabItem icon={require('../res/img/ic_category.png')}/>
             ),
             tabBarLabel: ({focused}) => (
                 <Text numberOfLines={1} style={styles.TabBarLabel}>Menu</Text>
