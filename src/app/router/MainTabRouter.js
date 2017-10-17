@@ -1,13 +1,13 @@
 import React from 'react';
 import {TabNavigator} from "react-navigation";
-import HomeComponent from "./component/home/HomeComponent";
-import CategoryComponent from "./component/category/CategoryComponent";
-import YouComponent from "./component/you/YouComponent";
+import HomeComponent from "../component/home/HomeComponent";
+import CategoryComponent from "../component/category/CategoryComponent";
+import YouComponent from "../component/you/YouComponent";
 import {StyleSheet} from "react-native";
-import BottomTabItem from "./component/common/BottomTabItem";
-import {sizeWidth} from "./utils/Size";
-import Text from "./component/common/Text";
-import {APP_COLOR} from "../res/style/AppStyle";
+import BottomTabItem from "../component/common/BottomTabItem";
+import {sizeWidth} from "../utils/Size";
+import Text from "../component/common/Text";
+import {APP_COLOR} from "../../res/style/AppStyle";
 
 export const MainTabRouter = TabNavigator({
     Home: {
@@ -16,8 +16,8 @@ export const MainTabRouter = TabNavigator({
             title: 'Home',
             tabBarIcon: ({focused}) => (
                 focused
-                    ? <BottomTabItem icon={require('../res/img/ic_home_active.png')}/>
-                    : <BottomTabItem icon={require('../res/img/ic_home.png')}/>
+                    ? <BottomTabItem icon={require('../../res/img/ic_home_active.png')}/>
+                    : <BottomTabItem icon={require('../../res/img/ic_home.png')}/>
             ),
             tabBarLabel: ({focused}) => (
                 <Text numberOfLines={1} style={styles.TabBarLabel}>Home</Text>
@@ -30,8 +30,8 @@ export const MainTabRouter = TabNavigator({
             title: 'Menu',
             tabBarIcon: ({focused}) => (
                 focused
-                    ? <BottomTabItem icon={require('../res/img/ic_category_active.png')}/>
-                    : <BottomTabItem icon={require('../res/img/ic_category.png')}/>
+                    ? <BottomTabItem icon={require('../../res/img/ic_category_active.png')}/>
+                    : <BottomTabItem icon={require('../../res/img/ic_category.png')}/>
             ),
             tabBarLabel: ({focused}) => (
                 <Text numberOfLines={1} style={styles.TabBarLabel}>Menu</Text>
@@ -44,8 +44,8 @@ export const MainTabRouter = TabNavigator({
             title: 'You',
             tabBarIcon: ({focused}) => (
                 focused
-                    ? <BottomTabItem icon={require('../res/img/ic_me_active.png')}/>
-                    : <BottomTabItem icon={require('../res/img/ic_me.png')}/>
+                    ? <BottomTabItem icon={require('../../res/img/ic_me_active.png')}/>
+                    : <BottomTabItem icon={require('../../res/img/ic_me.png')}/>
             ),
             tabBarLabel: ({focused}) => (
                 <Text numberOfLines={1} style={styles.TabBarLabel}>You</Text>
