@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "696196110196",
+    "firebase_url": "https://momcookdoan.firebaseio.com",
+    "project_id": "momcookdoan",
+    "storage_bucket": "momcookdoan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696196110196:android:839a6c58bfa43b70",
+        "android_client_info": {
+          "package_name": "com.momcook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696196110196-r63hb3m9v0399ii11asqi27dui7cvci1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvIS4QE0RCELwvjICHHYzkl4Dof-eHME0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
