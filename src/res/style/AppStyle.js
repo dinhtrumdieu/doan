@@ -1,6 +1,6 @@
 import {sizeFont} from "../../app/utils/Size";
 
-export const APP_COLOR = '#ff0d32';
+export const APP_COLOR = '#1f7201';
 export const APP_BACKGROUND = '#DDDDDD';
 export const TEXT_HIGHLIGHT_COLOR = '#434343';
 export const APP_TEXT_COLOR = '#545454';

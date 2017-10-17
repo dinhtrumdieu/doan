@@ -8,6 +8,7 @@ import BottomTabItem from "./component/common/BottomTabItem";
 import {sizeWidth} from "./utils/Size";
 import Text from "./component/common/Text";
 import {APP_COLOR} from "../res/style/AppStyle";
+import DetailComponent from "./component/detail/DetailComponent";
 
 export const MainTabRouter = TabNavigator({
     Home: {
@@ -25,7 +26,7 @@ export const MainTabRouter = TabNavigator({
         }
     },
     Category: {
-        screen: CategoryComponent,
+        screen: DetailComponent,
         navigationOptions: {
             title: 'Menu',
             tabBarIcon: ({focused}) => (
