@@ -5,7 +5,7 @@ export const navigationState = AppRouter.router.getStateForAction(NavigationActi
     index: 0,
     actions: [
         NavigationActions.navigate({
-            routeName: 'Home',
+            routeName: 'Main',
         }),
     ],
 }));

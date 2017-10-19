@@ -12,14 +12,14 @@ export default class YouComponent extends Component {
 
         this.state = {
             data: [
-                {id: 0, name: "初めての方へ", image: require('../../../res/img/ic_pikalong.png')},
-                {id: 1, name: "初めての方へ", image: require('../../../res/img/ic_pikalong.png')},
-                {id: 2, name: "初めての方へ", image: require('../../../res/img/ic_pikalong.png')},
-                {id: 3, name: "初めての方へ", image: require('../../../res/img/ic_pikalong.png')},
-                {id: 4, name: "初めての方へ", image: require('../../../res/img/ic_pikalong.png')},
-                {id: 5, name: "初めての方へ", image: require('../../../res/img/ic_pikalong.png')},
-                {id: 6, name: "初めての方へ", image: require('../../../res/img/ic_pikalong.png')},
-                {id: 7, name: "初めての方へ", image: require('../../../res/img/ic_pikalong.png')},
+                {id: 0, name: "Thông tin", image: require('../../../res/img/ic_home.png')},
+                {id: 1, name: "Menu", image: require('../../../res/img/ic_pikalong.png')},
+                {id: 2, name: "Account", image: require('../../../res/img/boy.png')},
+                {id: 3, name: "Category", image: require('../../../res/img/ic_pikalong.png')},
+                {id: 4, name: "Account", image: require('../../../res/img/ic_pikalong.png')},
+                {id: 5, name: "Account", image: require('../../../res/img/ic_pikalong.png')},
+                {id: 6, name: "Account", image: require('../../../res/img/ic_pikalong.png')},
+                {id: 7, name: "Account", image: require('../../../res/img/ic_pikalong.png')},
             ],
         }
     }
@@ -70,10 +70,22 @@ export default class YouComponent extends Component {
     keyExtractor = (item) => item.id;
 
     renderHeader = () => (
-        <View style={{justifyContent:'center',alignItems:'center',marginVertical:25}}>
-            <Image style={{width:80,height:80,borderRadius:40}} source={require('../../../res/img/images.jpg')}/>
-            <Text style={{fontSize:17,marginVertical:15,color:'blue'}}>Nguyễn Trung Định</Text>
+        <View style={{alignItems: 'center',
+            justifyContent: 'center',}}>
+            <View style={{
+                height: 150,
+                backgroundColor: '#d4d4d4',
+                opacity:0.3,
+                width:'100%',
+                justifyContent:'center',
+                alignItems: 'center',
+            }}/>
+            <View style={{justifyContent:'center',alignItems:'center',marginVertical:25,position:'absolute'}}>
+                <Image style={{width:80,height:80,borderRadius:40,marginTop:15}} source={require('../../../res/img/bg_app.jpg')}/>
+                <Text style={{fontSize:17,marginVertical:15,color:'#000'}}>Nguyễn Trung Định</Text>
+            </View>
         </View>
+
     );
 
     renderList = () => (
@@ -89,10 +101,8 @@ export default class YouComponent extends Component {
     render() {
         return (
             <ImageBackground style={styles.Container} source={require('../../../res/img/bg_app.jpg')}>
-                <ScrollView>
                     {this.renderHeader()}
                     {this.renderList()}
-                </ScrollView>
             </ImageBackground>
         );
     }
@@ -101,9 +111,7 @@ export default class YouComponent extends Component {
 
 const styles = StyleSheet.create({
     Container: {
-        height:'100%',
-        width:'100%',
-        alignItems:'center',
+        flex:1,
     },
     TopBgImage: {
         width: '100%',
@@ -116,8 +124,8 @@ const styles = StyleSheet.create({
     },
     ViewFlatList: {
         paddingLeft: 8,
-        flex: 1,
-        marginTop: 7
+        marginTop: 30,
+        alignSelf:'center'
     },
     IconSetting: {
         height: 22,

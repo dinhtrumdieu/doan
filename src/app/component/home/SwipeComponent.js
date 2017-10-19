@@ -44,19 +44,19 @@ export default class SwipeComponent extends React.PureComponent {
                             <Image
                                 resizeMode={'cover'}
                                 style={{width: '100%', height: '100%'}}
-                                source={require('../../../res/img/1237900-bigthumbnail.jpg')}/>
+                                source={require('../../../res/img/slide1.jpg')}/>
                         </View>
                         <View style={{height: sizeWidth(50), width: '100%',}}>
                             <Image
                                 resizeMode={'cover'}
                                 style={{width: '100%', height: '100%'}}
-                                source={require('../../../res/img/maxresdefault.jpg')}/>
+                                source={require('../../../res/img/slide2.jpg')}/>
                         </View>
                         <View style={{height: sizeWidth(50), width: '100%',}}>
                             <Image
                                 resizeMode={'cover'}
                                 style={{width: '100%', height: '100%'}}
-                                source={require('../../../res/img/images.jpg')}/>
+                                source={require('../../../res/img/slide3.jpg')}/>
                         </View>
                     </Swiper>
                 </View>

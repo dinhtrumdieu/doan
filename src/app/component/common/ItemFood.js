@@ -9,11 +9,11 @@ export default class ItemFood extends Component {
     render() {
         return (
             <TouchableOpacity style={styles.Container}>
-                <View style={{flex: 1, flexDirection: 'row', marginLeft: 25, marginTop: 10, backgroundColor: '#a10e12',borderRadius:5}}>
+                <View style={{flex: 1, flexDirection: 'row', marginLeft: 25, marginTop: 10, backgroundColor: '#f3f3f3',borderRadius:5}}>
                     <View style={{flex: 1}}/>
                     <View style={styles.Content}>
                         <View style={{height: 1, backgroundColor: '#aaa', marginTop: 10, marginRight: 10}}/>
-                        <WrapText numberOfLines={4} style={{color:'#fff'}}>Hello world constructor Hello world constructor Hello world
+                        <WrapText numberOfLines={4} >Hello world constructor Hello world constructor Hello world
                             constructorHello world constructor
                             Hello world constructorHello world constructor
                             Hello world constructor
@@ -34,12 +34,12 @@ export default class ItemFood extends Component {
                     </View>
                 </View>
                 <Image style={{height: 95, width: 95, borderRadius: 10, position: 'absolute'}}
-                       source={require('../../../res/img/images.jpg')}/>
+                       source={require('../../../res/img/pho.jpg')}/>
                 <View style={{position: 'absolute', flexDirection: 'row',width:'100%'}}>
                     <View style={{flex: 1}}/>
                     <View style={{flex: 3, justifyContent: 'space-between',flexDirection: 'row',marginHorizontal:10,paddingLeft:15}}>
-                        <Text style={{fontSize: 14,color:'green'}}>Soup</Text>
-                        <Text style={{fontSize: 14,color:'green'}}>15.000 vnđ</Text>
+                        <Text style={{fontSize: 14,color:'black',fontFamily:'AvenirNext-Bold'}}>Soup</Text>
+                        <Text style={{fontSize: 14,color:'black'}}>15.000 vnđ</Text>
                     </View>
                 </View>
             </TouchableOpacity>

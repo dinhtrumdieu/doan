@@ -36,7 +36,7 @@ class HomeComponent extends Component {
         return (
             <TouchableOpacity style={styles.ViewSearch}>
                 <Image style={styles.IconSearch} source={require('../../../res/img/search.png')}/>
-                <Text style={styles.TextPlaceHolder}>なにをお探しですか</Text>
+                <Text style={styles.TextPlaceHolder}>Search</Text>
             </TouchableOpacity>
         )
     };
@@ -45,7 +45,7 @@ class HomeComponent extends Component {
 
     render() {
         return (
-            <ImageBackground style={{width: '100%', height: '100%'}} source={require('../../../res/img/bg_app.jpg')}>
+            <View style={{flex:1,backgroundColor:'#e5e5e5'}} >
                 <ToolBar
                     center={this._centerToolBar()}
                     right={this._rightToolBar()}
@@ -58,7 +58,7 @@ class HomeComponent extends Component {
                         keyExtractor={(item, index) => item._id}
                         renderItem={({item}) => <ItemFood/>}/>
                 </ScrollView>
-            </ImageBackground>
+            </View>
         );
     }
 
