@@ -3,6 +3,7 @@ import React from 'react';
 import {MainTabRouter} from "./MainTabRouter";
 import {connect} from "react-redux";
 import HomeComponent from "../component/home/HomeComponent";
+import DetailComponent from "../component/detail/DetailComponent";
 
 export const AppRouter = StackNavigator({
     Main: {
@@ -13,6 +14,12 @@ export const AppRouter = StackNavigator({
     },
     Home: {
         screen: HomeComponent,
+        navigationOptions: {
+            header: null
+        },
+    },
+    Detail:{
+        screen:DetailComponent,
         navigationOptions: {
             header: null
         },

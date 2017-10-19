@@ -4,21 +4,28 @@ import {
 } from 'react-native';
 import Text from "./Text";
 import WrapText from "./WrapText";
+import {connect} from "react-redux";
+import {navigateToPage} from "../../router/NavigationAction";
 
-export default class ItemFood extends Component {
+class ItemFood extends Component {
+
+    onClick = ()=>{
+      this.props.navigateToPage('Detail');
+    };
+
     render() {
+        const {item} = this.props;
+        const name = item && item.name ? item.name:'';
+        const preview = item && item.preview ? item.preview:'';
+        const price = item && item.price ? item.price:'0';
+        const image = item && item.images ? item.images : require('../../../res/img/pho.jpg');
         return (
-            <TouchableOpacity style={styles.Container}>
+            <TouchableOpacity onPress={this.onClick} style={styles.Container}>
                 <View style={{flex: 1, flexDirection: 'row', marginLeft: 25, marginTop: 10, backgroundColor: '#f3f3f3',borderRadius:5}}>
                     <View style={{flex: 1}}/>
                     <View style={styles.Content}>
                         <View style={{height: 1, backgroundColor: '#aaa', marginTop: 10, marginRight: 10}}/>
-                        <WrapText numberOfLines={4} >Hello world constructor Hello world constructor Hello world
-                            constructorHello world constructor
-                            Hello world constructorHello world constructor
-                            Hello world constructor
-                            Hello world constructorHello world constructor
-                        </WrapText>
+                        <WrapText numberOfLines={4} >{preview}</WrapText>
                         <TouchableOpacity style={{
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -34,12 +41,12 @@ export default class ItemFood extends Component {
                     </View>
                 </View>
                 <Image style={{height: 95, width: 95, borderRadius: 10, position: 'absolute'}}
-                       source={require('../../../res/img/pho.jpg')}/>
+                       source={image}/>
                 <View style={{position: 'absolute', flexDirection: 'row',width:'100%'}}>
                     <View style={{flex: 1}}/>
                     <View style={{flex: 3, justifyContent: 'space-between',flexDirection: 'row',marginHorizontal:10,paddingLeft:15}}>
-                        <Text style={{fontSize: 14,color:'black',fontFamily:'AvenirNext-Bold'}}>Soup</Text>
-                        <Text style={{fontSize: 14,color:'black'}}>15.000 vnđ</Text>
+                        <Text style={{fontSize: 14,color:'black',fontFamily:'AvenirNext-Bold'}}>{name}</Text>
+                        <Text style={{fontSize: 14,color:'black'}}>{price} vnđ</Text>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -59,4 +66,6 @@ const styles = StyleSheet.create({
         flex: 3,
     }
 });
+
+export default connect(null,{navigateToPage})(ItemFood);
 

@@ -7,12 +7,26 @@ import {
 import WrapText from "../common/WrapText";
 import Text from "../common/Text";
 import {AVENIR_NEXT_BOLD} from "../../../res/font/Font";
+import ToolBar from "../common/ToolBar";
+import BackIcon from "../common/BackIcon";
+import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 
 export default class DetailComponent extends Component {
+
+    renderLeftToolBar = () => (
+        <BackIcon/>
+    );
+
+    renderCenterToolBar = () => (
+        <Text style={TOOL_BAR_TEXT}>Detail</Text>
+    );
+
     render() {
         return (
             <ImageBackground style={{width: '100%', height: '100%'}} source={require('../../../res/img/bg_app.jpg')}>
-                <View style={{flex:1}}>
+                <ToolBar left={this.renderLeftToolBar()}
+                         center={this.renderCenterToolBar()}/>
+                <View style={{flex: 1}}>
                     <Image style={{height: 200, width: '100%'}} source={require('../../../res/img/images.jpg')}/>
                     <View style={{marginHorizontal: 40}}>
                         <Text style={styles.TextNameFood}>Ga Hap chien gion</Text>
@@ -38,29 +52,36 @@ export default class DetailComponent extends Component {
                         <View style={{flex: 1, justifyContent: 'center'}}>
                             <Text style={{position: 'absolute', top: 0}}>Rating:</Text>
                             <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-                                <Image style={{height: 15, width: 15}} source={require('../../../res/img/ic_home.png')}/>
-                                <Image style={{height: 15, width: 15}} source={require('../../../res/img/ic_home.png')}/>
-                                <Image style={{height: 15, width: 15}} source={require('../../../res/img/ic_home.png')}/>
-                                <Image style={{height: 15, width: 15}} source={require('../../../res/img/ic_home.png')}/>
-                                <Image style={{height: 15, width: 15}} source={require('../../../res/img/ic_home.png')}/>
+                                <Image style={{height: 15, width: 15}}
+                                       source={require('../../../res/img/ic_home.png')}/>
+                                <Image style={{height: 15, width: 15}}
+                                       source={require('../../../res/img/ic_home.png')}/>
+                                <Image style={{height: 15, width: 15}}
+                                       source={require('../../../res/img/ic_home.png')}/>
+                                <Image style={{height: 15, width: 15}}
+                                       source={require('../../../res/img/ic_home.png')}/>
+                                <Image style={{height: 15, width: 15}}
+                                       source={require('../../../res/img/ic_home.png')}/>
                             </View>
                         </View>
                     </View>
                 </View>
 
-                <View style={{alignItems: 'center',
-                    justifyContent: 'center',}}>
+                <View style={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
                     <View style={{
                         height: 50,
                         backgroundColor: '#d4d4d4',
-                        opacity:0.3,
+                        opacity: 0.3,
                         width: '100%',
-                        justifyContent:'center',
+                        justifyContent: 'center',
                         alignItems: 'center',
-                        paddingHorizontal:15,
+                        paddingHorizontal: 15,
                     }}/>
                     <TouchableOpacity style={styles.Button}>
-                        <Text style={{color:'#fff',fontSize:14}}>Đặt hàng</Text>
+                        <Text style={{color: '#fff', fontSize: 14}}>Đặt hàng</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -76,15 +97,15 @@ const styles = StyleSheet.create({
         fontFamily: AVENIR_NEXT_BOLD,
         color: '#000'
     },
-    Button:{
-        height:40,
-        width:90,
-        backgroundColor:'blue',
-        justifyContent:'center',
-        alignItems:'center',
-        borderRadius:5,
-        alignSelf:'flex-end',
-        position:'absolute',
-        right:10
+    Button: {
+        height: 40,
+        width: 90,
+        backgroundColor: 'blue',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+        alignSelf: 'flex-end',
+        position: 'absolute',
+        right: 10
     }
 });

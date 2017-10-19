@@ -12,22 +12,26 @@ import CartIcon from "../common/CartIcon";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import {actionGetList} from "../../redux/home/HomeAction";
-
+import {Food} from "../../model/Food";
+const preview = 'Hello world constructor Hello world constructor Hello world\\n\' +\n' +
+    '                    \'constructorHello world constructor\\n\' +\n' +
+    '                    \'Hello world constructorHello world constructor\\n\' +\n' +
+    '                    \'Hello world constructor\\n\' +\n' +
+    '                    \'Hello world constructorHello world constructor';
 class HomeComponent extends Component {
 
     constructor(props) {
         super(props);
-        this.props.actionGetList();
+       // this.props.actionGetList();
         this.state = {
             data: [
-                {_id: 1, name: 'dinh'},
-                {_id: 2, name: 'dinh'},
-                {_id: 3, name: 'dinh'},
-                {_id: 4, name: 'dinh'},
-                {_id: 5, name: 'dinh'},
-                {_id: 6, name: 'dinh'},
-                {_id: 7, name: 'dinh'},
-                {_id: 8, name: 'dinh'},
+                new Food(1,'Soup',preview,'15.000',require('../../../res/img/pho.jpg')),
+                new Food(2,'Phở',preview,'35.000',require('../../../res/img/food1.jpg')),
+                new Food(3,'Cháo Hành',preview,'55.000',require('../../../res/img/goi.jpg')),
+                new Food(4,'Mì tôm',preview,'25.000',require('../../../res/img/nuong.jpg')),
+                new Food(5,'Mỡ hành',preview,'65.000',require('../../../res/img/food1.jpg')),
+                new Food(6,'Gà rán',preview,'75.000',require('../../../res/img/pho.jpg')),
+                new Food(7,'Soup',preview,'35.000',require('../../../res/img/nuong.jpg')),
             ],
         }
     }
@@ -43,6 +47,10 @@ class HomeComponent extends Component {
 
     _rightToolBar = () => (<CartIcon/>);
 
+    renderItem = ({item})=>{
+        return <ItemFood item={item}/>
+    };
+
     render() {
         return (
             <View style={{flex:1,backgroundColor:'#e5e5e5'}} >
@@ -56,7 +64,7 @@ class HomeComponent extends Component {
                         data={this.state.data}
                         scrollEnabled={false}
                         keyExtractor={(item, index) => item._id}
-                        renderItem={({item}) => <ItemFood/>}/>
+                        renderItem={this.renderItem}/>
                 </ScrollView>
             </View>
         );
