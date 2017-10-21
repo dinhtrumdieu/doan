@@ -13,25 +13,24 @@ import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import {actionGetList} from "../../redux/home/HomeAction";
 import {Food} from "../../model/Food";
-const preview = 'Hello world constructor Hello world constructor Hello world\\n\' +\n' +
-    '                    \'constructorHello world constructor\\n\' +\n' +
-    '                    \'Hello world constructorHello world constructor\\n\' +\n' +
-    '                    \'Hello world constructor\\n\' +\n' +
-    '                    \'Hello world constructorHello world constructor';
+
+const preview = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắn sẽ chinh phục vị giác bất kì ai ngay từ lần đầu thưởng thức.' +
+    ' Từng miếng bánh vàng ươm, bóng bẩy trông cực kì bắt mắt';
+
 class HomeComponent extends Component {
 
     constructor(props) {
         super(props);
-       // this.props.actionGetList();
+        // this.props.actionGetList();
         this.state = {
             data: [
-                new Food(1,'Soup',preview,'15.000',require('../../../res/img/pho.jpg')),
-                new Food(2,'Phở',preview,'35.000',require('../../../res/img/food1.jpg')),
-                new Food(3,'Cháo Hành',preview,'55.000',require('../../../res/img/goi.jpg')),
-                new Food(4,'Mì tôm',preview,'25.000',require('../../../res/img/nuong.jpg')),
-                new Food(5,'Mỡ hành',preview,'65.000',require('../../../res/img/food1.jpg')),
-                new Food(6,'Gà rán',preview,'75.000',require('../../../res/img/pho.jpg')),
-                new Food(7,'Soup',preview,'35.000',require('../../../res/img/nuong.jpg')),
+                new Food(1, 'Soup', preview, '15.000', require('../../../res/img/pho.jpg')),
+                new Food(2, 'Phở', preview, '35.000', require('../../../res/img/food1.jpg')),
+                new Food(3, 'Cháo Hành', preview, '55.000', require('../../../res/img/goi.jpg')),
+                new Food(4, 'Mì tôm', preview, '25.000', require('../../../res/img/nuong.jpg')),
+                new Food(5, 'Mỡ hành', preview, '65.000', require('../../../res/img/food1.jpg')),
+                new Food(6, 'Gà rán', preview, '75.000', require('../../../res/img/pho.jpg')),
+                new Food(7, 'Soup', preview, '35.000', require('../../../res/img/nuong.jpg')),
             ],
         }
     }
@@ -47,13 +46,13 @@ class HomeComponent extends Component {
 
     _rightToolBar = () => (<CartIcon/>);
 
-    renderItem = ({item})=>{
+    renderItem = ({item}) => {
         return <ItemFood item={item}/>
     };
 
     render() {
         return (
-            <View style={{flex:1,backgroundColor:'#e5e5e5'}} >
+            <View style={{flex: 1, backgroundColor: '#e5e5e5'}}>
                 <ToolBar
                     center={this._centerToolBar()}
                     right={this._rightToolBar()}
