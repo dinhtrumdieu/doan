@@ -73,7 +73,7 @@ export default class DetailComponent extends Component {
                                 {this.renderStar()}
                                 {this.renderStar()}
                             </View>
-                            <Text style={{fontSize: 10, alignSelf: 'flex-end'}}>1 đánh giá</Text>
+                            <Text style={{fontSize: 12, alignSelf: 'flex-end'}}>1 đánh giá</Text>
                         </View>
 
                         <View style={{marginHorizontal: 40, marginTop: 15}}>
