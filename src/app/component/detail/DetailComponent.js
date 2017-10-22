@@ -1,16 +1,36 @@
 import React, {Component} from 'react';
 import {
     Image,
-    ImageBackground,
+    ImageBackground, ScrollView,
     View, StyleSheet, TouchableOpacity
 } from 'react-native';
 import WrapText from "../common/WrapText";
 import Text from "../common/Text";
-import {AVENIR_NEXT_BOLD} from "../../../res/font/Font";
+import {AVENIR_NEXT_BOLD, AVENIR_NEXT_REGULAR} from "../../../res/font/Font";
 import ToolBar from "../common/ToolBar";
 import BackIcon from "../common/BackIcon";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 
+let test = '300g khoai tây\n' +
+    '\n' +
+    '130g bột mỳ\n' +
+    '\n' +
+    '1 quả trứng gà\n' +
+    '\n' +
+    '1 muỗng canh nước mắm\n' +
+    '\n' +
+    '1 chút muối\n' +
+    '\n' +
+    '2 tép tỏi\n' +
+    '\n' +
+    '1 cọng hành lá\n' +
+    '\n' +
+    '1/3 muỗng canh ớt bột\n' +
+    '\n' +
+    '1 muỗng cafe giấm';
+
+let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắn sẽ chinh phục vị giác bất kì ai ngay từ lần đầu thưởng thức. ' +
+    'Từng miếng bánh vàng ươm,  dẻo ngon lạ miệng của bánh cùng với hỗn hợp trộn cay đậm đà, vừa ăn vừa xuýt xoa thật đã! ';
 export default class DetailComponent extends Component {
 
     renderLeftToolBar = () => (
@@ -18,7 +38,13 @@ export default class DetailComponent extends Component {
     );
 
     renderCenterToolBar = () => (
-        <Text style={TOOL_BAR_TEXT}>Detail</Text>
+        <Text style={TOOL_BAR_TEXT}>Phở</Text>
+    );
+
+    renderStar = () => (
+        <Image style={{height: 13, width: 13}}
+               resizeMode="contain"
+               source={require('../../../res/img/star.png')}/>
     );
 
     render() {
@@ -26,47 +52,63 @@ export default class DetailComponent extends Component {
             <ImageBackground style={{width: '100%', height: '100%'}} source={require('../../../res/img/bg_app.jpg')}>
                 <ToolBar left={this.renderLeftToolBar()}
                          center={this.renderCenterToolBar()}/>
-                <View style={{flex: 1}}>
-                    <Image style={{height: 200, width: '100%'}} source={require('../../../res/img/images.jpg')}/>
-                    <View style={{marginHorizontal: 40}}>
-                        <Text style={styles.TextNameFood}>Ga Hap chien gion</Text>
-                        <WrapText numberOfLines={4}>Hello world constructor Hello world constructor Hello world
-                            constructorHello world constructor
-                            Hello world constructorHello world constructor
-                            Hello world constructor
-                        </WrapText>
-                    </View>
-                    <View style={{
-                        height: 100,
-                        backgroundColor: '#fff',
-                        marginTop: 20,
-                        paddingHorizontal: 40,
-                        paddingVertical: 10,
-                        flexDirection: 'row'
-                    }}>
-                        <View style={{flex: 1, justifyContent: 'center'}}>
-                            <Text style={{position: 'absolute', top: 0}}>Tiền phải trả:</Text>
-                            <Text style={{fontSize: 24, alignSelf: 'center'}}>15.000 vnd</Text>
+                <ScrollView>
+                    <View style={{flex: 1}}>
+                        <Image style={{height: 200, width: '100%'}} source={require('../../../res/img/pho.jpg')}/>
+                        <View style={{marginHorizontal: 40, flexDirection: 'row', marginTop: 10}}>
+                            <Text style={{fontSize: 20, color: '#0aa11d', flex: 1}}>Phở Kon Tum</Text>
+                            <Text style={{fontSize: 14, color: '#0aa11d', alignSelf: 'flex-end'}}>15.000 VNĐ</Text>
                         </View>
-                        <View style={{width: 1, borderWidth: 1, borderColor: '#aaa', marginHorizontal: 20}}/>
-                        <View style={{flex: 1, justifyContent: 'center'}}>
-                            <Text style={{position: 'absolute', top: 0}}>Rating:</Text>
-                            <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-                                <Image style={{height: 15, width: 15}}
-                                       source={require('../../../res/img/ic_home.png')}/>
-                                <Image style={{height: 15, width: 15}}
-                                       source={require('../../../res/img/ic_home.png')}/>
-                                <Image style={{height: 15, width: 15}}
-                                       source={require('../../../res/img/ic_home.png')}/>
-                                <Image style={{height: 15, width: 15}}
-                                       source={require('../../../res/img/ic_home.png')}/>
-                                <Image style={{height: 15, width: 15}}
-                                       source={require('../../../res/img/ic_home.png')}/>
-                            </View>
-                        </View>
-                    </View>
-                </View>
 
+                        <View style={{flexDirection: 'row', marginHorizontal: 40}}>
+                            <View style={{
+                                flexDirection: 'row',
+                                justifyContent: 'space-around',
+                                width: 100,
+                                marginRight: 5
+                            }}>
+                                {this.renderStar()}
+                                {this.renderStar()}
+                                {this.renderStar()}
+                                {this.renderStar()}
+                                {this.renderStar()}
+                            </View>
+                            <Text style={{fontSize: 12, alignSelf: 'flex-end'}}>1 đánh giá</Text>
+                        </View>
+
+                        <View style={{marginHorizontal: 40, marginTop: 15}}>
+                            <WrapText>
+                                {mota}
+                            </WrapText>
+                        </View>
+
+                        <TouchableOpacity style={{flexDirection: 'row',marginHorizontal:40,marginVertical:20}}>
+                            <Image style={{height: 60, width: 60, borderRadius: 30}}
+                                   source={require('../../../res/img/pho.jpg')}/>
+                            <View style={{marginLeft:10,alignSelf:'center'}}>
+                                <Text style={{fontSize:15}}>Nguyễn Trung Định</Text>
+                                <Text>
+                                    <Text style={{fontFamily: AVENIR_NEXT_BOLD ,color:'blue'}}>854 </Text>
+                                    món ăn *
+                                    <Text style={{fontFamily: AVENIR_NEXT_BOLD,color:'blue'}}> 9 </Text>
+                                    quan tâm
+                                </Text>
+                                <TouchableOpacity
+                                    style={{flexDirection:'row',alignItems:'center'}}>
+                                    <Image resizeMode="contain" style={{height:15,width:15,marginRight:5}}
+                                           source={require('../../../res/img/ic_like.png')}/>
+                                    <Text>Quan tâm</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </TouchableOpacity>
+                        <View style={{marginHorizontal: 40}}>
+                            <Text style={styles.TextNameFood}>Nguyên liệu</Text>
+                            <WrapText>
+                                {test}
+                            </WrapText>
+                        </View>
+                    </View>
+                </ScrollView>
                 <View style={{
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -84,7 +126,6 @@ export default class DetailComponent extends Component {
                         <Text style={{color: '#fff', fontSize: 14}}>Đặt hàng</Text>
                     </TouchableOpacity>
                 </View>
-
             </ImageBackground>
         );
     }
@@ -92,10 +133,10 @@ export default class DetailComponent extends Component {
 
 const styles = StyleSheet.create({
     TextNameFood: {
-        fontSize: 22,
+        fontSize: 18,
         marginVertical: 10,
-        fontFamily: AVENIR_NEXT_BOLD,
-        color: '#000'
+        fontFamily: AVENIR_NEXT_REGULAR,
+        color: '#0aa11d'
     },
     Button: {
         height: 40,

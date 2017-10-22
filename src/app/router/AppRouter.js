@@ -23,7 +23,7 @@ export const AppRouter = StackNavigator({
         navigationOptions: {
             header: null
         },
-    }
+    },
 });
 
 const AppWithNavigationState = ({dispatch, nav}) => (
