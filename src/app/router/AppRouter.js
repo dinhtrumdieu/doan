@@ -4,6 +4,8 @@ import {MainTabRouter} from "./MainTabRouter";
 import {connect} from "react-redux";
 import HomeComponent from "../component/home/HomeComponent";
 import DetailComponent from "../component/detail/DetailComponent";
+import OrderComponent from "../component/order/OrderComponent";
+import ListCategory from "../component/category/ListCategory";
 
 export const AppRouter = StackNavigator({
     Main: {
@@ -24,6 +26,18 @@ export const AppRouter = StackNavigator({
             header: null
         },
     },
+    Order:{
+        screen:OrderComponent,
+        navigationOptions:{
+            header:null
+        }
+    },
+    ListCategory:{
+        screen:ListCategory,
+        navigationOptions:{
+            header:null
+        }
+    }
 });
 
 const AppWithNavigationState = ({dispatch, nav}) => (

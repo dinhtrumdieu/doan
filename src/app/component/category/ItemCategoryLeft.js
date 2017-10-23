@@ -4,8 +4,15 @@ import {
 } from 'react-native';
 import Text from "../common/Text";
 import WrapText from "../common/WrapText";
+import {connect} from "react-redux";
+import {navigateToPage} from "../../router/NavigationAction";
 
-export default class ItemCategoryLeft extends Component {
+class ItemCategoryLeft extends Component {
+
+    onClick = ()=>{
+      this.props.navigateToPage('ListCategory');
+    };
+
     render() {
         const {item} = this.props;
         const name = item && item.name ? item.name:'';
@@ -13,7 +20,7 @@ export default class ItemCategoryLeft extends Component {
         const price = item && item.price ? item.price:'0';
         const image = item && item.images ? item.images : require('../../../res/img/pho.jpg');
         return (
-            <View style={styles.Container}>
+            <TouchableOpacity onPress={this.onClick} style={styles.Container}>
                 <View style={{flex: 1, flexDirection: 'row', marginLeft: 25, marginTop: 10, backgroundColor: '#fff'}}>
                     <View style={{flex: 1}}/>
                     <View style={styles.Content}>
@@ -36,7 +43,7 @@ export default class ItemCategoryLeft extends Component {
                 </View>
                 <Image style={{height: 95, width: 95, borderRadius: 10, position: 'absolute'}}
                        source={image}/>
-            </View>
+            </TouchableOpacity>
         );
     }
 }
@@ -52,4 +59,6 @@ const styles = StyleSheet.create({
         marginRight:15
     }
 });
+
+export default connect(null, {navigateToPage})(ItemCategoryLeft);
 
