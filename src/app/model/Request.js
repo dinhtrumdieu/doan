@@ -1,12 +1,15 @@
 export class Request {
-    constructor(_id, nameUser: string, avatar, nameFood: string, quantity: string, price: string, images,time:str) {
+    constructor(_id, username: string, phone: string, address: string, avatar, foodname: string, quantity: string, price: string, images, time: string,status:string) {
         this._id = _id;
-        this.nameUser = nameUser;
+        this.username = username;
         this.avatar = avatar;
-        this.nameFood = nameFood;
+        this.foodname = foodname;
         this.quantity = quantity;
         this.price = price;
-        this.images = images;ing
-        this.time=time;
+        this.images = images;
+        this.time = time;
+        this.phone=phone;
+        this.address=address;
+        this.status=status;
     }
 }

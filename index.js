@@ -1,4 +1,4 @@
 import {AppRegistry} from 'react-native';
-import {Cart} from "./src/app/component/first/Cart";
-
-AppRegistry.registerComponent('MomCook', () => Cart);
+import GetRequest from "./src/app/component/first/GetRequest"
+// import {LoginRouter} from "./src/app/Router"
+AppRegistry.registerComponent('MomCook', () => GetRequest);
