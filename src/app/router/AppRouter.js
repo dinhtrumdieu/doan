@@ -6,6 +6,7 @@ import HomeComponent from "../component/home/HomeComponent";
 import DetailComponent from "../component/detail/DetailComponent";
 import OrderComponent from "../component/order/OrderComponent";
 import ListCategory from "../component/category/ListCategory";
+import ThankComponent from "../component/order/ThankComponent";
 
 export const AppRouter = StackNavigator({
     Main: {
@@ -34,6 +35,12 @@ export const AppRouter = StackNavigator({
     },
     ListCategory:{
         screen:ListCategory,
+        navigationOptions:{
+            header:null
+        }
+    },
+    ThankYou:{
+        screen:ThankComponent,
         navigationOptions:{
             header:null
         }

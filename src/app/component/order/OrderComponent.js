@@ -7,8 +7,10 @@ import {AVENIR_NEXT_BOLD} from "../../../res/font/Font";
 import ToolBar from "../common/ToolBar";
 import BackIcon from "../common/BackIcon";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
+import {navigateToPage} from "../../router/NavigationAction";
+import {connect} from "react-redux";
 
-export default class OrderComponent extends Component {
+class OrderComponent extends Component {
 
     renderLeft = () => (
         <BackIcon/>
@@ -122,7 +124,7 @@ export default class OrderComponent extends Component {
                                 tiền:</Text>
                             <Text style={{fontSize: 16, fontFamily: AVENIR_NEXT_BOLD, color: 'red'}}>x 799.000 đ</Text>
                         </View>
-                        <TouchableOpacity style={{
+                        <TouchableOpacity onPress={()=>{this.props.navigateToPage('ThankYou')}} style={{
                             height: 40,
                             justifyContent: 'center',
                             alignItems: 'center',
@@ -150,4 +152,4 @@ const styles = StyleSheet.create({
         flex: 1,
     }
 });
-
+export default connect(null ,{navigateToPage})(OrderComponent)

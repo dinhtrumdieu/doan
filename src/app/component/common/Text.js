@@ -37,7 +37,7 @@ export default class AppText extends PureComponent {
 
 const styles = StyleSheet.create({
     Text: {
-        fontSize: sizeFont(3.2),
+        fontSize: sizeFont(3.73),
         color: APP_TEXT_COLOR,
         backgroundColor: 'transparent'
     }
