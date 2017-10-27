@@ -5,23 +5,22 @@ import {
     View, TouchableOpacity, Image
 } from 'react-native';
 import ToolBar from "../common/ToolBar";
-import SwipeComponent from "./SwipeComponent";
 import ItemFood from "../common/ItemFood";
 import {sizeHeight, sizeWidth} from "../../utils/Size";
-import {CartIcon} from "../common/CartIcon";
+import CartIcon from "../common/CartIcon";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
-import {actionGetList} from "../../redux/home/HomeAction";
 import {Food} from "../../model/Food";
+import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
+import BackIcon from "../common/BackIcon";
 
 const preview = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắn sẽ chinh phục vị giác bất kì ai ngay từ lần đầu thưởng thức.' +
     ' Từng miếng bánh vàng ươm, bóng bẩy trông cực kì bắt mắt';
 
-class HomeComponent extends Component {
+class ListCategory extends Component {
 
     constructor(props) {
         super(props);
-        // this.props.actionGetList();
         this.state = {
             data: [
                 new Food(1, 'Soup', preview, '15.000', require('../../../res/img/pho.jpg')),
@@ -35,12 +34,15 @@ class HomeComponent extends Component {
         }
     }
 
+    _leftToolBar = ()=>{
+      return(
+          <BackIcon/>
+      )
+    };
+
     _centerToolBar = () => {
         return (
-            <TouchableOpacity style={styles.ViewSearch}>
-                <Image style={styles.IconSearch} source={require('../../../res/img/search.png')}/>
-                <Text style={styles.TextPlaceHolder}>Search</Text>
-            </TouchableOpacity>
+            <Text style={TOOL_BAR_TEXT}>CÁC LOẠI SOUP</Text>
         )
     };
 
@@ -54,11 +56,11 @@ class HomeComponent extends Component {
         return (
             <View style={{flex: 1, backgroundColor: '#e5e5e5'}}>
                 <ToolBar
+                    left={this._leftToolBar()}
                     center={this._centerToolBar()}
                     right={this._rightToolBar()}
                 />
                 <ScrollView>
-                    <SwipeComponent/>
                     <FlatList
                         data={this.state.data}
                         scrollEnabled={false}
@@ -97,4 +99,4 @@ const styles = StyleSheet.create({
         color: '#aaa',
     },
 });
-export default connect(null, {navigateToPage, actionGetList})(HomeComponent);
+export default connect(null, {navigateToPage})(ListCategory);

@@ -28,13 +28,15 @@ export class Login extends Component {
                     <View style={{margin: 30}}>
                         <View style={styles.text_input}>
                             <Image style={{margin: 10}} source={require("../../../res/img/avatar.png")}/>
-                            <TextInput style={{flex: 1}} placeholder="username"
+                            <TextInput style={{flex: 1, fontSize: 17}} placeholder="username"
+                                       placeholderTextColor="#FFFFFF"
                                        underlineColorAndroid="transparent"
                                        onChangeText={(username) => this.setState({username})}/>
                         </View>
                         <View style={styles.text_input}>
                             <Image style={{margin: 10}} source={require("../../../res/img/lock.png")}/>
-                            <TextInput style={{flex: 1}} placeholder="password"
+                            <TextInput style={{flex: 1, fontSize: 17}} placeholder="password"
+                                       placeholderTextColor="#FFFFFF"
                                        underlineColorAndroid="transparent"
                                        secureTextEntry={true}
                                        onChangeText={(password) => this.setState({password})}
@@ -46,7 +48,7 @@ export class Login extends Component {
                             }>Login</AppText>
                         </TouchableOpacity>
                         <View style={styles.bottom}>
-                            <AppText style={styles.forget}>forgot_password</AppText>
+                            <AppText style={styles.forget}>Forgot_password</AppText>
                             <Text style={styles.register} onPress={() => {
                                 this.props.navigation.navigate("register")
                             }}>Register
@@ -62,7 +64,8 @@ export class Login extends Component {
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center"
+        justifyContent: "center",
+        alignItems: "center"
     },
     background_image: {
         flex: 1,
@@ -73,25 +76,27 @@ export const styles = StyleSheet.create({
     logo: {
         textAlign: "center",
         color: "#0B0B0B",
-        fontSize: 25,
+        fontSize: 35,
         fontWeight: "bold"
     },
     text_input: {
         marginTop: 10,
         flexDirection: "row",
-        height: 40,
-        borderRadius: 30,
-        backgroundColor: "#DCD8D7",
+        height: 45,
+        borderRadius: 5,
+        backgroundColor: "#48A741",
+        marginBottom: 5,
     },
     login: {
         marginTop: 30,
-        backgroundColor: "#8CF100",
-        color: "#223209",
+        backgroundColor: "#126922",
+        color: "#FFFFFF",
         height: 50,
-        borderRadius: 30,
         fontSize: 20,
+        borderRadius: 5,
         textAlign: "center",
-        textAlignVertical: "center"
+        textAlignVertical: "center",
+        fontWeight: "bold"
     },
     bottom: {
         margin: 10,
@@ -100,12 +105,14 @@ export const styles = StyleSheet.create({
     },
     forget: {
         fontFamily: "sans-serif",
-        color: "#ABA9AA",
+        color: "#126922",
         fontStyle: "italic",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        fontSize: 17,
     },
     register: {
         fontWeight: "bold",
+        fontSize: 17,
         marginLeft: 10,
         textDecorationLine: "underline"
     }

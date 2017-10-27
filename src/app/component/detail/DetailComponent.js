@@ -10,6 +10,9 @@ import {AVENIR_NEXT_BOLD, AVENIR_NEXT_REGULAR} from "../../../res/font/Font";
 import ToolBar from "../common/ToolBar";
 import BackIcon from "../common/BackIcon";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
+import {connect} from "react-redux";
+import OrderComponent from "../order/OrderComponent";
+import {navigateToPage} from "../../router/NavigationAction";
 
 let test = '300g khoai tây\n' +
     '\n' +
@@ -31,7 +34,7 @@ let test = '300g khoai tây\n' +
 
 let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắn sẽ chinh phục vị giác bất kì ai ngay từ lần đầu thưởng thức. ' +
     'Từng miếng bánh vàng ươm,  dẻo ngon lạ miệng của bánh cùng với hỗn hợp trộn cay đậm đà, vừa ăn vừa xuýt xoa thật đã! ';
-export default class DetailComponent extends Component {
+ class DetailComponent extends Component {
 
     renderLeftToolBar = () => (
         <BackIcon/>
@@ -46,6 +49,10 @@ export default class DetailComponent extends Component {
                resizeMode="contain"
                source={require('../../../res/img/star.png')}/>
     );
+
+    onNavigate = ()=>{
+        this.props.navigateToPage('Order');
+    };
 
     render() {
         return (
@@ -122,7 +129,7 @@ export default class DetailComponent extends Component {
                         alignItems: 'center',
                         paddingHorizontal: 15,
                     }}/>
-                    <TouchableOpacity style={styles.Button}>
+                    <TouchableOpacity onPress={this.onNavigate} style={styles.Button}>
                         <Text style={{color: '#fff', fontSize: 14}}>Đặt hàng</Text>
                     </TouchableOpacity>
                 </View>
@@ -150,3 +157,5 @@ const styles = StyleSheet.create({
         right: 10
     }
 });
+
+export default connect(null,{navigateToPage})(DetailComponent);

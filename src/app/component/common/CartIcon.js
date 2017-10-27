@@ -6,14 +6,16 @@ import {sizeFont, sizeWidth} from "../../utils/Size";
 import Text from "./Text";
 import {AVENIR_NEXT_MEDIUM} from "../../../res/font/Font";
 import {APP_COLOR} from "../../../res/style/AppStyle";
+import {connect} from "react-redux";
+import {navigateToPage} from "../../router/NavigationAction";
+import {actionGetList} from "../../redux/home/HomeAction";
 
-export default class CartIcon extends Component {
+export class CartIcon extends Component {
     render() {
-        const {navigateToPage} = this.props;
         const numberCart = 3;
         return (
             <View>
-                <TouchableOpacity onPress={() => navigateToPage('Cart')}
+                <TouchableOpacity onPress={() => {this.props.navigateToPage("Cart")}}
                                   style={{width: sizeWidth(8), height: sizeWidth(8), overflow: 'visible'}}
                 >
                     <Image style={{
@@ -59,3 +61,5 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
     },
 });
+
+export default connect(null, {navigateToPage, actionGetList})(CartIcon);

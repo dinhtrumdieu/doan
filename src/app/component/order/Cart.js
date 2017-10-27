@@ -2,9 +2,12 @@ import React, {Component} from "react";
 import {View, StyleSheet, FlatList, Image, Text, TouchableOpacity} from "react-native";
 import {Food} from "../../model/Food";
 import ToolBar from "../common/ToolBar";
-import {Font} from "../../../res/font/Font"
+import {Font} from "../../../res/font/Font";
+import BackIcon from "../common/BackIcon";
+import {connect} from "react-redux";
+import {navigateToPage} from "../../router/NavigationAction";
 
-export class Cart extends Component {
+class Cart extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,7 +29,11 @@ export class Cart extends Component {
                 <View style={styles.item}>
                     <Text style={styles.nameFood}>{item.name}</Text>
                     <View style={styles.rightItem}>
-                        <Text style={styles.cancelItem}>X</Text>
+                        <View style={{flexDirection: "row"}}>
+                            <Text style={{fontSize: 10, position: "absolute", right: 0, marginRight: 50}}> 12:03 PM, Oct
+                                20 2017</Text>
+                            <Text style={{fontWeight: "bold", position: "absolute", right: 0}}>X</Text>
+                        </View>
                         <View style={styles.pickerQuantity}>
                             <Text style={styles.quantity}>-</Text>
                             <Text style={styles.quantity}>1</Text>
@@ -44,7 +51,10 @@ export class Cart extends Component {
     render() {
         return (
             <View style={{flex: 1, backgroundColor: "#E3E3E3"}}>
-                <ToolBar title="Cart"/>
+                <View style={{flexDirection: "row"}}>
+                    <BackIcon/>
+                    <ToolBar title="Cart"/>
+                </View>
                 <View style={{flex: 3, marginTop: 30}}>
                     <FlatList
                         data={this.state.data}
@@ -65,10 +75,10 @@ export class Cart extends Component {
 const styles = StyleSheet.create({
 
     container: {
-        margin: 5,
+        marginTop: 20,
         marginLeft: 20,
         marginRight: 20,
-        height: 110,
+        height: 90,
         justifyContent: "center"
     },
     item: {
@@ -80,12 +90,12 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         position: "absolute",
         width: 100,
-        height: 110
+        height: 100
     },
     nameFood: {
-        textAlignVertical:"center",
+        textAlignVertical: "center",
         marginLeft: 110,
-        fontSize: 15,
+        fontSize: 12,
         paddingRight: 10,
         color: "#2D2D2D",
         fontStyle: "italic",
@@ -93,11 +103,6 @@ const styles = StyleSheet.create({
     },
     rightItem: {
         flex: 1
-    },
-    cancelItem: {
-        position: "absolute",
-        right: 0,
-        fontWeight: "bold"
     },
     pickerQuantity: {
         position: "absolute",
@@ -108,7 +113,7 @@ const styles = StyleSheet.create({
         borderColor: "#ACACAC",
         borderWidth: 2,
         width: 80,
-        marginBottom: 20,
+        marginBottom: 30,
     },
     quantity: {
         flex: 1,
@@ -123,7 +128,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#8AF205",
         color: "#FFFFFF",
         width: 80,
-        height: 25,
+        height: 20,
         textAlign: "center",
     },
     order: {
@@ -133,26 +138,28 @@ const styles = StyleSheet.create({
         color: "#FFFFFF",
         textAlign: "center",
         textAlignVertical: "center",
-        fontSize: 20
+        fontSize: 15
     },
     total: {
         flex: 1,
         alignSelf: "flex-end",
         fontWeight: "bold",
-        fontSize: 25,
+        fontSize: 20,
         color: "#494949",
     },
     cooker: {
         position: "absolute",
         bottom: 0,
         marginLeft: 110,
-        fontSize:13,
-        width:100,
-        height:20,
-        borderRadius:10,
-        borderWidth:1,
-        textAlign:"center",
-        textAlignVertical:"center",
-        backgroundColor:"#EAE5E1"
+        fontSize: 13,
+        width: 100,
+        height: 20,
+        borderRadius: 10,
+        borderWidth: 1,
+        textAlign: "center",
+        textAlignVertical: "center",
+        backgroundColor: "#EAE5E1"
     }
 })
+
+export default connect(null, {navigateToPage})(Cart)
