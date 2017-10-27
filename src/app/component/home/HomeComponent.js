@@ -8,11 +8,11 @@ import ToolBar from "../common/ToolBar";
 import SwipeComponent from "./SwipeComponent";
 import ItemFood from "../common/ItemFood";
 import {sizeHeight, sizeWidth} from "../../utils/Size";
-import {CartIcon} from "../common/CartIcon";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import {actionGetList} from "../../redux/home/HomeAction";
 import {Food} from "../../model/Food";
+import CartIcon from "../common/CartIcon";
 
 const preview = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắn sẽ chinh phục vị giác bất kì ai ngay từ lần đầu thưởng thức.' +
     ' Từng miếng bánh vàng ươm, bóng bẩy trông cực kì bắt mắt';

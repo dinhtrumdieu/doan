@@ -9,10 +9,10 @@ import {APP_COLOR} from "../../../res/style/AppStyle";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 
-export class CartIcon extends Component {
+class CartIcon extends Component {
 
     onCLick = ()=>{
-      this.props.navigateToPage('Card');
+      this.props.navigateToPage('ListCart');
     };
 
     render() {
@@ -29,7 +29,7 @@ export class CartIcon extends Component {
                         height: sizeWidth(6.4),
                         width: sizeWidth(6.4)
                     }} source={require('../../../res/img/ic_cart.png')}/>
-                    {numberCart ? this.renderNumberCart(numberCart) : null}r
+                    {numberCart ? this.renderNumberCart(numberCart) : null}
                 </TouchableOpacity>
             </View>
         )

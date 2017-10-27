@@ -7,7 +7,7 @@ import BackIcon from "../common/BackIcon";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 
-class Cart extends Component {
+class CartComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -51,29 +51,21 @@ class Cart extends Component {
     render() {
         return (
             <View style={{flex: 1, backgroundColor: "#E3E3E3"}}>
-                <View style={{flexDirection: "row"}}>
-                    <BackIcon/>
-                    <ToolBar title="Cart"/>
-                </View>
-                <View style={{flex: 3, marginTop: 30}}>
-                    <FlatList
-                        data={this.state.data}
-                        keyExtractor={(item, index) => item._id}
-                        renderItem={this.renderItem}/>
-                </View>
-                <View style={{flex: 1, alignItems: "center", marginLeft: 30, marginRight: 30}}>
-                    <Text style={styles.total}>130.000d</Text>
-                    <TouchableOpacity style={{flex: 2, width: "100%"}}>
-                        <Text style={styles.order}>Place Your Order</Text>
-                    </TouchableOpacity>
-                </View>
+                <ToolBar title="Cart"/>
+                <FlatList
+                    data={this.state.data}
+                    keyExtractor={(item, index) => item._id}
+                    renderItem={this.renderItem}/>
+                <Text style={styles.total}>130.000d</Text>
+                <TouchableOpacity style={{height: 40, width: "80%", justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={styles.order}>Place Your Order</Text>
+                </TouchableOpacity>
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-
     container: {
         marginTop: 20,
         marginLeft: 20,
@@ -141,8 +133,7 @@ const styles = StyleSheet.create({
         fontSize: 15
     },
     total: {
-        flex: 1,
-        alignSelf: "flex-end",
+        marginTop:20,
         fontWeight: "bold",
         fontSize: 20,
         color: "#494949",
@@ -162,4 +153,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null, {navigateToPage})(Cart)
+export default connect(null, {navigateToPage})(CartComponent)

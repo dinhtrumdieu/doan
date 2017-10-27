@@ -7,7 +7,11 @@ import DetailComponent from "../component/detail/DetailComponent";
 import OrderComponent from "../component/order/OrderComponent";
 import ListCategory from "../component/category/ListCategory";
 import ThankComponent from "../component/order/ThankComponent";
-import Cart from "../component/order/Cart";
+import InforYouComponent from "../component/you/InforYouComponent";
+import ChangeInforComponent from "../component/you/ChangeInforComponent";
+import CartComponent from "../component/order/CartComponent";
+import {Login} from "../component/first/Login";
+import {Register} from "../component/first/Register";
 
 export const AppRouter = StackNavigator({
     Main: {
@@ -40,8 +44,8 @@ export const AppRouter = StackNavigator({
             header: null
         }
     },
-    Cart: {
-        screen: Cart,
+    ListCart: {
+        screen: CartComponent,
         navigationOptions: {
             header: null
         }
@@ -51,7 +55,31 @@ export const AppRouter = StackNavigator({
         navigationOptions:{
             header:null
         }
-    }
+    },
+    InforYou:{
+        screen:InforYouComponent,
+        navigationOptions:{
+            header:null
+        }
+    },
+    ChangeInfor:{
+        screen:ChangeInforComponent,
+        navigationOptions:{
+            header:null
+        }
+    },
+    login: {
+        screen: Login,
+        navigationOptions: {
+            header: null
+        }
+    },
+    register: {
+        screen: Register,
+        navigationOptions: {
+            header: null
+        }
+    },
 });
 
 const AppWithNavigationState = ({dispatch, nav}) => (
