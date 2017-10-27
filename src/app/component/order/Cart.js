@@ -46,7 +46,7 @@ class Cart extends Component {
                 <Text style={styles.cooker}> Bà C</Text>
             </View>
         )
-    }
+    };
 
     render() {
         return (
@@ -160,6 +160,6 @@ const styles = StyleSheet.create({
         textAlignVertical: "center",
         backgroundColor: "#EAE5E1"
     }
-})
+});
 
 export default connect(null, {navigateToPage})(Cart)
