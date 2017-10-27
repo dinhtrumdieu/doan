@@ -8,7 +8,7 @@ import ToolBar from "../common/ToolBar";
 import SwipeComponent from "./SwipeComponent";
 import ItemFood from "../common/ItemFood";
 import {sizeHeight, sizeWidth} from "../../utils/Size";
-import CartIcon from "../common/CartIcon";
+import {CartIcon} from "../common/CartIcon";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import {actionGetList} from "../../redux/home/HomeAction";

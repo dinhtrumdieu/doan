@@ -1,0 +1,65 @@
+import React, {Component} from 'react';
+import {
+    View, StyleSheet, ImageBackground, Image, TouchableOpacity,
+} from 'react-native';
+import Text from "../common/Text";
+import ToolBar from "../common/ToolBar";
+
+export default class InforYouComponent extends Component {
+    render() {
+        return (
+            <View style={styles.Container}>
+                <ToolBar title='Account'/>
+                <ImageBackground style={styles.ViewTop} source={require('../../../res/img/bg_app.jpg')}>
+                    <View style={{flexDirection: 'row'}}>
+                        <Image style={{width: 70, height: 70, borderRadius: 35}}
+                               source={require('../../../res/img/avatar.png')}/>
+                        <Text style={{fontSize: 18, color: '#000', marginTop: 20, marginLeft: 20}}>Sukara</Text>
+                    </View>
+                </ImageBackground>
+                <View style={{marginHorizontal: 20, marginTop: 20}}>
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={{flex: 2}}>Giới tính :</Text>
+                        <Text style={{flex: 4}}>Nam</Text>
+                    </View>
+                    <View style={{width: '100%', borderWidth: 0.8, borderColor: '#bcbcbc', marginVertical: 10}}/>
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={{flex: 2}}>Số điện thoại :</Text>
+                        <Text style={{flex: 4}}>+841685348267</Text>
+                    </View>
+                    <View style={{width: '100%', borderWidth: 0.8, borderColor: '#c6c6c6', marginVertical: 10}}/><View
+                    style={{flexDirection: 'row'}}>
+                    <Text style={{flex: 2}}>Địa chỉ :</Text>
+                    <Text style={{flex: 4}}>35 Nguyễn Chánh</Text>
+                </View>
+                    <View style={{width: '100%', borderWidth: 0.8, borderColor: '#c6c6c6', marginVertical: 10}}/>
+                </View>
+                <TouchableOpacity style={{
+                    width: 200,
+                    height: 35,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: 'green',
+                    borderRadius: 5,
+                    alignSelf: 'center',
+                    marginTop: 30
+                }}>
+                    <Text style={{color: 'white', fontSize: 14}}>Đổi thông tin</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+}
+
+const styles = StyleSheet.create({
+    Container: {
+        flex: 1
+    },
+    ViewTop: {
+        height: 200,
+        width: '100%',
+        justifyContent: 'flex-end',
+        paddingLeft: 10,
+        paddingBottom: 10,
+    }
+});

@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -37,6 +36,23 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		FA8831D5783E4D35A0609EC6 /* libRNFIRMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8820947757F4BD381F2E63D /* libRNFIRMessaging.a */; };
+		EF72E5E6115840F99387CE43 /* AvenirNext-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE63A280A4D34AE482BA733B /* AvenirNext-Bold.ttf */; };
+		19FFA1616F22484FA3739A9B /* AvenirNext-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A1CCD2C36E84E948408F4E0 /* AvenirNext-BoldItalic.ttf */; };
+		3344582005F8476EA55E7CA5 /* AvenirNext-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B837AAF2DD8E4B87A9AC6ED7 /* AvenirNext-Italic.ttf */; };
+		0D7C6B3B1F9B400E8754D511 /* AvenirNext-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 905C4330446B4F19A9422DE7 /* AvenirNext-Medium.ttf */; };
+		B7EEB25C81654A7D8D656431 /* AvenirNext-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9B44CD1E39643C192412F5A /* AvenirNext-Regular.ttf */; };
+		FBA291DCF2264B77A9602641 /* AvenirNext-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C44F55B41C1845A5B9FC2678 /* AvenirNext-UltraLight.ttf */; };
+		324641A5603E4A4D8584FFFE /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D38434B9D290454DBEAB03A6 /* OpenSans-Bold.ttf */; };
+		90EA83F98A014620966087D6 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C694C8953A24509A4D09224 /* OpenSans-BoldItalic.ttf */; };
+		8F8D66DD188643029551BA16 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D8C0EB3A7844243A58E81BF /* OpenSans-ExtraBold.ttf */; };
+		1B04BC05B3FA46DCA205E869 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 746E059C21E7475A9CE71766 /* OpenSans-ExtraBoldItalic.ttf */; };
+		B8B431D1E690421FB352195D /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31ABAA7473284BDCBEC4BDEB /* OpenSans-Italic.ttf */; };
+		17F17CA16CEF4C7D83EE9E14 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BF9B1268B4D4C17BEFA0645 /* OpenSans-Light.ttf */; };
+		A4FAD0A7BB8E4A8582C10B7D /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D73BDC177724019B607ABD7 /* OpenSans-LightItalic.ttf */; };
+		E638B832FF9546F8B9D495F9 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CF6868C2B744700BF9BE38E /* OpenSans-Regular.ttf */; };
+		AAE20037D0D84E04BFC944FA /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 278D2F84AAC9484198E2B791 /* OpenSans-SemiBold.ttf */; };
+		A2DCBDDAA20E40459D587B01 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 286331D32C584569BE128878 /* OpenSans-SemiBoldItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -264,6 +280,24 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		DFAD0FBAA73F4F298E868D77 /* RNFIRMessaging.xcodeproj */ = {isa = PBXFileReference; name = "RNFIRMessaging.xcodeproj"; path = "../node_modules/react-native-fcm/ios/RNFIRMessaging.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		F8820947757F4BD381F2E63D /* libRNFIRMessaging.a */ = {isa = PBXFileReference; name = "libRNFIRMessaging.a"; path = "libRNFIRMessaging.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		AE63A280A4D34AE482BA733B /* AvenirNext-Bold.ttf */ = {isa = PBXFileReference; name = "AvenirNext-Bold.ttf"; path = "../src/res/font/AvenirNext-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7A1CCD2C36E84E948408F4E0 /* AvenirNext-BoldItalic.ttf */ = {isa = PBXFileReference; name = "AvenirNext-BoldItalic.ttf"; path = "../src/res/font/AvenirNext-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B837AAF2DD8E4B87A9AC6ED7 /* AvenirNext-Italic.ttf */ = {isa = PBXFileReference; name = "AvenirNext-Italic.ttf"; path = "../src/res/font/AvenirNext-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		905C4330446B4F19A9422DE7 /* AvenirNext-Medium.ttf */ = {isa = PBXFileReference; name = "AvenirNext-Medium.ttf"; path = "../src/res/font/AvenirNext-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C9B44CD1E39643C192412F5A /* AvenirNext-Regular.ttf */ = {isa = PBXFileReference; name = "AvenirNext-Regular.ttf"; path = "../src/res/font/AvenirNext-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C44F55B41C1845A5B9FC2678 /* AvenirNext-UltraLight.ttf */ = {isa = PBXFileReference; name = "AvenirNext-UltraLight.ttf"; path = "../src/res/font/AvenirNext-UltraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D38434B9D290454DBEAB03A6 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; name = "OpenSans-Bold.ttf"; path = "../src/res/font/OpenSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1C694C8953A24509A4D09224 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-BoldItalic.ttf"; path = "../src/res/font/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2D8C0EB3A7844243A58E81BF /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; name = "OpenSans-ExtraBold.ttf"; path = "../src/res/font/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		746E059C21E7475A9CE71766 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../src/res/font/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		31ABAA7473284BDCBEC4BDEB /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; name = "OpenSans-Italic.ttf"; path = "../src/res/font/OpenSans-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2BF9B1268B4D4C17BEFA0645 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; name = "OpenSans-Light.ttf"; path = "../src/res/font/OpenSans-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6D73BDC177724019B607ABD7 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-LightItalic.ttf"; path = "../src/res/font/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1CF6868C2B744700BF9BE38E /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; name = "OpenSans-Regular.ttf"; path = "../src/res/font/OpenSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		278D2F84AAC9484198E2B791 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "OpenSans-SemiBold.ttf"; path = "../src/res/font/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		286331D32C584569BE128878 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "OpenSans-SemiBoldItalic.ttf"; path = "../src/res/font/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +326,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				FA8831D5783E4D35A0609EC6 /* libRNFIRMessaging.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +495,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
+				DFAD0FBAA73F4F298E868D77 /* RNFIRMessaging.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -480,6 +516,7 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MomCookTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				4ED96539F3E44AA59258FD23 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -504,6 +541,30 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		4ED96539F3E44AA59258FD23 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				AE63A280A4D34AE482BA733B /* AvenirNext-Bold.ttf */,
+				7A1CCD2C36E84E948408F4E0 /* AvenirNext-BoldItalic.ttf */,
+				B837AAF2DD8E4B87A9AC6ED7 /* AvenirNext-Italic.ttf */,
+				905C4330446B4F19A9422DE7 /* AvenirNext-Medium.ttf */,
+				C9B44CD1E39643C192412F5A /* AvenirNext-Regular.ttf */,
+				C44F55B41C1845A5B9FC2678 /* AvenirNext-UltraLight.ttf */,
+				D38434B9D290454DBEAB03A6 /* OpenSans-Bold.ttf */,
+				1C694C8953A24509A4D09224 /* OpenSans-BoldItalic.ttf */,
+				2D8C0EB3A7844243A58E81BF /* OpenSans-ExtraBold.ttf */,
+				746E059C21E7475A9CE71766 /* OpenSans-ExtraBoldItalic.ttf */,
+				31ABAA7473284BDCBEC4BDEB /* OpenSans-Italic.ttf */,
+				2BF9B1268B4D4C17BEFA0645 /* OpenSans-Light.ttf */,
+				6D73BDC177724019B607ABD7 /* OpenSans-LightItalic.ttf */,
+				1CF6868C2B744700BF9BE38E /* OpenSans-Regular.ttf */,
+				278D2F84AAC9484198E2B791 /* OpenSans-SemiBold.ttf */,
+				286331D32C584569BE128878 /* OpenSans-SemiBoldItalic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -586,7 +647,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 610;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -874,6 +935,22 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				EF72E5E6115840F99387CE43 /* AvenirNext-Bold.ttf in Resources */,
+				19FFA1616F22484FA3739A9B /* AvenirNext-BoldItalic.ttf in Resources */,
+				3344582005F8476EA55E7CA5 /* AvenirNext-Italic.ttf in Resources */,
+				0D7C6B3B1F9B400E8754D511 /* AvenirNext-Medium.ttf in Resources */,
+				B7EEB25C81654A7D8D656431 /* AvenirNext-Regular.ttf in Resources */,
+				FBA291DCF2264B77A9602641 /* AvenirNext-UltraLight.ttf in Resources */,
+				324641A5603E4A4D8584FFFE /* OpenSans-Bold.ttf in Resources */,
+				90EA83F98A014620966087D6 /* OpenSans-BoldItalic.ttf in Resources */,
+				8F8D66DD188643029551BA16 /* OpenSans-ExtraBold.ttf in Resources */,
+				1B04BC05B3FA46DCA205E869 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				B8B431D1E690421FB352195D /* OpenSans-Italic.ttf in Resources */,
+				17F17CA16CEF4C7D83EE9E14 /* OpenSans-Light.ttf in Resources */,
+				A4FAD0A7BB8E4A8582C10B7D /* OpenSans-LightItalic.ttf in Resources */,
+				E638B832FF9546F8B9D495F9 /* OpenSans-Regular.ttf in Resources */,
+				AAE20037D0D84E04BFC944FA /* OpenSans-SemiBold.ttf in Resources */,
+				A2DCBDDAA20E40459D587B01 /* OpenSans-SemiBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1005,6 +1082,14 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MomCook.app/MomCook";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+				);
 			};
 			name = Debug;
 		};
@@ -1022,6 +1107,14 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MomCook.app/MomCook";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+				);
 			};
 			name = Release;
 		};
@@ -1040,6 +1133,10 @@
 				);
 				PRODUCT_NAME = MomCook;
 				VERSIONING_SYSTEM = "apple-generic";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+				);
 			};
 			name = Debug;
 		};
@@ -1057,6 +1154,10 @@
 				);
 				PRODUCT_NAME = MomCook;
 				VERSIONING_SYSTEM = "apple-generic";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+				);
 			};
 			name = Release;
 		};
@@ -1083,6 +1184,14 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+				);
 			};
 			name = Debug;
 		};
@@ -1109,6 +1218,14 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
+				);
 			};
 			name = Release;
 		};
@@ -1130,6 +1247,10 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MomCook-tvOS.app/MomCook-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 			};
 			name = Debug;
 		};
@@ -1151,6 +1272,10 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MomCook-tvOS.app/MomCook-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 			};
 			name = Release;
 		};

@@ -6,14 +6,20 @@ import {sizeFont, sizeWidth} from "../../utils/Size";
 import Text from "./Text";
 import {AVENIR_NEXT_MEDIUM} from "../../../res/font/Font";
 import {APP_COLOR} from "../../../res/style/AppStyle";
+import {connect} from "react-redux";
+import {navigateToPage} from "../../router/NavigationAction";
 
-export default class CartIcon extends Component {
+export class CartIcon extends Component {
+
+    onCLick = ()=>{
+      this.props.navigateToPage('Card');
+    };
+
     render() {
-        const {navigateToPage} = this.props;
         const numberCart = 3;
         return (
             <View>
-                <TouchableOpacity onPress={() => navigateToPage('Cart')}
+                <TouchableOpacity onPress={this.onCLick}
                                   style={{width: sizeWidth(8), height: sizeWidth(8), overflow: 'visible'}}
                 >
                     <Image style={{
@@ -23,7 +29,7 @@ export default class CartIcon extends Component {
                         height: sizeWidth(6.4),
                         width: sizeWidth(6.4)
                     }} source={require('../../../res/img/ic_cart.png')}/>
-                    {numberCart ? this.renderNumberCart(numberCart) : null}
+                    {numberCart ? this.renderNumberCart(numberCart) : null}r
                 </TouchableOpacity>
             </View>
         )
@@ -59,3 +65,5 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
     },
 });
+
+export default connect(null, {navigateToPage})(CartIcon);
