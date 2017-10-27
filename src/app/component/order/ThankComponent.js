@@ -51,7 +51,7 @@ class ThankComponent extends Component {
                     position:'absolute',
                     bottom:50,
                 }}>
-                    <Image style={{width: 15, height: 15}} source={require('../../../res/img/ic_cart.png')}/>
+                    <Image style={{width: 15, height: 15}} source={require('../../../res/img/left-arrow.png')}/>
                     <Text style={{color: '#fff', marginLeft: 10}}>BACK TO HOME</Text>
                 </TouchableOpacity>
             </ImageBackground>
