@@ -6,6 +6,7 @@ import HomeComponent from "../component/home/HomeComponent";
 import DetailComponent from "../component/detail/DetailComponent";
 import OrderComponent from "../component/order/OrderComponent";
 import ListCategory from "../component/category/ListCategory";
+import Cart from "../component/order/Cart";
 
 export const AppRouter = StackNavigator({
     Main: {
@@ -20,22 +21,28 @@ export const AppRouter = StackNavigator({
             header: null
         },
     },
-    Detail:{
-        screen:DetailComponent,
+    Detail: {
+        screen: DetailComponent,
         navigationOptions: {
             header: null
         },
     },
-    Order:{
-        screen:OrderComponent,
-        navigationOptions:{
-            header:null
+    Order: {
+        screen: OrderComponent,
+        navigationOptions: {
+            header: null
         }
     },
-    ListCategory:{
-        screen:ListCategory,
-        navigationOptions:{
-            header:null
+    ListCategory: {
+        screen: ListCategory,
+        navigationOptions: {
+            header: null
+        }
+    },
+    Cart: {
+        screen: Cart,
+        navigationOptions: {
+            header: null
         }
     }
 });

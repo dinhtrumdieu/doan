@@ -1,5 +1,4 @@
 import { AppRegistry } from 'react-native';
-import AppProvider from "./src/app/AppProvider";
-import InforYouComponent from "./src/app/component/you/InforYouComponent";
+import {LoginRouter} from "./src/app/Router"
+AppRegistry.registerComponent('MomCook', () => LoginRouter);
 
-AppRegistry.registerComponent('MomCook', () => InforYouComponent);
