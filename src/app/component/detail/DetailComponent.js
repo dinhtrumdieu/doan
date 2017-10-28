@@ -40,8 +40,8 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
         <BackIcon/>
     );
 
-    renderCenterToolBar = () => (
-        <Text style={TOOL_BAR_TEXT}>Phở</Text>
+    renderCenterToolBar = (name) => (
+        <Text style={TOOL_BAR_TEXT}>{name}</Text>
     );
 
     renderStar = () => (
@@ -55,16 +55,21 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
     };
 
     render() {
+        const {item} = this.props.navigation.state.params;
+        const name = item && item.name ? item.name :"";
+        const preview = item && item.preview ? item.preview:"";
+        const price = item && item.price ? item.price:0;
+        const image = item && item.images ? item.images : require('../../../res/img/pho.jpg');
         return (
             <ImageBackground style={{width: '100%', height: '100%'}} source={require('../../../res/img/bg_app.jpg')}>
                 <ToolBar left={this.renderLeftToolBar()}
-                         center={this.renderCenterToolBar()}/>
+                         center={this.renderCenterToolBar(name)}/>
                 <ScrollView>
                     <View style={{flex: 1}}>
-                        <Image style={{height: 200, width: '100%'}} source={require('../../../res/img/pho.jpg')}/>
+                        <Image style={{height: 200, width: '100%'}} source={image}/>
                         <View style={{marginHorizontal: 40, flexDirection: 'row', marginTop: 10}}>
-                            <Text style={{fontSize: 20, color: '#0aa11d', flex: 1}}>Phở Kon Tum</Text>
-                            <Text style={{fontSize: 14, color: '#0aa11d', alignSelf: 'flex-end'}}>15.000 VNĐ</Text>
+                            <Text style={{fontSize: 20, color: '#0aa11d', flex: 1}}>{name}</Text>
+                            <Text style={{fontSize: 14, color: '#0aa11d', alignSelf: 'flex-end'}}>{price} VNĐ</Text>
                         </View>
 
                         <View style={{flexDirection: 'row', marginHorizontal: 40}}>
@@ -85,7 +90,7 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
 
                         <View style={{marginHorizontal: 40, marginTop: 15}}>
                             <WrapText>
-                                {mota}
+                                {preview}
                             </WrapText>
                         </View>
 

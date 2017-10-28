@@ -21,7 +21,7 @@ class ItemCategoryLeft extends Component {
         const image = item && item.images ? item.images : require('../../../res/img/pho.jpg');
         return (
             <TouchableOpacity onPress={this.onClick} style={styles.Container}>
-                <View style={{flex: 1, flexDirection: 'row', marginLeft: 25, marginTop: 10, backgroundColor: '#fff'}}>
+                <View style={{flex: 1, flexDirection: 'row', marginLeft: 25, marginTop: 10, backgroundColor: '#fff',borderRadius:5}}>
                     <View style={{flex: 1}}/>
                     <View style={styles.Content}>
                         <Text style={{fontSize: 16}}>{name}</Text>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     },
     Content: {
         flex: 3,
-        marginRight:15
+        marginRight:15,
     }
 });
 

@@ -9,8 +9,8 @@ import {navigateToPage} from "../../router/NavigationAction";
 
 class ItemFood extends Component {
 
-    onClick = ()=>{
-      this.props.navigateToPage('Detail');
+    onClick = (item)=>{
+      this.props.navigateToPage('Detail',{item});
     };
 
     render() {
@@ -20,7 +20,7 @@ class ItemFood extends Component {
         const price = item && item.price ? item.price:'0';
         const image = item && item.images ? item.images : require('../../../res/img/pho.jpg');
         return (
-            <TouchableOpacity onPress={this.onClick} style={styles.Container}>
+            <TouchableOpacity onPress={()=>this.onClick(item)} style={styles.Container}>
                 <View style={{flex: 1, flexDirection: 'row', marginLeft: 25, marginTop: 10, backgroundColor: '#f3f3f3',borderRadius:5}}>
                     <View style={{flex: 1}}/>
                     <View style={styles.Content}>

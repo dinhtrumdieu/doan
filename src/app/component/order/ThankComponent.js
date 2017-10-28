@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import Text from "../common/Text";
 import {APP_COLOR} from "../../../res/style/AppStyle";
-import {navigateToPage} from "../../router/NavigationAction";
+import {navigateToPage, resetPage} from "../../router/NavigationAction";
 import {connect} from "react-redux";
 
 class ThankComponent extends Component {
@@ -40,7 +40,7 @@ class ThankComponent extends Component {
                     <Text style={{fontSize: 24, marginTop: 10, marginBottom: 25}}>18:30</Text>
                     <Text style={{fontSize: 14}}>Cảm ơn đã chọn chúng tôi!</Text>
                 </View>
-                <TouchableOpacity onPress={()=>{this.props.navigateToPage('Main')}} style={{
+                <TouchableOpacity onPress={()=>{this.props.resetPage('Main')}} style={{
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -59,5 +59,5 @@ class ThankComponent extends Component {
     }
 }
 
-export default connect(null ,{navigateToPage})(ThankComponent)
+export default connect(null ,{navigateToPage,resetPage})(ThankComponent)
 

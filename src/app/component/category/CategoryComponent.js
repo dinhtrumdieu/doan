@@ -9,11 +9,8 @@ import {Food} from "../../model/Food";
 import ItemCategoryLeft from "./ItemCategoryLeft";
 import ItemCategoryRight from "./ItemCategoryRight";
 import ToolBar from "../common/ToolBar";
-const preview = 'Hello world constructor Hello world constructor Hello world\\n\' +\n' +
-    '                    \'constructorHello world constructor\\n\' +\n' +
-    '                    \'Hello world constructorHello world constructor\\n\' +\n' +
-    '                    \'Hello world constructor\\n\' +\n' +
-    '                    \'Hello world constructorHello world constructor';
+const preview = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắn sẽ chinh phục vị giác bất kì ai ngay từ lần đầu thưởng thức.' +
+    ' Từng miếng bánh vàng ươm, bóng bẩy trông cực kì bắt mắt';
 let random = false;
 export default class CategoryComponent extends Component {
 

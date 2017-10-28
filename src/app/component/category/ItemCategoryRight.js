@@ -21,7 +21,7 @@ import {connect} from "react-redux";
         const image = item && item.images ? item.images : require('../../../res/img/pho.jpg');
         return (
             <TouchableOpacity onPress={this.onClick} style={styles.Container}>
-                <View style={{flex: 1, flexDirection: 'row', marginRight: 25, marginTop: 10, backgroundColor: '#fff'}}>
+                <View style={{flex: 1, flexDirection: 'row', marginRight: 25, marginTop: 10, backgroundColor: '#fff',borderRadius:5}}>
                     <View style={styles.Content}>
                         <Text style={{fontSize: 16}}>{name}</Text>
                         <WrapText numberOfLines={3}>{preview}
