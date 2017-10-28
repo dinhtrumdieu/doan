@@ -13,6 +13,7 @@ import CartComponent from "../component/order/CartComponent";
 import {Login} from "../component/first/Login";
 import {Register} from "../component/first/Register";
 import SearchComponent from "../component/search/SearchComponent";
+import OrderHistory from "../component/order/OrderHistory";
 
 export const AppRouter = StackNavigator({
     Main: {
@@ -87,6 +88,12 @@ export const AppRouter = StackNavigator({
             header: null
         }
     },
+    OrderHistory:{
+        screen: OrderHistory,
+        navigationOptions: {
+            header: null
+        }
+    }
 });
 
 const AppWithNavigationState = ({dispatch, nav}) => (

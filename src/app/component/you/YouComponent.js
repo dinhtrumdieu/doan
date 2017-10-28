@@ -27,15 +27,14 @@ class YouComponent extends Component {
     }
 
     handleItemClick = (id) => {
+        alert(id);
         let {navigateToPage} = this.props;
         switch (id) {
             case 0:
 
                 break;
             case 1:
-                this.props.checkLogin(() => {
-                    navigateToPage('InviteFriend');
-                });
+                   navigateToPage('OrderHistory');
                 break;
             case 2:
                 this.props.checkLogin(() => {
