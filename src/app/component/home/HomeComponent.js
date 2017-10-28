@@ -37,7 +37,9 @@ class HomeComponent extends Component {
 
     _centerToolBar = () => {
         return (
-            <TouchableOpacity style={styles.ViewSearch}>
+            <TouchableOpacity
+                onPress={()=>{this.props.navigateToPage('Search')}}
+                style={styles.ViewSearch}>
                 <Image style={styles.IconSearch} source={require('../../../res/img/search.png')}/>
                 <Text style={styles.TextPlaceHolder}>Search</Text>
             </TouchableOpacity>

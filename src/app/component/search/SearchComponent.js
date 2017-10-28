@@ -8,10 +8,7 @@ import {sizeFont, sizeHeight, sizeWidth} from "../../utils/Size";
 import Text from "../common/Text";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
-import {actionSearchAuction} from "../../redux/search/SearchAction";
-import {SEARCH_HEIGHT} from "../../Constant";
-import DialogUtil from "../../utils/DialogUtil";
-import {strings} from "../../../res/strings/strings";
+import {SEARCH_HEIGHT} from "../home/HomeComponent";
 
 class SearchComponent extends Component {
 
@@ -46,7 +43,7 @@ class SearchComponent extends Component {
                 </TouchableOpacity>
                 <TextInput style={styles.TextInput}
                            underlineColorAndroid='transparent'
-                           placeholder={strings.review.hint_text_search}
+                           placeholder='Search'
                            placeholderTextColor='#979C9C'
                            autoFocus={true}
                            onChangeText={(text) => this.setState({keyword: text})}
@@ -69,7 +66,6 @@ class SearchComponent extends Component {
             this.props.actionSearchAuction(keyword, page);
             this.props.navigateToPage('SearchResult',{keyword});
         } else {
-            DialogUtil.showMessageDialog(null, strings.review.null_keyword,'OK');
         }
 
     };
@@ -129,12 +125,6 @@ const styles = StyleSheet.create({
     }
 });
 
-function mapState(state) {
-    return {
-        listAuctions: state.searchAuctionState.listAuctions,
-    }
-}
-
-export default connect(mapState,
-    {navigateToPage, actionSearchAuction}
+export default connect(null,
+    {navigateToPage}
 )(SearchComponent);

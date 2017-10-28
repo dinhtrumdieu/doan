@@ -4,8 +4,10 @@ import ToolBar from "../common/ToolBar";
 import {APP_BACKGROUND, APP_COLOR} from "../../../res/style/AppStyle";
 import MenuItem from "../common/MenuItem";
 import Text from "../common/Text";
+import {navigateToPage} from "../../router/NavigationAction";
+import {connect} from "react-redux";
 
-export default class YouComponent extends Component {
+class YouComponent extends Component {
 
     constructor(props) {
         super(props);
@@ -81,7 +83,9 @@ export default class YouComponent extends Component {
                 alignItems: 'center',
             }}/>
             <View style={{justifyContent:'center',alignItems:'center',marginVertical:25,position:'absolute'}}>
-                <Image style={{width:80,height:80,borderRadius:40,marginTop:15}} source={require('../../../res/img/bg_app.jpg')}/>
+                <TouchableOpacity onPress={()=>{this.props.navigateToPage('InforYou')}}>
+                    <Image style={{width:80,height:80,borderRadius:40,marginTop:15}} source={require('../../../res/img/bg_app.jpg')}/>
+                </TouchableOpacity>
                 <Text style={{fontSize:17,marginVertical:15,color:'#000'}}>Nguyễn Trung Định</Text>
             </View>
         </View>
@@ -138,3 +142,5 @@ const styles = StyleSheet.create({
         width: 20,
     }
 });
+
+export default connect(null,{navigateToPage})(YouComponent);

@@ -4,19 +4,33 @@ import {
 } from 'react-native';
 import ToolBar from "../common/ToolBar";
 import Text from "../common/Text";
-export default class ChangeInforComponent extends Component {
+import BackIcon from "../common/BackIcon";
+import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
+import {connect} from "react-redux";
+import {navigateToPage} from "../../router/NavigationAction";
+
+class ChangeInforComponent extends Component {
+    renderLeftToolBar = () => (
+        <BackIcon/>
+    );
+
+    renderCenterToolBar = () => (
+        <Text style={TOOL_BAR_TEXT}>Chỉnh sửa thông tin</Text>
+    );
+
     render() {
         return (
-            <View style={{flex:1,backgroundColor:'#aaa'}}>
-                <ToolBar title='Chỉnh sửa thông tin'/>
-                <View style={{flexDirection:'row',backgroundColor:'#fff',paddingVertical:15}}>
+            <View style={{flex: 1, backgroundColor: '#aaa'}}>
+                <ToolBar left={this.renderLeftToolBar()}
+                         center={this.renderCenterToolBar()}/>
+                <View style={{flexDirection: 'row', backgroundColor: '#fff', paddingVertical: 15}}>
                     <Image source={require('../../../res/img/bg_app.jpg')} style={styles.Left}/>
-                    <View style={{flex:1}}>
+                    <View style={{flex: 1}}>
                         <Text>Nguyen Trung Dinh</Text>
                         <View style={{width: '100%', borderWidth: 0.8, borderColor: '#c6c6c6', marginVertical: 10}}/>
-                        <View style={{flexDirection:'row',alignItems:'center'}}>
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <CheckBox/>
-                            <Text style={{marginRight:30}}>Nam</Text>
+                            <Text style={{marginRight: 30}}>Nam</Text>
                             <CheckBox/>
                             <Text>Nữ</Text>
                         </View>
@@ -42,13 +56,13 @@ export default class ChangeInforComponent extends Component {
 }
 
 const styles = StyleSheet.create({
-    Left:{
-        width:60,
-        height:60,
-        borderRadius:30,
-        marginHorizontal:20,
+    Left: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        marginHorizontal: 20,
     },
-    Right:{
-
-    }
+    Right: {}
 });
+
+export default connect(null, {navigateToPage})(ChangeInforComponent);

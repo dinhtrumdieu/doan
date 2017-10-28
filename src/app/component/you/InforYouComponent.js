@@ -4,12 +4,27 @@ import {
 } from 'react-native';
 import Text from "../common/Text";
 import ToolBar from "../common/ToolBar";
+import {connect} from "react-redux";
+import {navigateToPage} from "../../router/NavigationAction";
+import BackIcon from "../common/BackIcon";
+import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 
-export default class InforYouComponent extends Component {
+class InforYouComponent extends Component {
+
+    renderLeftToolBar = () => (
+        <BackIcon/>
+    );
+
+    renderCenterToolBar = () => (
+        <Text style={TOOL_BAR_TEXT}>Account</Text>
+    );
+
     render() {
         return (
             <View style={styles.Container}>
-                <ToolBar title='Account'/>
+                <ToolBar
+                    left={this.renderLeftToolBar()}
+                    center={this.renderCenterToolBar()}/>
                 <ImageBackground style={styles.ViewTop} source={require('../../../res/img/bg_app.jpg')}>
                     <View style={{flexDirection: 'row'}}>
                         <Image style={{width: 70, height: 70, borderRadius: 35}}
@@ -34,7 +49,9 @@ export default class InforYouComponent extends Component {
                 </View>
                     <View style={{width: '100%', borderWidth: 0.8, borderColor: '#c6c6c6', marginVertical: 10}}/>
                 </View>
-                <TouchableOpacity style={{
+                <TouchableOpacity
+                    onPress={()=>{this.props.navigateToPage('ChangeInfor')}}
+                    style={{
                     width: 200,
                     height: 35,
                     justifyContent: 'center',
@@ -63,3 +80,5 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
     }
 });
+
+export default connect(null,{navigateToPage})(InforYouComponent);

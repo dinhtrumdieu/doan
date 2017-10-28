@@ -12,6 +12,7 @@ import ChangeInforComponent from "../component/you/ChangeInforComponent";
 import CartComponent from "../component/order/CartComponent";
 import {Login} from "../component/first/Login";
 import {Register} from "../component/first/Register";
+import SearchComponent from "../component/search/SearchComponent";
 
 export const AppRouter = StackNavigator({
     Main: {
@@ -76,6 +77,12 @@ export const AppRouter = StackNavigator({
     },
     register: {
         screen: Register,
+        navigationOptions: {
+            header: null
+        }
+    },
+    Search:{
+        screen: SearchComponent,
         navigationOptions: {
             header: null
         }
