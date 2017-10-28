@@ -28,7 +28,7 @@ export default class MenuItem extends React.PureComponent {
                                 opacity:0.4,
                                 justifyContent: 'center',
                                 alignItems: 'center',
-                                backgroundColor: '#bfbfbf',
+                                backgroundColor: '#4F6B83',
                                 borderRadius: 30
                             }}>
                             </TouchableOpacity>
