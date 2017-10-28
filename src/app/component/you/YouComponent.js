@@ -72,7 +72,7 @@ class YouComponent extends Component {
     keyExtractor = (item) => item.id;
 
     renderHeader = () => (
-        <View style={{alignItems: 'center',
+        <ImageBackground source={require('../../../res/img/bg_me.png')} style={{alignItems: 'center',
             justifyContent: 'center',}}>
             <View style={{
                 height: 150,
@@ -88,7 +88,7 @@ class YouComponent extends Component {
                 </TouchableOpacity>
                 <Text style={{fontSize:17,marginVertical:15,color:'#000'}}>Nguyễn Trung Định</Text>
             </View>
-        </View>
+        </ImageBackground>
 
     );
 
@@ -104,10 +104,10 @@ class YouComponent extends Component {
 
     render() {
         return (
-            <ImageBackground style={styles.Container} source={require('../../../res/img/bg_app.jpg')}>
+            <View style={styles.Container}>
                     {this.renderHeader()}
                     {this.renderList()}
-            </ImageBackground>
+            </View>
         );
     }
 }
@@ -116,6 +116,7 @@ class YouComponent extends Component {
 const styles = StyleSheet.create({
     Container: {
         flex:1,
+        backgroundColor:'#f5f5f5'
     },
     TopBgImage: {
         width: '100%',

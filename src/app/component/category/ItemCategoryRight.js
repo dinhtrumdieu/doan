@@ -7,7 +7,7 @@ import WrapText from "../common/WrapText";
 import {navigateToPage} from "../../router/NavigationAction";
 import {connect} from "react-redux";
 
- class ItemCategoryRight extends Component {
+class ItemCategoryRight extends Component {
 
     onClick = ()=>{
         this.props.navigateToPage('ListCategory');

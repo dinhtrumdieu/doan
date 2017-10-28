@@ -9,7 +9,7 @@ import Text from "../common/Text";
 import {AVENIR_NEXT_BOLD, AVENIR_NEXT_REGULAR} from "../../../res/font/Font";
 import ToolBar from "../common/ToolBar";
 import BackIcon from "../common/BackIcon";
-import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
+import {APP_COLOR, TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import {connect} from "react-redux";
 import OrderComponent from "../order/OrderComponent";
 import {navigateToPage} from "../../router/NavigationAction";
@@ -61,18 +61,18 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
         const price = item && item.price ? item.price:0;
         const image = item && item.images ? item.images : require('../../../res/img/pho.jpg');
         return (
-            <ImageBackground style={{width: '100%', height: '100%'}} source={require('../../../res/img/bg_app.jpg')}>
+            <View style={{flex:1,backgroundColor:'#f5f5f5'}}>
                 <ToolBar left={this.renderLeftToolBar()}
                          center={this.renderCenterToolBar(name)}/>
                 <ScrollView>
                     <View style={{flex: 1}}>
                         <Image style={{height: 200, width: '100%'}} source={image}/>
-                        <View style={{marginHorizontal: 40, flexDirection: 'row', marginTop: 10}}>
+                        <View style={{marginHorizontal: 20, flexDirection: 'row', marginTop: 10}}>
                             <Text style={{fontSize: 20, color: '#0aa11d', flex: 1}}>{name}</Text>
                             <Text style={{fontSize: 14, color: '#0aa11d', alignSelf: 'flex-end'}}>{price} VNĐ</Text>
                         </View>
 
-                        <View style={{flexDirection: 'row', marginHorizontal: 40}}>
+                        <View style={{flexDirection: 'row', marginHorizontal: 20}}>
                             <View style={{
                                 flexDirection: 'row',
                                 justifyContent: 'space-around',
@@ -88,13 +88,13 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
                             <Text style={{fontSize: 12, alignSelf: 'flex-end'}}>1 đánh giá</Text>
                         </View>
 
-                        <View style={{marginHorizontal: 40, marginTop: 15}}>
+                        <View style={{marginHorizontal: 20, marginTop: 15}}>
                             <WrapText>
                                 {preview}
                             </WrapText>
                         </View>
 
-                        <TouchableOpacity style={{flexDirection: 'row',marginHorizontal:40,marginVertical:20}}>
+                        <TouchableOpacity style={{flexDirection: 'row',marginHorizontal:20,marginVertical:20}}>
                             <Image style={{height: 60, width: 60, borderRadius: 30}}
                                    source={require('../../../res/img/pho.jpg')}/>
                             <View style={{marginLeft:10,alignSelf:'center'}}>
@@ -113,7 +113,7 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
                                 </TouchableOpacity>
                             </View>
                         </TouchableOpacity>
-                        <View style={{marginHorizontal: 40}}>
+                        <View style={{marginHorizontal: 20}}>
                             <Text style={styles.TextNameFood}>Nguyên liệu</Text>
                             <WrapText>
                                 {test}
@@ -127,8 +127,7 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
                 }}>
                     <View style={{
                         height: 50,
-                        backgroundColor: '#d4d4d4',
-                        opacity: 0.3,
+                        backgroundColor: APP_COLOR,
                         width: '100%',
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -138,7 +137,7 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
                         <Text style={{color: '#fff', fontSize: 14}}>Đặt hàng</Text>
                     </TouchableOpacity>
                 </View>
-            </ImageBackground>
+            </View>
         );
     }
 }
