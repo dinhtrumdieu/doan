@@ -72,15 +72,7 @@ class YouComponent extends Component {
 
     renderHeader = () => (
         <ImageBackground source={require('../../../res/img/bg_me.png')} style={{alignItems: 'center',
-            justifyContent: 'center',}}>
-            <View style={{
-                height: 150,
-                backgroundColor: '#d4d4d4',
-                opacity:0.3,
-                width:'100%',
-                justifyContent:'center',
-                alignItems: 'center',
-            }}/>
+            justifyContent: 'center',height: 150,width:'100%'}}>
             <View style={{justifyContent:'center',alignItems:'center',marginVertical:25,position:'absolute'}}>
                 <TouchableOpacity onPress={()=>{this.props.navigateToPage('InforYou')}}>
                     <Image style={{width:80,height:80,borderRadius:40,marginTop:15}} source={require('../../../res/img/bg_app.jpg')}/>
@@ -88,7 +80,6 @@ class YouComponent extends Component {
                 <Text style={{fontSize:17,marginVertical:15,color:'#000'}}>Nguyễn Trung Định</Text>
             </View>
         </ImageBackground>
-
     );
 
     renderList = () => (
