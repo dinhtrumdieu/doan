@@ -6,7 +6,7 @@ import {
   FadeAnimation,
   ScaleAnimation,
   SlideAnimation,
-} from 'react-native-popup-dialog';
+} from '../../react-native-popup-dialog/src';
 
 import DialogManager from './DialogManager';
 import DialogComponent from './DialogComponent';

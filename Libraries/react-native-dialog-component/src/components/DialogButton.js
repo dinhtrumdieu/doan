@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { DialogButton as PopupDialogButton } from 'react-native-popup-dialog';
-import type { DialogButtonType as PopupDialogButtonType } from 'react-native-popup-dialog';
+import { DialogButton as PopupDialogButton } from '../../../react-native-popup-dialog/src';
+import type { DialogButtonType as PopupDialogButtonType } from '../../../react-native-popup-dialog/src';
 
 const styles = StyleSheet.create({
   textContainerStyle: {
