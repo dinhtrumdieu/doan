@@ -14,6 +14,8 @@ import {Login} from "../component/first/Login";
 import {Register} from "../component/first/Register";
 import SearchComponent from "../component/search/SearchComponent";
 import OrderHistory from "../component/order/OrderHistory";
+import GetRequest from "../component/first/GetRequest";
+import ShowRequest from "../component/first/ShowRequest";
 
 export const AppRouter = StackNavigator({
     Main: {
@@ -90,6 +92,18 @@ export const AppRouter = StackNavigator({
     },
     OrderHistory:{
         screen: OrderHistory,
+        navigationOptions: {
+            header: null
+        }
+    },
+    GetRequest:{
+        screen: GetRequest,
+        navigationOptions: {
+            header: null
+        }
+    },
+    ShowRequest:{
+        screen: ShowRequest,
         navigationOptions: {
             header: null
         }

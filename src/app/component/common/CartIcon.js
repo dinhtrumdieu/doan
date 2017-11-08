@@ -12,11 +12,11 @@ import {navigateToPage} from "../../router/NavigationAction";
 class CartIcon extends Component {
 
     onCLick = ()=>{
-      this.props.navigateToPage('ListCart');
+      this.props.navigateToPage('');
     };
 
     render() {
-        const numberCart = 3;
+        const numberCart = 0;
         return (
             <View>
                 <TouchableOpacity onPress={this.onCLick}

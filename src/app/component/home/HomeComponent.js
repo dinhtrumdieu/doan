@@ -24,13 +24,13 @@ class HomeComponent extends Component {
         // this.props.actionGetList();
         this.state = {
             data: [
-                new Food(1, 'Soup', preview, '15.000', require('../../../res/img/pho.jpg')),
-                new Food(2, 'Phở', preview, '35.000', require('../../../res/img/food1.jpg')),
-                new Food(3, 'Cháo Hành', preview, '55.000', require('../../../res/img/goi.jpg')),
-                new Food(4, 'Mì tôm', preview, '25.000', require('../../../res/img/nuong.jpg')),
-                new Food(5, 'Mỡ hành', preview, '65.000', require('../../../res/img/food1.jpg')),
-                new Food(6, 'Gà rán', preview, '75.000', require('../../../res/img/pho.jpg')),
-                new Food(7, 'Soup', preview, '35.000', require('../../../res/img/nuong.jpg')),
+                new Food(1, 'Soup', preview, 15000, require('../../../res/img/pho.jpg')),
+                new Food(2, 'Phở', preview, 35000, require('../../../res/img/food1.jpg')),
+                new Food(3, 'Cháo Hành', preview, 55000, require('../../../res/img/goi.jpg')),
+                new Food(4, 'Mì tôm', preview, 25000, require('../../../res/img/nuong.jpg')),
+                new Food(5, 'Mỡ hành', preview, 65000, require('../../../res/img/food1.jpg')),
+                new Food(6, 'Gà rán', preview, 75000, require('../../../res/img/pho.jpg')),
+                new Food(7, 'Soup', preview, 35000, require('../../../res/img/nuong.jpg')),
             ],
         }
     }

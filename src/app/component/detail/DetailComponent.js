@@ -50,8 +50,8 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
                source={require('../../../res/img/star.png')}/>
     );
 
-    onNavigate = ()=>{
-        this.props.navigateToPage('Order');
+    onNavigate = (item)=>{
+        this.props.navigateToPage('Order',{item});
     };
 
     render() {
@@ -133,7 +133,7 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
                         alignItems: 'center',
                         paddingHorizontal: 15,
                     }}/>
-                    <TouchableOpacity onPress={this.onNavigate} style={styles.Button}>
+                    <TouchableOpacity onPress={()=>this.onNavigate(item)} style={styles.Button}>
                         <Text style={{color: '#fff', fontSize: 14}}>Đặt hàng</Text>
                     </TouchableOpacity>
                 </View>
