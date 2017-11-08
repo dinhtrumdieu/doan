@@ -20,7 +20,7 @@ class ChangeInforComponent extends Component {
 
     render() {
         return (
-            <View style={{flex: 1, backgroundColor: '#aaa'}}>
+            <View style={{flex: 1, backgroundColor: '#d3d3d3'}}>
                 <ToolBar left={this.renderLeftToolBar()}
                          center={this.renderCenterToolBar()}/>
                 <View style={{flexDirection: 'row', backgroundColor: '#fff', paddingVertical: 15}}>

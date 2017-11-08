@@ -27,15 +27,14 @@ class YouComponent extends Component {
     }
 
     handleItemClick = (id) => {
+        alert(id);
         let {navigateToPage} = this.props;
         switch (id) {
             case 0:
 
                 break;
             case 1:
-                this.props.checkLogin(() => {
-                    navigateToPage('InviteFriend');
-                });
+                   navigateToPage('OrderHistory');
                 break;
             case 2:
                 this.props.checkLogin(() => {
@@ -89,7 +88,6 @@ class YouComponent extends Component {
                 <Text style={{fontSize:17,marginVertical:15,marginLeft:100,color:"#ffffff"}}>Nguyễn Trung Định</Text>
             </View>
         </ImageBackground>
-
     );
 
     renderList = () => (

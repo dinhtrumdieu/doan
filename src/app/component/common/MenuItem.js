@@ -22,7 +22,9 @@ export default class MenuItem extends React.PureComponent {
                         height: containerW,marginBottom:8,
                     }}>
                         <View style={{justifyContent:'center',alignItems:'center'}}>
-                            <TouchableOpacity style={{
+                            <TouchableOpacity
+                                onPress={onItemClick}
+                                style={{
                                 width: 60,
                                 height: 60,
                                 opacity:0.4,
