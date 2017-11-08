@@ -1,9 +1,11 @@
 import React, {Component} from "react";
-import {View, StyleSheet, FlatList, TouchableOpacity} from "react-native";
+import {View, StyleSheet, FlatList, TouchableOpacity, Text} from "react-native";
 import ToolBar from "../common/ToolBar";
 import {OrderItem} from "../../model/OrderItem";
 import {Order} from "../../model/Order";
 import AppText from "../common/Text";
+import BackIcon from "../common/BackIcon";
+import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 
 export default class OrderHistory extends Component {
     constructor(props) {
@@ -82,12 +84,22 @@ export default class OrderHistory extends Component {
                 </View>
             </View>
         )
-    }
+    };
+
+    renderLeft = () => (
+        <BackIcon/>
+    );
+
+    renderCenter = () => (
+        <Text style={TOOL_BAR_TEXT}>Lịch sử đặt hàng</Text>
+    );
 
     render() {
         return (
             <View style={{flex: 1, backgroundColor: "#E2E2E2"}}>
-                <ToolBar title="Order History"/>
+                <ToolBar
+                    left={this.renderLeft()}
+                    center={this.renderCenter()}/>
                 <FlatList
                     style={{marginTop: 10}}
                     data={this.state.data}
