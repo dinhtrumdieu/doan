@@ -40,6 +40,7 @@ class YouComponent extends Component {
             case 3:
                 break;
             case 4:
+                navigateToPage('GetRequest');
                 break;
             case 5:
                 navigateToPage('CoinHistory');

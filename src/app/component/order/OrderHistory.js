@@ -6,8 +6,9 @@ import {Order} from "../../model/Order";
 import AppText from "../common/Text";
 import BackIcon from "../common/BackIcon";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
+import {connect} from "react-redux";
 
-export default class OrderHistory extends Component {
+class OrderHistory extends Component {
     constructor(props) {
         super(props);
 
@@ -123,4 +124,6 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         marginLeft: 10
     }
-})
+});
+
+export default connect(null)(OrderHistory);

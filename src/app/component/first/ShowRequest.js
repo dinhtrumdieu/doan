@@ -1,19 +1,32 @@
 import React, {Component} from "react";
-import {View, StyleSheet, TouchableOpacity, Image} from "react-native";
+import {View, StyleSheet, TouchableOpacity, Image, Text} from "react-native";
 import ToolBar from "../common/ToolBar";
 import AppText from "../common/Text";
 import {Request} from "../../model/Request";
+import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
+import BackIcon from "../common/BackIcon";
+import {connect} from "react-redux";
+import {navigateToPage} from "../../router/NavigationAction";
 
-export default class ShowRequest extends Component {
+class ShowRequest extends Component {
     constructor(props) {
         super(props);
         // const {request} = this.props
     }
 
+    renderLeft = () => (
+        <BackIcon/>
+    );
+
+    renderCenter = () => (
+        <Text style={TOOL_BAR_TEXT}>Chi tiết đặt hàng</Text>
+    );
+
     render() {
         return (
             <View style={styles.container}>
-                <ToolBar title="Detail Request"/>
+                <ToolBar left={this.renderLeft()}
+                         center={this.renderCenter()}/>
                 <View style={{flex: 1}}>
                     <View style={styles.user}>
                         <Image style={styles.avatar} source={require("../../../res/img/cooker.jpg")}/>
@@ -23,10 +36,10 @@ export default class ShowRequest extends Component {
                             <AppText style={{marginLeft: 5}}>Kiệt 82 Nguyễn Lương Bằng</AppText>
                             <View style={{flexDirection: "row", marginTop: 5}}>
                                 <TouchableOpacity>
-                                    <AppText style={styles.button}>Approve</AppText>
+                                    <AppText style={styles.button}>Đồng ý</AppText>
                                 </TouchableOpacity>
                                 <TouchableOpacity>
-                                    <AppText style={styles.button}>Reject</AppText>
+                                    <AppText style={styles.button}>Từ chối</AppText>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -37,11 +50,11 @@ export default class ShowRequest extends Component {
                         <View style={styles.bottomFood}>
                             <AppText style={styles.foodname}>Phở Hà Nội</AppText>
                             <View style={{flexDirection: "row"}}>
-                                <AppText style={{color: "#FFFFFF", marginLeft: 10, marginTop: 5}}>Quantity : </AppText>
+                                <AppText style={{color: "#FFFFFF", marginLeft: 10, marginTop: 5}}>Số lượng : </AppText>
                                 <AppText style={styles.quantity}>3</AppText>
                             </View>
                             <View style={{flexDirection: "row", marginLeft: 10}}>
-                                <AppText style={{color: "#FFFFFF"}}>Extra Request: </AppText>
+                                <AppText style={{color: "#FFFFFF"}}>Yêu cầu: </AppText>
                                 <AppText style={{color: "#FFFFFF"}}> Không cay, ít nước, nhiều hành </AppText>
                             </View>
                         </View>
@@ -101,13 +114,14 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: "#8AF205",
         color: "#FFFFFF",
-        marginLeft:5,
-        textAlign:"center",
-        textAlignVertical:"center"
+        marginLeft: 5,
+        textAlign: "center",
+        textAlignVertical: "center"
     },
     time: {
         position: "absolute",
         right: 0,
         marginRight: 5
     }
-})
+});
+export default connect(null, {navigateToPage})(ShowRequest);

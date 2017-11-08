@@ -1,10 +1,14 @@
 import React, {Component} from "react";
-import {View, StyleSheet, FlatList, Image} from "react-native";
+import {View, StyleSheet, FlatList, Image, Text,TouchableOpacity} from "react-native";
 import ToolBar from "../common/ToolBar";
 import {Request} from "../../model/Request";
 import AppText from "../common/Text";
+import BackIcon from "../common/BackIcon";
+import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
+import {connect} from "react-redux";
+import {navigateToPage} from "../../router/NavigationAction";
 
-export default class GetRequest extends Component {
+class GetRequest extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,9 +33,13 @@ export default class GetRequest extends Component {
         }
     }
 
+    handleOnpress = ()=>{
+      this.props.navigateToPage('ShowRequest');
+    };
+
     renderItem = ({item}) => {
         return (
-            <View style={styles.container}>
+            <TouchableOpacity onPress={this.handleOnpress} style={styles.container}>
                 <Image style={styles.avatar} source={require("../../../res/img/cooker.jpg")}/>
                 <View style={styles.centerItem}>
                     <AppText style={styles.user}>{item.username}</AppText>
@@ -39,19 +47,30 @@ export default class GetRequest extends Component {
                         <AppText style={styles.order}>Order for >> </AppText>
                         <AppText style={styles.foodname}>{item.foodname}</AppText>
                         <AppText style={styles.quantity}>{item.quantity}</AppText>
-                        {GetRequest._renderStatus({item})}
+                        <TouchableOpacity>
+                            {GetRequest._renderStatus({item})}
+                        </TouchableOpacity>
                     </View>
                     <AppText>{item.time}</AppText>
                 </View>
                 <AppText style={{fontWeight:"bold"}}>X</AppText>
-            </View>
+            </TouchableOpacity>
         )
     };
+
+    renderLeft = () => (
+        <BackIcon/>
+    );
+
+    renderCenter = () => (
+        <Text style={TOOL_BAR_TEXT}>Các yêu cầu đặt hàng</Text>
+    );
 
     render() {
         return (
             <View style={{flex: 1}}>
-                <ToolBar title="Request"/>
+                <ToolBar left={this.renderLeft()}
+                         center={this.renderCenter()}/>
                 <FlatList
                     style={{marginTop: 20}}
                     data={this.state.data}
@@ -113,3 +132,6 @@ const styles = StyleSheet.create({
         marginLeft: 10
     }
 });
+
+export default connect(null,{navigateToPage})(GetRequest);
+
