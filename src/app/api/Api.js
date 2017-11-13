@@ -42,11 +42,12 @@ export const uploadImage = async (path: string) => {
         'x-access-token': "",
         'Content-Type': 'multipart/form-data',
     }, [
-        {data: RNFetchBlob.wrap(path)}
+        {name: 'file', filename: 'avatar.png', type: 'image/png', data: RNFetchBlob.wrap(path)}
     ]).then(data => {
-        alert("thanhcong");
+        alert(JSON.stringify(data));
         return data.json();
-    }).then(json => {}).catch(error => {
+    }).then(json => {
+    }).catch(error => {
         throw error;
     })
 };
