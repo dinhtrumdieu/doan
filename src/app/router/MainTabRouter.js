@@ -9,6 +9,7 @@ import {sizeWidth} from "../utils/Size";
 import Text from "../component/common/Text";
 import {APP_COLOR} from "../../res/style/AppStyle";
 import CategoryComponent from "../component/category/CategoryComponent";
+import Cookers from "../component/first/Cookers";
 
 export const MainTabRouter = TabNavigator({
     Home: {
@@ -39,14 +40,28 @@ export const MainTabRouter = TabNavigator({
             ),
         }
     },
+    Cooker: {
+        screen: Cookers,
+        navigationOptions: {
+            title: 'Cookers',
+            tabBarIcon: ({focused}) => (
+                focused
+                    ? <BottomTabItem icon={require('../../res/img/ic_me_active.png.png')}/>
+                    : <BottomTabItem icon={require('../../res/img/ic_me.png')}/>
+            ),
+            tabBarLabel: ({focused}) => (
+                <Text numberOfLines={1} style={styles.TabBarLabel}>Cookers</Text>
+            ),
+        }
+    },
     You: {
         screen: YouComponent,
         navigationOptions: {
             title: 'You',
             tabBarIcon: ({focused}) => (
                 focused
-                    ? <BottomTabItem icon={require('../../res/img/ic_me_active.png')}/>
-                    : <BottomTabItem icon={require('../../res/img/ic_me.png')}/>
+                    ? <BottomTabItem icon={require('../../res/img/ic_auction_active.png.png')}/>
+                    : <BottomTabItem icon={require('../../res/img/ic_auction.png')}/>
             ),
             tabBarLabel: ({focused}) => (
                 <Text numberOfLines={1} style={styles.TabBarLabel}>You</Text>

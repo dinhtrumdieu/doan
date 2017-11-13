@@ -8,7 +8,7 @@ import {Food} from "../../model/Food";
 export default class DetailCooker extends Component {
     constructor(props){
         super(props);
-        let preview=""
+        let preview="";
         this.state={
             data: [
                 new Food(1, 'Soup', preview, 15000, require('../../../res/img/pho.jpg')),
@@ -24,7 +24,7 @@ export default class DetailCooker extends Component {
 
     renderItem=({item})=>(
       <MenuItemFood item={item} />
-    )
+    );
 
     render() {
         return (
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
         textAlign: "center",
         textAlignVertical: "center"
     },
-})
+});

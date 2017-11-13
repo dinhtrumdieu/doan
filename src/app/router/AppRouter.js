@@ -16,6 +16,7 @@ import SearchComponent from "../component/search/SearchComponent";
 import OrderHistory from "../component/order/OrderHistory";
 import GetRequest from "../component/first/GetRequest";
 import ShowRequest from "../component/first/ShowRequest";
+import DetailCooker from "../component/first/DetailCooker";
 
 export const AppRouter = StackNavigator({
     Main: {
@@ -104,6 +105,12 @@ export const AppRouter = StackNavigator({
     },
     ShowRequest:{
         screen: ShowRequest,
+        navigationOptions: {
+            header: null
+        }
+    },
+    DetailCooker:{
+        screen: DetailCooker,
         navigationOptions: {
             header: null
         }

@@ -26,11 +26,11 @@ export default class Cookers extends Component {
 
     renderLeftToolbar = () => (
         <BackIcon/>
-    )
+    );
 
     renderItem = ({item}) => (
         <MenuItemCooker item={item}/>
-    )
+    );
 
     render() {
         return (
