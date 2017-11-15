@@ -46,7 +46,7 @@ export const MainTabRouter = TabNavigator({
             title: 'Cookers',
             tabBarIcon: ({focused}) => (
                 focused
-                    ? <BottomTabItem icon={require('../../res/img/ic_me_active.png.png')}/>
+                    ? <BottomTabItem icon={require('../../res/img/ic_me_active.png')}/>
                     : <BottomTabItem icon={require('../../res/img/ic_me.png')}/>
             ),
             tabBarLabel: ({focused}) => (
@@ -60,7 +60,7 @@ export const MainTabRouter = TabNavigator({
             title: 'You',
             tabBarIcon: ({focused}) => (
                 focused
-                    ? <BottomTabItem icon={require('../../res/img/ic_auction_active.png.png')}/>
+                    ? <BottomTabItem icon={require('../../res/img/ic_auction_active.png')}/>
                     : <BottomTabItem icon={require('../../res/img/ic_auction.png')}/>
             ),
             tabBarLabel: ({focused}) => (

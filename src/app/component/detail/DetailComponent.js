@@ -94,7 +94,7 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
                             </WrapText>
                         </View>
 
-                        <TouchableOpacity style={{flexDirection: 'row',marginHorizontal:20,marginVertical:20}}>
+                        <TouchableOpacity onPress={()=>this.props.navigateToPage('DetailCooker')} style={{flexDirection: 'row',marginHorizontal:20,marginVertical:20}}>
                             <Image style={{height: 60, width: 60, borderRadius: 30}}
                                    source={require('../../../res/img/pho.jpg')}/>
                             <View style={{marginLeft:10,alignSelf:'center'}}>

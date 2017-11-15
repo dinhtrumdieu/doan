@@ -1,11 +1,22 @@
 import React, {Component} from "react";
-import {Image, TouchableOpacity, View, StyleSheet, FlatList} from "react-native";
+import {Image, TouchableOpacity, View, StyleSheet, FlatList, Text} from "react-native";
 import ToolBar from "../common/ToolBar";
 import AppText from "../common/Text";
 import MenuItemFood from "./MenuItemFood";
 import {Food} from "../../model/Food";
+import BackIcon from "../common/BackIcon";
+import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 
 export default class DetailCooker extends Component {
+
+    renderLeftToolBar = () => (
+        <BackIcon/>
+    );
+
+    renderCenterToolBar = () => (
+        <Text style={TOOL_BAR_TEXT}>Trang cá nhân</Text>
+    );
+
     constructor(props){
         super(props);
         let preview="";
@@ -29,7 +40,8 @@ export default class DetailCooker extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ToolBar title="sajkgfa"/>
+                <ToolBar left={this.renderLeftToolBar()}
+                center={this.renderCenterToolBar()}/>
                 <View style={styles.user}>
                     <Image style={styles.avatar} source={require("../../../res/img/cooker.jpg")}/>
                     <View style={{marginTop: 35}}>
