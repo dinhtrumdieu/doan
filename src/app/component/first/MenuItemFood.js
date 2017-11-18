@@ -1,33 +1,30 @@
 import React, {Component} from "react";
-import {Image, View, Dimensions} from "react-native";
+import {Image, View, Dimensions, TouchableOpacity} from "react-native";
 import Text from "../common/Text";
+import {navigateToPage} from "../../router/NavigationAction";
+import {connect} from "react-redux";
 
-export default class MenuItemFood extends Component {
+class MenuItemFood extends Component {
 
-    constructor(props) {
-        super(props);
-        let {item} = this.props;
-        this.state = {
-            imageFood: item.images,
-            nameFood: item.name,
-            price: item.price
-        }
-    }
-
-    renderFood = () => (
+    renderFood = (item) => (
         <View style={{flex: 1}}>
-            <Image style={{borderRadius: 5, width: Dimensions.get("window").width / 2, height: 100}}
-                   source={this.state.imageFood}/>
-            <Text style={{color: "#083A0E",fontWeight:"bold"}}> {this.state.nameFood}</Text>
-            <Text style={{color: "#48A741"}}> {this.state.price}</Text>
+            <TouchableOpacity onPress={() => this.props.navigateToPage('Detail',{item})}>
+                <Image style={{borderRadius: 5, width: Dimensions.get("window").width / 2, height: 100}}
+                       source={item.images}/>
+            </TouchableOpacity>
+            <Text style={{color: "#083A0E", fontWeight: "bold"}}> {item.name}</Text>
+            <Text style={{color: "#48A741"}}> {item.price}</Text>
         </View>
-    )
+    );
 
     render() {
+        let {item} = this.props;
         return (
             <View style={{flex: 1, alignItems: "center", marginTop: 25}}>
-                {this.renderFood()}
+                {this.renderFood(item)}
             </View>
         )
     }
 }
+
+export default connect(null , {navigateToPage})(MenuItemFood);

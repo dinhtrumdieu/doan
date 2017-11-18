@@ -45,7 +45,7 @@ class ItemFood extends Component {
                 <View style={{position: 'absolute', flexDirection: 'row',width:'100%'}}>
                     <View style={{flex: 1}}/>
                     <View style={{flex: 3, justifyContent: 'space-between',flexDirection: 'row',marginHorizontal:10,paddingLeft:15}}>
-                        <Text style={{fontSize: 14,color:'black',fontFamily:'AvenirNext-Bold'}}>{name}</Text>
+                        <Text style={{fontSize: 14,color:'black'}}>{name}</Text>
                         <Text style={{fontSize: 14,color:'black'}}>{price} vnđ</Text>
                     </View>
                 </View>

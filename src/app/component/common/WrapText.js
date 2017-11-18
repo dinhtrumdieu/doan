@@ -33,6 +33,5 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         fontSize: sizeFont(3.2),
         color: APP_TEXT_COLOR,
-        fontFamily: AVENIR_NEXT_REGULAR,
     }
 });

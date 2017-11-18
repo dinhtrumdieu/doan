@@ -13,8 +13,12 @@ export default class Cookers extends Component {
         this.state = {
             data: [
                 new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 2),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 4),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 3),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 2),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 1),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 0),
                 new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5),
                 new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5),
                 new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5),
