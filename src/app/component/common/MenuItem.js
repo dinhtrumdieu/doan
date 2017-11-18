@@ -19,24 +19,27 @@ export default class MenuItem extends React.PureComponent {
         return (
             <View style={{
                 justifyContent: 'space-around', alignItems: 'center', width: containerW,
-                height: containerW, marginVertical: 8,marginHorizontal:10,
+                height: containerW, marginBottom: 8,
             }}>
+                <View style={{justifyContent: 'center', alignItems: 'center'}}>
                     <TouchableOpacity
                         onPress={onItemClick}
                         style={{
                             width: 60,
                             height: 60,
+                            opacity: 0.4,
                             justifyContent: 'center',
                             alignItems: 'center',
-                            backgroundColor: '#bfbfbf',
+                            backgroundColor: '#4F6B83',
                             borderRadius: 30
                         }}>
-                        <Image
-                            source={menu.image}
-                            style={styles.IconMenu}
-                            resizeMode='contain'
-                        />
                     </TouchableOpacity>
+                    <Image
+                        source={menu.image}
+                        style={styles.IconMenu}
+                        resizeMode='contain'
+                    />
+                </View>
                 <Text style={styles.TextMenu}>{menu.name}</Text>
             </View>
         )

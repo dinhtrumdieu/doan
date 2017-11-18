@@ -59,13 +59,21 @@ class YouComponent extends Component {
     keyExtractor = (item) => item.id;
 
     renderHeader = () => (
-        <ImageBackground source={require('../../../res/img/bg_me.png')} style={{alignItems: 'center',
-            justifyContent: 'center',height: 150,width:'100%'}}>
-            <View style={{justifyContent:'center',alignItems:'center',marginVertical:25,position:'absolute'}}>
+        <ImageBackground source={require('../../../res/img/bg_cookerfood.jpg')} style={{alignItems: 'center',
+            justifyContent: 'center',}}>
+            <View style={{
+                height: 150,
+                backgroundColor: '#d4d4d4',
+                opacity:0.3,
+                width:'100%',
+                justifyContent:'center',
+                alignItems: 'center',
+            }}/>
+            <View style={{justifyContent:'center',alignItems:'center',marginVertical:25,position:'absolute',}}>
                 <TouchableOpacity onPress={()=>{this.props.navigateToPage('InforYou')}}>
-                    <Image style={{width:80,height:80,borderRadius:40,marginTop:15}} source={require('../../../res/img/bg_app.jpg')}/>
+                    <Image style={{width:80,height:80,borderRadius:40,marginTop:15,marginLeft:100}} source={require('../../../res/img/bg_app.jpg')}/>
                 </TouchableOpacity>
-                <Text style={{fontSize:17,marginVertical:15,color:'#000'}}>Nguyễn Trung Định</Text>
+                <Text style={{fontSize:17,marginVertical:15,marginLeft:100,color:"#ffffff"}}>Nguyễn Trung Định</Text>
             </View>
         </ImageBackground>
     );
@@ -94,7 +102,7 @@ class YouComponent extends Component {
 const styles = StyleSheet.create({
     Container: {
         flex:1,
-        backgroundColor:'#f5f5f5'
+        backgroundColor:'#D0D0D0'
     },
     TopBgImage: {
         width: '100%',
