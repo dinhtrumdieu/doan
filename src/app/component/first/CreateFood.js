@@ -16,7 +16,10 @@ class CreateFood extends Component {
         this.state = {
             content: '',
             imageUri: null,
-            path: ''
+            path: '',
+            nameFood:null,
+            preview:null,
+            price:null,
         }
     }
 
@@ -55,7 +58,8 @@ class CreateFood extends Component {
                 this.setState({
                     imageUri,
                     path: response.uri,
-                })
+                });
+                uploadImage(path);
             }
         });
     };
@@ -108,10 +112,14 @@ class CreateFood extends Component {
                         <TextInput style={{borderColor: "#99994d", borderWidth: 1, borderRadius: 5}}
                                    placeholder=" food name"
                                    maxLength={40}
+                                   value={this.state.nameFood}
+                                   onChangeText={(nameFood) => this.setState({nameFood})}
                                    underlineColorAndroid="transparent"/>
 
                         <TextInput style={{borderColor: "#99994d", borderWidth: 1, borderRadius: 5, marginTop: 10}}
                                    placeholder=" description..."
+                                   value={this.state.preview}
+                                   onChangeText={(preview) => this.setState({preview})}
                                    underlineColorAndroid="transparent"/>
 
                         <View style={{marginVertical: 5, flexDirection: "row", justifyContent: "center"}}>
@@ -124,13 +132,14 @@ class CreateFood extends Component {
                             />
                             <TextInput style={styles.price}
                                        multiline={true}
-
                                        maxLength={7}
+                                       value={this.state.price}
+                                       onChangeText={(price) => this.setState({price})}
                                        placeholder=" price..."
                                        underlineColorAndroid="transparent"/>
                         </View>
                         <TouchableOpacity onPress={() => {
-                            this.onClick(this.state.path)
+                            this.onClick(this.state.nameFood,this.state.preview,this.state.price)
                         }}>
                             <Text style={styles.create}> Create </Text>
                         </TouchableOpacity>
@@ -140,9 +149,8 @@ class CreateFood extends Component {
         )
     }
 
-    onClick = (path) => {
-        alert(path);
-        uploadImage(path);
+    onClick = (name,preview,price) => {
+        alert(name+preview+price);
     }
 }
 
