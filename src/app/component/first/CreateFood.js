@@ -10,7 +10,7 @@ import {navigateToPage} from "../../router/NavigationAction";
 import {sizeWidth} from "../../utils/Size";
 import {uploadImage} from "../../api/Api";
 
-export default class CreateFood extends Component {
+class CreateFood extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,8 +24,8 @@ export default class CreateFood extends Component {
         <BackIcon/>
     );
 
-    renderCenterToolBar = (name) => (
-        <Text style={TOOL_BAR_TEXT}>{name}</Text>
+    renderCenterToolBar = () => (
+        <Text style={TOOL_BAR_TEXT}>Tạo món ăn</Text>
     );
 
     showImagePicker = () => {
@@ -72,7 +72,8 @@ export default class CreateFood extends Component {
         return (
             <View style={styles.container}>
                 <ToolBar
-                    center={this.renderCenterToolBar("Create Food")}/>
+                    left={this.renderLeftToolBar()}
+                    center={this.renderCenterToolBar()}/>
                 <View style={{alignItems: "center", flex: 1}}>
                     <View style={[styles.image, {flex: 1, width: Dimensions.get("window").width}]}>
                         {
@@ -88,9 +89,10 @@ export default class CreateFood extends Component {
                     <View style={[styles.image, {
                         width: 50,
                         height: 50,
+                        marginTop:10,
                         borderRadius: 25,
                         backgroundColor: "#b300b3",
-                        position: "absolute"
+                        position: "absolute",
                     }]}>
                         <TouchableOpacity onPress={() => {
                             this.showImagePicker()
@@ -180,3 +182,5 @@ const styles = StyleSheet.create({
     },
 
 });
+
+export default connect(null,{navigateToPage})(CreateFood);
