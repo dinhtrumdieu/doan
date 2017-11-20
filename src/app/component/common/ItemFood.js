@@ -6,6 +6,7 @@ import Text from "./Text";
 import WrapText from "./WrapText";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
+import {fMoney} from "../../utils/MoneyFormat";
 
 class ItemFood extends Component {
 
@@ -46,7 +47,7 @@ class ItemFood extends Component {
                     <View style={{flex: 1}}/>
                     <View style={{flex: 3, justifyContent: 'space-between',flexDirection: 'row',marginHorizontal:10,paddingLeft:15}}>
                         <Text style={{fontSize: 14,color:'black',fontFamily:'AvenirNext-Bold'}}>{name}</Text>
-                        <Text style={{fontSize: 14,color:'black'}}>{price} vnđ</Text>
+                        <Text style={{fontSize: 14,color:'black'}}>{fMoney(price)} vnđ</Text>
                     </View>
                 </View>
             </TouchableOpacity>
