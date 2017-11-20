@@ -1,6 +1,6 @@
 import RNFetchBlob from "react-native-fetch-blob";
 
-export const SERVER_ADDRESS = 'https://stg-tokubuy.bap.jp';
+export const SERVER_ADDRESS = 'http://192.168.1.26:8080';
 const API_ENDPOINT = SERVER_ADDRESS + '/api/v1/';
 
 const getParam = (method: string, data: any, token = null) => {
