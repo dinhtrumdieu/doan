@@ -13,9 +13,12 @@ import {navigateToPage} from "../../router/NavigationAction";
 import {actionGetList} from "../../redux/home/HomeAction";
 import {Food} from "../../model/Food";
 import CartIcon from "../common/CartIcon";
+import {Cooker} from "../../model/Cooker";
 
 const preview = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắn sẽ chinh phục vị giác bất kì ai ngay từ lần đầu thưởng thức.' +
     ' Từng miếng bánh vàng ươm, bóng bẩy trông cực kì bắt mắt';
+
+const cooker =  new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5);
 
 class HomeComponent extends Component {
 

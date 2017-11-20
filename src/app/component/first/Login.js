@@ -9,10 +9,12 @@ import {
     Dimensions
 } from 'react-native';
 import AppText from "../common/Text"
+import {connect} from "react-redux";
+import {actionLogin} from "../../redux/login/LoginAction";
 
-export class Login extends Component {
+class Login extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             username: '',
             password: ''
@@ -42,7 +44,7 @@ export class Login extends Component {
                                        onChangeText={(password) => this.setState({password})}
                             />
                         </View>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{this.props.actionLogin(this.state.username,this.state.password)}}>
                             <AppText style={styles.login} onPress={() =>
                                 console.log(this.state.username)
                             }>Login</AppText>
@@ -117,3 +119,5 @@ export const styles = StyleSheet.create({
         textDecorationLine: "underline"
     }
 });
+
+export default connect(null,{actionLogin})(Login);

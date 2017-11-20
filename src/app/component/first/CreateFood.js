@@ -10,13 +10,16 @@ import {navigateToPage} from "../../router/NavigationAction";
 import {sizeWidth} from "../../utils/Size";
 import {uploadImage} from "../../api/Api";
 
-export default class CreateFood extends Component {
+class CreateFood extends Component {
     constructor(props) {
         super(props);
         this.state = {
             content: '',
             imageUri: null,
-            path: ''
+            path: '',
+            nameFood:null,
+            preview:null,
+            price:null,
         }
     }
 
@@ -24,8 +27,8 @@ export default class CreateFood extends Component {
         <BackIcon/>
     );
 
-    renderCenterToolBar = (name) => (
-        <Text style={TOOL_BAR_TEXT}>{name}</Text>
+    renderCenterToolBar = () => (
+        <Text style={TOOL_BAR_TEXT}>Tạo món ăn</Text>
     );
 
     showImagePicker = () => {
@@ -55,7 +58,8 @@ export default class CreateFood extends Component {
                 this.setState({
                     imageUri,
                     path: response.uri,
-                })
+                });
+                uploadImage(path);
             }
         });
     };
@@ -72,7 +76,8 @@ export default class CreateFood extends Component {
         return (
             <View style={styles.container}>
                 <ToolBar
-                    center={this.renderCenterToolBar("Create Food")}/>
+                    left={this.renderLeftToolBar()}
+                    center={this.renderCenterToolBar()}/>
                 <View style={{alignItems: "center", flex: 1}}>
                     <View style={[styles.image, {flex: 1, width: Dimensions.get("window").width}]}>
                         {
@@ -88,9 +93,10 @@ export default class CreateFood extends Component {
                     <View style={[styles.image, {
                         width: 50,
                         height: 50,
+                        marginTop:10,
                         borderRadius: 25,
                         backgroundColor: "#b300b3",
-                        position: "absolute"
+                        position: "absolute",
                     }]}>
                         <TouchableOpacity onPress={() => {
                             this.showImagePicker()
@@ -106,10 +112,14 @@ export default class CreateFood extends Component {
                         <TextInput style={{borderColor: "#99994d", borderWidth: 1, borderRadius: 5}}
                                    placeholder=" food name"
                                    maxLength={40}
+                                   value={this.state.nameFood}
+                                   onChangeText={(nameFood) => this.setState({nameFood})}
                                    underlineColorAndroid="transparent"/>
 
                         <TextInput style={{borderColor: "#99994d", borderWidth: 1, borderRadius: 5, marginTop: 10}}
                                    placeholder=" description..."
+                                   value={this.state.preview}
+                                   onChangeText={(preview) => this.setState({preview})}
                                    underlineColorAndroid="transparent"/>
 
                         <View style={{marginVertical: 5, flexDirection: "row", justifyContent: "center"}}>
@@ -122,13 +132,14 @@ export default class CreateFood extends Component {
                             />
                             <TextInput style={styles.price}
                                        multiline={true}
-
                                        maxLength={7}
+                                       value={this.state.price}
+                                       onChangeText={(price) => this.setState({price})}
                                        placeholder=" price..."
                                        underlineColorAndroid="transparent"/>
                         </View>
                         <TouchableOpacity onPress={() => {
-                            this.onClick(this.state.path)
+                            this.onClick(this.state.nameFood,this.state.preview,this.state.price)
                         }}>
                             <Text style={styles.create}> Create </Text>
                         </TouchableOpacity>
@@ -138,9 +149,8 @@ export default class CreateFood extends Component {
         )
     }
 
-    onClick = (path) => {
-        alert(path);
-        uploadImage(path);
+    onClick = (name,preview,price) => {
+        alert(name+preview+price);
     }
 }
 
@@ -180,3 +190,5 @@ const styles = StyleSheet.create({
     },
 
 });
+
+export default connect(null,{navigateToPage})(CreateFood);

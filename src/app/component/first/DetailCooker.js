@@ -6,6 +6,8 @@ import MenuItemFood from "./MenuItemFood";
 import {Food} from "../../model/Food";
 import BackIcon from "../common/BackIcon";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
+import {navigateToPage} from "../../router/NavigationAction";
+import {connect} from "react-redux";
 
 export default class DetailCooker extends Component {
 
@@ -17,10 +19,10 @@ export default class DetailCooker extends Component {
         <Text style={TOOL_BAR_TEXT}>Trang cá nhân</Text>
     );
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        let preview="";
-        this.state={
+        let preview = "";
+        this.state = {
             data: [
                 new Food(1, 'Soup', preview, 15000, require('../../../res/img/pho.jpg')),
                 new Food(2, 'Phở', preview, 35000, require('../../../res/img/food1.jpg')),
@@ -33,15 +35,15 @@ export default class DetailCooker extends Component {
         }
     }
 
-    renderItem=({item})=>(
-      <MenuItemFood item={item} />
+    renderItem = ({item}) => (
+        <MenuItemFood item={item}/>
     );
 
     render() {
         return (
             <View style={styles.container}>
                 <ToolBar left={this.renderLeftToolBar()}
-                center={this.renderCenterToolBar()}/>
+                         center={this.renderCenterToolBar()}/>
                 <View style={styles.user}>
                     <Image style={styles.avatar} source={require("../../../res/img/cooker.jpg")}/>
                     <View style={{marginTop: 35}}>
@@ -49,20 +51,20 @@ export default class DetailCooker extends Component {
                         <AppText style={{margin: 5}}>Kiệt 82 Nguyễn Lương Bằng</AppText>
                         <View style={{flexDirection: "row"}}>
                             <AppText style={{marginLeft: 5, color: "blue"}}>20</AppText>
-                            <AppText style={{marginLeft:5,color: "#111111"}}>món ăn</AppText>
+                            <AppText style={{marginLeft: 5, color: "#111111"}}>món ăn</AppText>
                             <AppText style={{color: "blue", marginLeft: 20}}>9</AppText>
-                            <AppText style={{marginLeft:5,color: "#111111"}}>quan tâm</AppText>
+                            <AppText style={{marginLeft: 5, color: "#111111"}}>quan tâm</AppText>
                         </View>
                         <TouchableOpacity
-                            style={{flexDirection:'row',alignItems:'center',marginLeft:5}}>
-                            <Image resizeMode="contain" style={{height:15,width:15,marginRight:5}}
+                            style={{flexDirection: 'row', alignItems: 'center', marginLeft: 5}}>
+                            <Image resizeMode="contain" style={{height: 15, width: 15, marginRight: 5}}
                                    source={require('../../../res/img/ic_like.png')}/>
                             <AppText>Quan tâm</AppText>
                         </TouchableOpacity>
                     </View>
                 </View>
                 <FlatList
-                    style={{flex:1}}
+                    style={{flex: 1}}
                     data={this.state.data}
                     numColumns={2}
                     keyExtractor={(item, index) => item._id}
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     user: {
-        height:150,
+        height: 150,
         flexDirection: "row"
     },
     avatar: {

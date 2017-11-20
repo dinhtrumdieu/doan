@@ -27,7 +27,7 @@ export default class AppText extends PureComponent {
                 <Text
                     numberOfLines={1}
                     ellipsizeMode="tail"
-                    style={[styles.Text, style, {fontFamily: AVENIR_NEXT_REGULAR}]}>
+                    style={[styles.Text, style]}>
                     {children}
                 </Text>
             );

@@ -6,12 +6,10 @@ import {
 } from 'react-native';
 import WrapText from "../common/WrapText";
 import Text from "../common/Text";
-import {AVENIR_NEXT_BOLD, AVENIR_NEXT_REGULAR} from "../../../res/font/Font";
 import ToolBar from "../common/ToolBar";
 import BackIcon from "../common/BackIcon";
 import {APP_COLOR, TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import {connect} from "react-redux";
-import OrderComponent from "../order/OrderComponent";
 import {navigateToPage} from "../../router/NavigationAction";
 
 let test = '300g khoai tây\n' +
@@ -85,7 +83,6 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
                                 {this.renderStar()}
                                 {this.renderStar()}
                             </View>
-                            <Text style={{fontSize: 12, alignSelf: 'flex-end'}}>1 đánh giá</Text>
                         </View>
 
                         <View style={{marginHorizontal: 20, marginTop: 15}}>
@@ -100,9 +97,9 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
                             <View style={{marginLeft:10,alignSelf:'center'}}>
                                 <Text style={{fontSize:15}}>Nguyễn Trung Định</Text>
                                 <Text>
-                                    <Text style={{fontFamily: AVENIR_NEXT_BOLD ,color:'blue'}}>854 </Text>
+                                    <Text style={{color:'blue'}}>854 </Text>
                                     món ăn *
-                                    <Text style={{fontFamily: AVENIR_NEXT_BOLD,color:'blue'}}> 9 </Text>
+                                    <Text style={{color:'blue'}}> 9 </Text>
                                     quan tâm
                                 </Text>
                                 <TouchableOpacity
@@ -146,7 +143,6 @@ const styles = StyleSheet.create({
     TextNameFood: {
         fontSize: 18,
         marginVertical: 10,
-        fontFamily: AVENIR_NEXT_REGULAR,
         color: '#0aa11d'
     },
     Button: {

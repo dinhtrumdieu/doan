@@ -61,7 +61,7 @@ class OrderComponent extends Component {
                             marginVertical: 15
                         }}>
                             <Text>
-                                <Text style={{fontFamily: AVENIR_NEXT_BOLD}}>Bà nội trợ : </Text>
+                                <Text s>Bà nội trợ : </Text>
                                 <Text style={{color: 'green'}}>Nguyễn Trung Định</Text>
                             </Text>
                             <Image style={{width: 15, height: 15}}
@@ -81,7 +81,7 @@ class OrderComponent extends Component {
                             justifyContent: 'space-between',
                             marginVertical: 10,
                         }}>
-                            <Text style={{flex: 1, fontFamily: AVENIR_NEXT_BOLD}}>{name}</Text>
+                            <Text style={{flex: 1}}>{name}</Text>
                             <Image style={{width: 45, height: 45}} source={image}/>
                         </View>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -93,7 +93,6 @@ class OrderComponent extends Component {
                                         <Text style={{
                                             fontSize: sizeFont(4),
                                             textAlign: 'center',
-                                            fontFamily: null,
                                             textAlignVertical: 'center'
                                         }}>-</Text>
                                     </TouchableOpacity>
@@ -103,7 +102,6 @@ class OrderComponent extends Component {
                                             textAlign: 'center',
                                             textAlignVertical: 'center',
                                             color: 'black',
-                                            fontFamily: null
                                         }}>{this.state.number}</Text>
                                     </View>
                                     <TouchableOpacity
@@ -112,7 +110,6 @@ class OrderComponent extends Component {
                                         <Text style={{
                                             fontSize: sizeFont(4),
                                             textAlign: 'center',
-                                            fontFamily: null,
                                             textAlignVertical: 'center'
                                         }}>+</Text>
                                     </TouchableOpacity>
@@ -129,8 +126,8 @@ class OrderComponent extends Component {
                             borderRadius: 0.1
                         }}/>
                         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                            <Text style={{fontFamily: AVENIR_NEXT_BOLD}}>Tổng đơn hàng:</Text>
-                            <Text style={{fontFamily: AVENIR_NEXT_BOLD}}>x {price*this.state.number} đ</Text>
+                            <Text >Tổng đơn hàng:</Text>
+                            <Text >x {price*this.state.number} đ</Text>
                         </View>
                         <View style={{
                             height: 1,
@@ -181,9 +178,9 @@ class OrderComponent extends Component {
                             borderRadius: 0.1
                         }}/>
                         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                            <Text style={{fontSize: 16, fontFamily: AVENIR_NEXT_BOLD, color: 'red'}}>Tổng thành
+                            <Text style={{fontSize: 16 , color: 'red'}}>Tổng thành
                                 tiền:</Text>
-                            <Text style={{fontSize: 16, fontFamily: AVENIR_NEXT_BOLD, color: 'red'}}>x {price*this.state.number} đ</Text>
+                            <Text style={{fontSize: 16, color: 'red'}}>x {price*this.state.number} đ</Text>
                         </View>
                         <TouchableOpacity onPress={() => {
                             this.props.navigateToPage('ThankYou')

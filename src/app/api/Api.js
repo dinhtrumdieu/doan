@@ -31,6 +31,10 @@ export const request = async (endpoint: string, method: string, body: any) => {
         });
 };
 
+export const createFood = (name, preview, price, images) => {
+    return request('create', 'POST', {name, preview, price,images});
+};
+
 export const getListFood = () => {
     return request('categories', 'GET')
 };
