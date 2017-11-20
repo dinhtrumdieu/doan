@@ -24,9 +24,9 @@ class ChangeInforComponent extends Component {
                 <ToolBar left={this.renderLeftToolBar()}
                          center={this.renderCenterToolBar()}/>
                 <View style={{flexDirection: 'row', backgroundColor: '#fff', paddingVertical: 15}}>
-                    <Image source={require('../../../res/img/bg_app.jpg')} style={styles.Left}/>
+                    <Image source={require('../../../res/img/empty-image.png')} style={styles.Left}/>
                     <View style={{flex: 1}}>
-                        <Text>Nguyen Trung Dinh</Text>
+                        <Text>Nguyễn Trung Định</Text>
                         <View style={{width: '100%', borderWidth: 0.8, borderColor: '#c6c6c6', marginVertical: 10}}/>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <CheckBox/>

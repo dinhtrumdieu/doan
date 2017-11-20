@@ -28,8 +28,8 @@ class InforYouComponent extends Component {
                 <ImageBackground style={styles.ViewTop} source={require('../../../res/img/bg_app.jpg')}>
                     <View style={{flexDirection: 'row'}}>
                         <Image style={{width: 70, height: 70, borderRadius: 35}}
-                               source={require('../../../res/img/avatar.png')}/>
-                        <Text style={{fontSize: 18, color: '#000', marginTop: 20, marginLeft: 20}}>Sukara</Text>
+                               source={require('../../../res/img/empty-image.png')}/>
+                        <Text style={{fontSize: 18, color: '#000', marginTop: 20, marginLeft: 20}}>Nguyễn Trung Định</Text>
                     </View>
                 </ImageBackground>
                 <View style={{marginHorizontal: 20, marginTop: 20}}>

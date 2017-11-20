@@ -11,6 +11,7 @@ import BackIcon from "../common/BackIcon";
 import {APP_COLOR, TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
+import {fMoney} from "../../utils/MoneyFormat";
 
 let test = '300g khoai tây\n' +
     '\n' +
@@ -67,7 +68,7 @@ let mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắ
                         <Image style={{height: 200, width: '100%'}} source={image}/>
                         <View style={{marginHorizontal: 20, flexDirection: 'row', marginTop: 10}}>
                             <Text style={{fontSize: 20, color: '#0aa11d', flex: 1}}>{name}</Text>
-                            <Text style={{fontSize: 14, color: '#0aa11d', alignSelf: 'flex-end'}}>{price} VNĐ</Text>
+                            <Text style={{fontSize: 14, color: '#0aa11d', alignSelf: 'flex-end'}}>{fMoney(price)} VNĐ</Text>
                         </View>
 
                         <View style={{flexDirection: 'row', marginHorizontal: 20}}>
