@@ -12,6 +12,7 @@ import ToolBar from "../common/ToolBar";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
+import {getListCategory} from "../../api/Api";
 
 const preview = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắn sẽ chinh phục vị giác bất kì ai ngay từ lần đầu thưởng thức.' +
     ' Từng miếng bánh vàng ươm, bóng bẩy trông cực kì bắt mắt';
@@ -20,6 +21,7 @@ class CategoryComponent extends Component {
 
     constructor(props) {
         super(props);
+        //this.props.getListCategory();
         this.state = {
             data: [
                 new Food(1, 'Soup', preview, '15.000', require('../../../res/img/pho.jpg')),
@@ -75,4 +77,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null ,{navigateToPage})(CategoryComponent);
+export default connect(null ,{navigateToPage,getListCategory})(CategoryComponent);

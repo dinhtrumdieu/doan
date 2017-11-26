@@ -24,7 +24,7 @@ class HomeComponent extends Component {
 
     constructor(props) {
         super(props);
-        // this.props.actionGetList();
+        this.props.actionGetList();
         this.state = {
             data: [
                 new Food(1, 'Soup', preview, 15000, require('../../../res/img/pho.jpg')),

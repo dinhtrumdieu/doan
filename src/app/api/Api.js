@@ -1,7 +1,7 @@
 import RNFetchBlob from "react-native-fetch-blob";
 
-export const SERVER_ADDRESS = 'http://192.168.1.26:8080';
-const API_ENDPOINT = SERVER_ADDRESS + '/api/v1/';
+export const SERVER_ADDRESS = 'http://192.168.1.27:8080';
+const API_ENDPOINT = SERVER_ADDRESS + '/api/';
 
 const getParam = (method: string, data: any, token = null) => {
 
@@ -31,24 +31,26 @@ export const request = async (endpoint: string, method: string, body: any) => {
         });
 };
 
-export const createFood = (name, preview, price, images) => {
-    return request('create', 'POST', {name, preview, price,images});
+export const createFood = (tenmonan, mota, chitiet, gia, hinhanh, rate, nguyenlieu, loaimonan, noitro) => {
+    return request('mon-an/add', 'POST', {tenmonan, mota, chitiet, gia, hinhanh, rate, nguyenlieu, loaimonan, noitro});
 };
 
 export const getListFood = () => {
-    return request('categories', 'GET')
+    return request('mon-an', 'GET')
+};
+
+export const getListCategory = () => {
+    return request('loai-mon-an', 'GET')
 };
 
 export const uploadImage = async (path: string) => {
-
-    return RNFetchBlob.fetch('POST', 'http://192.168.1.26:8080/api/mon-an/upload', {
+    return RNFetchBlob.fetch('POST', 'http://192.168.1.27:8080/api/upload', {
         'Accept': 'application/json',
         'x-access-token': "",
         'Content-Type': 'multipart/form-data',
     }, [
         {name: 'file', filename: 'avatar.png', type: 'image/png', data: RNFetchBlob.wrap(path)}
     ]).then(data => {
-        alert(JSON.stringify(data));
         return data.json();
     }).then(json => {
     }).catch(error => {

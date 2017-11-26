@@ -8,7 +8,14 @@ import ImagePicker from "react-native-image-picker";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import {sizeWidth} from "../../utils/Size";
-import {uploadImage} from "../../api/Api";
+import {createFood, uploadImage} from "../../api/Api";
+import {Loaimonan} from "../../model/Loaimonan";
+import {NoiTro} from "../../model/NoiTro";
+import {actionCreate} from "../../redux/CreateAction";
+
+
+let loaimonan = new Loaimonan(1, "Món gà", "");
+let noitro = new NoiTro(7, "dinhtrum@gmail.com", "123456", "Nguyễn Trung Định", 1, "Hòa Khánh", "01982772", 0, 0);
 
 class CreateFood extends Component {
     constructor(props) {
@@ -17,9 +24,9 @@ class CreateFood extends Component {
             content: '',
             imageUri: null,
             path: '',
-            nameFood:null,
-            preview:null,
-            price:null,
+            nameFood: null,
+            preview: null,
+            price: null,
         }
     }
 
@@ -59,7 +66,7 @@ class CreateFood extends Component {
                     imageUri,
                     path: response.uri,
                 });
-                uploadImage(path);
+                this.props.actionCreate(this.state.path);
             }
         });
     };
@@ -93,7 +100,7 @@ class CreateFood extends Component {
                     <View style={[styles.image, {
                         width: 50,
                         height: 50,
-                        marginTop:10,
+                        marginTop: 10,
                         borderRadius: 25,
                         backgroundColor: "#b300b3",
                         position: "absolute",
@@ -139,7 +146,7 @@ class CreateFood extends Component {
                                        underlineColorAndroid="transparent"/>
                         </View>
                         <TouchableOpacity onPress={() => {
-                            this.onClick(this.state.nameFood,this.state.preview,this.state.price)
+                            this.onClick(this.state.nameFood, this.state.preview, this.state.price)
                         }}>
                             <Text style={styles.create}> Create </Text>
                         </TouchableOpacity>
@@ -149,8 +156,9 @@ class CreateFood extends Component {
         )
     }
 
-    onClick = (name,preview,price) => {
-        alert(name+preview+price);
+    onClick = (name, preview, price) => {
+        alert(JSON.stringify(image));
+        createFood(name, preview, "1232", price, image.file, 5, "asdsds", loaimonan, noitro);
     }
 }
 
@@ -191,4 +199,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default connect(null,{navigateToPage})(CreateFood);
+export default connect(null, {navigateToPage,actionCreate})(CreateFood);
