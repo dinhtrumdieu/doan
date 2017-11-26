@@ -117,7 +117,7 @@ class CreateFood extends Component {
                         marginVertical: 20,
                         paddingHorizontal: 30
                     }}>
-                        <TextInput style={{borderColor: "#99994d", borderWidth: 1, borderRadius: 5}}
+                        <TextInput style={{borderColor: "#99994d", borderWidth: 1, borderRadius: 5,paddingLeft:10,paddingVertical:10}}
                                    placeholder=" food name"
                                    maxLength={40}
                                    value={this.state.nameFood}
@@ -147,7 +147,8 @@ class CreateFood extends Component {
                             borderWidth: 1,
                             borderRadius: 5,
                             marginTop: 10,
-                            height: 150
+                            paddingLeft:10,
+                            height: 100
                         }}
                                    placeholder=" description..."
                                    value={this.state.preview}
@@ -186,8 +187,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         flex: 1,
         marginTop: 10,
-        marginLeft: 5,
-        borderRadius: 5
+        marginLeft: 10,
+        borderRadius: 5,
+        paddingLeft:10,
     },
     create: {
         borderRadius: 10,

@@ -41,7 +41,7 @@ class ItemCategoryLeft extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <Image style={{height: 95, width: 95, borderRadius: 10, position: 'absolute'}}
+                <Image style={{height: 75, width: 75, borderRadius: 10, position: 'absolute'}}
                        source={image}/>
             </TouchableOpacity>
         );

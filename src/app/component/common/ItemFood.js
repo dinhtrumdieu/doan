@@ -41,7 +41,7 @@ class ItemFood extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <Image style={{height: 95, width: 95, borderRadius: 10, position: 'absolute'}}
+                <Image style={{height: 85, width: 85, borderRadius: 10, position: 'absolute'}}
                        source={image}/>
                 <View style={{position: 'absolute', flexDirection: 'row',width:'100%'}}>
                     <View style={{flex: 1}}/>

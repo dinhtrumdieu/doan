@@ -23,10 +23,10 @@ class YouComponent extends Component {
                 {id: 0, name: "Thông tin", image: require('../../../res/img/information.png')},
                 {id: 1, name: "Lịch sử đặt hàng", image: require('../../../res/img/history.png')},
                 {id: 2, name: "Tạo món", image: require('../../../res/img/cutlery.png')},
-                {id: 3, name: "Món ăn của tôi", image: require('../../../res/img/groceries.png')},
+                {id: 3, name: "Cài đặt", image: require('../../../res/img/settings.png')},
                 {id: 4, name: "Món ăn ưa thích", image: require('../../../res/img/ic_list_like.png')},
                 {id: 5, name: "Đơn đặt hàng", image: require('../../../res/img/list.png')},
-                {id: 6, name: "Cài đặt", image: require('../../../res/img/settings.png')},
+                {id: 6, name: "Món ăn của tôi", image: require('../../../res/img/groceries.png')},
                 {id: 7, name: "Góp ý", image: require('../../../res/img/ic_note.png')},
             ],
             data2: [
@@ -197,8 +197,7 @@ const styles = StyleSheet.create({
     },
     ViewFlatList: {
         paddingLeft: 8,
-        marginTop: 30,
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
     IconSetting: {
         height: 22,
