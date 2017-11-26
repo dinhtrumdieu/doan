@@ -97,36 +97,31 @@ class CreateFood extends Component {
                         }
                     </View>
 
-                    <View style={[styles.image, {
+                    <TouchableOpacity onPress={() => {
+                        this.showImagePicker()
+                    }} style={[styles.image, {
                         width: 50,
                         height: 50,
                         marginTop: 10,
                         borderRadius: 25,
                         backgroundColor: "#b300b3",
                         position: "absolute",
+                        marginBottom: 20
                     }]}>
-                        <TouchableOpacity onPress={() => {
-                            this.showImagePicker()
-                        }}>
-                            <Image source={require("../../../res/img/ic_camera.png")}/>
-                        </TouchableOpacity>
-                    </View>
+                        <Image source={require("../../../res/img/ic_camera.png")}/>
+                    </TouchableOpacity>
+
                     <View style={{
-                        flex: 1,
+                        flex: 2,
                         width: Dimensions.get("window").width,
-                        marginVertical: 30, paddingHorizontal: 30
+                        marginVertical: 20,
+                        paddingHorizontal: 30
                     }}>
                         <TextInput style={{borderColor: "#99994d", borderWidth: 1, borderRadius: 5}}
                                    placeholder=" food name"
                                    maxLength={40}
                                    value={this.state.nameFood}
                                    onChangeText={(nameFood) => this.setState({nameFood})}
-                                   underlineColorAndroid="transparent"/>
-
-                        <TextInput style={{borderColor: "#99994d", borderWidth: 1, borderRadius: 5, marginTop: 10}}
-                                   placeholder=" description..."
-                                   value={this.state.preview}
-                                   onChangeText={(preview) => this.setState({preview})}
                                    underlineColorAndroid="transparent"/>
 
                         <View style={{marginVertical: 5, flexDirection: "row", justifyContent: "center"}}>
@@ -145,6 +140,21 @@ class CreateFood extends Component {
                                        placeholder=" price..."
                                        underlineColorAndroid="transparent"/>
                         </View>
+
+                        <TextInput style={{
+                            borderColor: "#99994d",
+                            textAlignVertical: 'top',
+                            borderWidth: 1,
+                            borderRadius: 5,
+                            marginTop: 10,
+                            height: 150
+                        }}
+                                   placeholder=" description..."
+                                   value={this.state.preview}
+                                   multiline={true}
+                                   onChangeText={(preview) => this.setState({preview})}
+                                   underlineColorAndroid="transparent"/>
+
                         <TouchableOpacity onPress={() => {
                             this.onClick(this.state.nameFood, this.state.preview, this.state.price)
                         }}>
@@ -199,4 +209,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default connect(null, {navigateToPage,actionCreate})(CreateFood);
+export default connect(null, {navigateToPage, actionCreate})(CreateFood);
