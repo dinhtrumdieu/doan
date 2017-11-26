@@ -6,7 +6,12 @@ import MenuItem from "../common/MenuItem";
 import Text from "../common/Text";
 import {navigateToPage} from "../../router/NavigationAction";
 import {connect} from "react-redux";
-import {checkLogin} from "../../redux/login/LoginAction";
+import {checkLogin, loginTokenSuccess} from "../../redux/login/LoginAction";
+import {getToken, removeToken} from "../../utils/Store";
+import YouNotLoginComponent from "./YouNotLoginComponent";
+import Cookers from "../first/Cookers";
+import FetchImage from "../common/FetchImage";
+import {actionGetProfile} from "../../redux/you/YouAction";
 
 class YouComponent extends Component {
 
@@ -14,7 +19,7 @@ class YouComponent extends Component {
         super(props);
 
         this.state = {
-            data: [
+            data1: [
                 {id: 0, name: "Thông tin", image: require('../../../res/img/information.png')},
                 {id: 1, name: "Lịch sử đặt hàng", image: require('../../../res/img/history.png')},
                 {id: 2, name: "Tạo món", image: require('../../../res/img/cutlery.png')},
@@ -24,16 +29,42 @@ class YouComponent extends Component {
                 {id: 6, name: "Cài đặt", image: require('../../../res/img/settings.png')},
                 {id: 7, name: "Góp ý", image: require('../../../res/img/ic_note.png')},
             ],
+            data2: [
+                {id: 0, name: "Thông tin", image: require('../../../res/img/information.png')},
+                {id: 1, name: "Lịch sử đặt hàng", image: require('../../../res/img/history.png')},
+                {id: 2, name: "Tạo món", image: require('../../../res/img/cutlery.png')},
+                {id: 3, name: "Món ăn ưa thích", image: require('../../../res/img/ic_list_like.png')},
+                {id: 4, name: "Cài đặt", image: require('../../../res/img/settings.png')},
+                {id: 5, name: "Góp ý", image: require('../../../res/img/ic_note.png')},
+            ],
         }
     }
 
-    handleItemClick = (id) => {
+    componentWillMount() {
+        getToken().then(data => {
+            if (data) {
+                this.props.loginTokenSuccess(data);
+            }
+        }).catch(error => {
+        });
+    }
+
+    componentDidMount() {
+        getToken().then(token => {
+            if (token) {
+                this.props.actionGetProfile();
+            }
+        }).catch(error => {
+        });
+    }
+
+    handleItemClick1 = (id) => {
         let {navigateToPage} = this.props;
         switch (id) {
             case 0:
                 break;
             case 1:
-                this.props.checkLogin(()=>{
+                this.props.checkLogin(() => {
                     navigateToPage('OrderHistory')
                 });
                 break;
@@ -49,6 +80,34 @@ class YouComponent extends Component {
                 navigateToPage('CoinHistory');
                 break;
             case 6:
+                removeToken();
+                break;
+        }
+    };
+
+    handleItemClick = (id) => {
+        let {navigateToPage} = this.props;
+        switch (id) {
+            case 0:
+                break;
+            case 1:
+                this.props.checkLogin(() => {
+                    navigateToPage('OrderHistory')
+                });
+                break;
+            case 2:
+                navigateToPage('CreateFood');
+                break;
+            case 3:
+                break;
+            case 4:
+                navigateToPage('GetRequest');
+                break;
+            case 5:
+                navigateToPage('CoinHistory');
+                break;
+            case 6:
+                removeToken();
                 break;
         }
     };
@@ -61,7 +120,7 @@ class YouComponent extends Component {
 
     keyExtractor = (item) => item.id;
 
-    renderHeader = () => (
+    renderHeader = (avatar, name) => (
         <ImageBackground source={require('../../../res/img/bg_cookerfood.jpg')} style={{
             alignItems: 'center',
             justifyContent: 'center',
@@ -78,35 +137,49 @@ class YouComponent extends Component {
                 <TouchableOpacity onPress={() => {
                     this.props.navigateToPage('InforYou')
                 }}>
-                    <Image style={{width: 80, height: 80, borderRadius: 40, marginTop: 15, marginLeft: 100}}
-                           source={require('../../../res/img/bg_app.jpg')}/>
+                    <FetchImage style={{width: 80, height: 80, borderRadius: 40, marginTop: 15, marginLeft: 100}}/>
                 </TouchableOpacity>
-                <Text style={{fontSize: 17, marginVertical: 15, marginLeft: 100, color: "#ffffff"}}>Nguyễn Trung
-                    Định</Text>
+                <Text style={{fontSize: 17, marginVertical: 15, marginLeft: 100, color: "#ffffff"}}>{name}</Text>
             </View>
         </ImageBackground>
     );
 
-    renderList = () => (
-        <FlatList
-            style={styles.ViewFlatList}
-            numColumns={3}
-            data={this.state.data}
-            renderItem={this.renderItem}
-            keyExtractor={this.keyExtractor}
-        />
-    );
+    renderList = (isCooker) => {
+        const data = isCooker ? this.state.data1 : this.state.data2;
+        return (
+            <FlatList
+                style={styles.ViewFlatList}
+                numColumns={3}
+                data={data}
+                renderItem={this.renderItem}
+                keyExtractor={this.keyExtractor}
+            />)
+    };
 
     render() {
-        return (
-            <View style={styles.Container}>
-                {this.renderHeader()}
-                {this.renderList()}
-            </View>
-        );
+        if (this.props.isLogin) {
+            const user: Cookers = this.props.user;
+            const avatar = user && user.image;
+            const name = user && user.name;
+            const isCooker = user && user.isCooker;
+            alert(isCooker);
+            return (
+                <View style={styles.Container}>
+                    {this.renderHeader(avatar, name)}
+                    {this.renderList(isCooker)}
+                </View>
+            );
+        } else {
+            return (
+                <View style={styles.Container}>
+                    {this.renderHeader()}
+                    <YouNotLoginComponent/>
+                </View>
+
+            );
+        }
     }
 }
-
 
 const styles = StyleSheet.create({
     Container: {
@@ -139,4 +212,11 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null, {navigateToPage,checkLogin})(YouComponent);
+function mapState(state) {
+    return {
+        isLogin: state.loginState.loginToken,
+        user: state.meState.user,
+    }
+}
+
+export default connect(mapState, {navigateToPage, checkLogin, loginTokenSuccess,actionGetProfile})(YouComponent);

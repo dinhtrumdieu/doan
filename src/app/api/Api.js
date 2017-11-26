@@ -35,6 +35,10 @@ export const createFood = (tenmonan, mota, chitiet, gia, hinhanh, rate, nguyenli
     return request('mon-an/add', 'POST', {tenmonan, mota, chitiet, gia, hinhanh, rate, nguyenlieu, loaimonan, noitro});
 };
 
+export const login = (email, password) => {
+    return request('login', 'POST', {email, password});
+};
+
 export const getListFood = () => {
     return request('mon-an', 'GET')
 };
