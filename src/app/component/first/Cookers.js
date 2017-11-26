@@ -15,18 +15,18 @@ class Cookers extends Component {
         super(props);
         this.state = {
             data: [
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 2),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 4),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 3),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 2),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 1),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 0),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5),
-                new Cooker(1, "Nguyen Van A", require("../../../res/img/bg_me.png"), 5),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/ba1.jpg"), 5),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/ba2.jpg"), 2),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/ba3.jpg"), 4),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/ba4.jpg"), 3),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/ba5.jpg"), 2),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/ba6.jpg"), 1),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/ba7.jpg"), 0),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/ba2.jpg"), 5),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/ba3.jpg"), 5),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/ba6.jpg"), 5),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/ba1.jpg"), 5),
+                new Cooker(1, "Nguyen Van A", require("../../../res/img/ba7.jpg"), 5),
             ]
         }
     }
