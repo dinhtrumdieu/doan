@@ -1,6 +1,6 @@
 import RNFetchBlob from "react-native-fetch-blob";
 
-export const SERVER_ADDRESS = 'http://192.168.1.27:8080';
+export const SERVER_ADDRESS = 'http://192.168.141.235:8080';
 const API_ENDPOINT = SERVER_ADDRESS + '/api/';
 
 const getParam = (method: string, data: any, token = null) => {
@@ -35,8 +35,8 @@ export const createFood = (tenmonan, mota, chitiet, gia, hinhanh, rate, nguyenli
     return request('mon-an/add', 'POST', {tenmonan, mota, chitiet, gia, hinhanh, rate, nguyenlieu, loaimonan, noitro});
 };
 
-export const login = (email, password) => {
-    return request('login', 'POST', {email, password});
+export const login = (username, password) => {
+    return request('login', 'POST', {username, password});
 };
 
 export const getListFood = () => {

@@ -1,7 +1,9 @@
-import {navigateToPage,goBack} from "../../router/NavigationAction";
+import {navigateToPage, goBack} from "../../router/NavigationAction";
 import {getToken, saveProfileInfo, saveToken} from "../../utils/Store";
 import {ACTION_LOGIN_SUCCESS, ACTION_PROFILE_SUCCESS} from "../Action";
 import {Cooker} from "../../model/Cooker";
+import {login} from "../../api/Api";
+
 export const profileSuccess = (user) => {
     return {
         type: ACTION_PROFILE_SUCCESS,
@@ -11,7 +13,7 @@ export const profileSuccess = (user) => {
     }
 };
 
-const user = new Cooker("1232","Nguyen Trung Dinh","12323",5,6,6,true);
+const user = new Cooker("1232", "Nguyen Trung Dinh", "12323", 5, 6, 6, true);
 
 export const loginTokenSuccess = (token) => {
     return {
@@ -44,13 +46,18 @@ export const loginTokenSuccess = (token) => {
     }
 };*/
 
-export const actionLogin = (email, password) => {
+export const actionLogin = (username, password) => {
     return dispatch => {
-        saveToken("123456789");
-        dispatch(loginTokenSuccess("123456789"));
-        saveProfileInfo(JSON.stringify(user));
-        dispatch(profileSuccess(user));
-        dispatch(goBack());
+        login(username, password).then(data => {
+            alert(JSON.stringify(data));
+            /*saveToken("123456789");
+            dispatch(loginTokenSuccess("123456789"));
+            saveProfileInfo(JSON.stringify(user));
+            dispatch(profileSuccess(user));
+            dispatch(goBack());*/
+        }).catch(error => {
+            alert("Error" + error);
+        })
     }
 };
 

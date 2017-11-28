@@ -40,6 +40,7 @@ export default class DetailCooker extends Component {
     );
 
     render() {
+        const item = this.props.navigation.state.params;
         return (
             <View style={styles.container}>
                 <ToolBar left={this.renderLeftToolBar()}

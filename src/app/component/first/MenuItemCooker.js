@@ -39,7 +39,8 @@ import {navigateToPage} from "../../router/NavigationAction";
     };
 
     navigateDetail = ()=>{
-        this.props.navigateToPage('DetailCooker')
+        const {item} = this.props;
+        this.props.navigateToPage('DetailCooker',{item})
     };
 
     render() {

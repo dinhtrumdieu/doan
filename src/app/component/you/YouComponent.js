@@ -162,7 +162,6 @@ class YouComponent extends Component {
             const avatar = user && user.image;
             const name = user && user.name;
             const isCooker = user && user.isCooker;
-            alert(isCooker);
             return (
                 <View style={styles.Container}>
                     {this.renderHeader(avatar, name)}
