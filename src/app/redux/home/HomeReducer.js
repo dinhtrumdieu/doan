@@ -1,17 +1,12 @@
-import {ACTION_LIST_PICKUP, ACTION_PICKUP_INFO} from "../Action";
+import {ACTION_GET_LIST} from "../Action";
 
-export const pickupState = {
-    listPickup: [],
-    infoSuccess : null
+export const homeState = {
+    listFood: [],
 };
-export const pickupReducer = (state = pickupState, action) => {
+export const homeReducer = (state = homeState, action) => {
     switch (action.type) {
-
-        case ACTION_LIST_PICKUP:
-            return {...state, listPickup: action.payload.listPickup};
-
-        case ACTION_PICKUP_INFO:
-            return {...state, infoSuccess: action.data};
+        case ACTION_GET_LIST:
+            return {...state, listFood: action.data};
         default:
             return state;
     }

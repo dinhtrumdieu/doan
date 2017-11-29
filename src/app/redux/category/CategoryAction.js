@@ -2,9 +2,9 @@ import {getListFood} from "../../api/Api";
 import {ACTION_GET_LIST} from "../Action";
 
 
-export const actionGetList = () => {
+export const  actionGetListCategory = () => {
     return dispatch => {
-        getListFood().then((data) => {
+        getListCategory().then((data) => {
             alert(JSON.stringify(data));
             dispatch(getListSuccess(data))
         }).catch(error => dispatch(alert(error)))

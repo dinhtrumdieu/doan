@@ -24,7 +24,7 @@ export const request = async (endpoint: string, method: string, body: any) => {
     )
         .then(res => res.json())
         .then((data) => {
-            return data.data
+            return data
         })
         .catch(error => {
             throw error;

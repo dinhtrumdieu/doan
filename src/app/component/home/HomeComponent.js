@@ -65,7 +65,7 @@ class HomeComponent extends Component {
                 <ScrollView>
                     <SwipeComponent/>
                     <FlatList
-                        data={this.state.data}
+                        data={this.props.listFood}
                         scrollEnabled={false}
                         keyExtractor={(item, index) => item._id}
                         renderItem={this.renderItem}/>
@@ -102,4 +102,9 @@ const styles = StyleSheet.create({
         color: '#aaa',
     },
 });
-export default connect(null, {navigateToPage, actionGetList})(HomeComponent);
+function mapState(state) {
+    return {
+        listFood: state.homeState.listFood,
+    }
+}
+export default connect(mapState, {navigateToPage, actionGetList})(HomeComponent);

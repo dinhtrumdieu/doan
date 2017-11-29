@@ -21,7 +21,7 @@ class CategoryComponent extends Component {
 
     constructor(props) {
         super(props);
-        //this.props.getListCategory();
+        this.props.getListCategory();
         this.state = {
             data: [
                 new Food(1, 'Soup', preview, '15.000', require('../../../res/img/pho.jpg')),

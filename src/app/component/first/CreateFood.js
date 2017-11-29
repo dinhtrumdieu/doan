@@ -168,7 +168,6 @@ class CreateFood extends Component {
     }
 
     onClick = (name, preview, price) => {
-        alert(JSON.stringify(image));
         createFood(name, preview, "1232", price, image.file, 5, "asdsds", loaimonan, noitro);
     }
 }

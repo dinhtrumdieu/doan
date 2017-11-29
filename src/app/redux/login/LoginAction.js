@@ -13,8 +13,6 @@ export const profileSuccess = (user) => {
     }
 };
 
-const user = new Cooker("1232", "Nguyen Trung Dinh", "12323", 5, 6, 6, true);
-
 export const loginTokenSuccess = (token) => {
     return {
         type: ACTION_LOGIN_SUCCESS,
@@ -49,12 +47,17 @@ export const loginTokenSuccess = (token) => {
 export const actionLogin = (username, password) => {
     return dispatch => {
         login(username, password).then(data => {
-            alert(JSON.stringify(data));
-            /*saveToken("123456789");
-            dispatch(loginTokenSuccess("123456789"));
-            saveProfileInfo(JSON.stringify(user));
-            dispatch(profileSuccess(user));
-            dispatch(goBack());*/
+            if(data){
+                const user = new Cooker(data.id,data.fullname, "12323", 5, 6, 6, data.role);
+                alert(JSON.stringify(user));
+                saveToken(data.id);
+                dispatch(loginTokenSuccess(data.id));
+                saveProfileInfo(JSON.stringify(user));
+                dispatch(profileSuccess(user));
+                dispatch(goBack());
+            }else{
+                alert("email sai");
+            }
         }).catch(error => {
             alert("Error" + error);
         })
