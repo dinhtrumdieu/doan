@@ -9,7 +9,7 @@ import {sizeWidth} from "../utils/Size";
 import Text from "../component/common/Text";
 import {APP_COLOR} from "../../res/style/AppStyle";
 import CategoryComponent from "../component/category/CategoryComponent";
-import Cookers from "../component/first/Cookers";
+import Cookers from "../component/cooker/Cookers";
 
 export const MainTabRouter = TabNavigator({
     Home: {

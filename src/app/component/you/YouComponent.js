@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 import {checkLogin, loginTokenSuccess} from "../../redux/login/LoginAction";
 import {getToken, removeToken} from "../../utils/Store";
 import YouNotLoginComponent from "./YouNotLoginComponent";
-import Cookers from "../first/Cookers";
+import Cookers from "../cooker/Cookers";
 import FetchImage from "../common/FetchImage";
 import {actionGetProfile} from "../../redux/you/YouAction";
 

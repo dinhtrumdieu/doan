@@ -15,7 +15,7 @@ import SearchComponent from "../component/search/SearchComponent";
 import OrderHistory from "../component/order/OrderHistory";
 import GetRequest from "../component/first/GetRequest";
 import ShowRequest from "../component/first/ShowRequest";
-import DetailCooker from "../component/first/DetailCooker";
+import DetailCooker from "../component/cooker/DetailCooker";
 import CreateFood from "../component/first/CreateFood";
 import Login from "../component/first/Login";
 

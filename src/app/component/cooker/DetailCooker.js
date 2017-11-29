@@ -2,14 +2,16 @@ import React, {Component} from "react";
 import {Image, TouchableOpacity, View, StyleSheet, FlatList, Text} from "react-native";
 import ToolBar from "../common/ToolBar";
 import AppText from "../common/Text";
-import MenuItemFood from "./MenuItemFood";
+import MenuItemFood from "../first/MenuItemFood";
 import {Food} from "../../model/Food";
 import BackIcon from "../common/BackIcon";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import {navigateToPage} from "../../router/NavigationAction";
 import {connect} from "react-redux";
+import {actionGetListFoodCookers} from "../../redux/cooker/CookerAction";
+import FetchImage from "../common/FetchImage";
 
-export default class DetailCooker extends Component {
+class DetailCooker extends Component {
 
     renderLeftToolBar = () => (
         <BackIcon/>
@@ -18,6 +20,12 @@ export default class DetailCooker extends Component {
     renderCenterToolBar = () => (
         <Text style={TOOL_BAR_TEXT}>Trang cá nhân</Text>
     );
+
+    componentWillMount(){
+        const {item} = this.props.navigation.state.params;
+        const id = item && item.id;
+        this.props.actionGetListFoodCookers(id);
+    }
 
     constructor(props) {
         super(props);
@@ -40,16 +48,20 @@ export default class DetailCooker extends Component {
     );
 
     render() {
-        const item = this.props.navigation.state.params;
+        const {item} = this.props.navigation.state.params;
+        const image = item && item.hinhanh;
+        const name =  item && item.fullname;
+        const address =  item && item.diachi;
         return (
             <View style={styles.container}>
                 <ToolBar left={this.renderLeftToolBar()}
                          center={this.renderCenterToolBar()}/>
                 <View style={styles.user}>
-                    <Image style={styles.avatar} source={require("../../../res/img/cooker.jpg")}/>
+                    <FetchImage style={styles.avatar}
+                                uri={image}/>
                     <View style={{marginTop: 35}}>
-                        <AppText style={{fontSize: 17, fontWeight: "bold", color: "black"}}>Nguyen Van A</AppText>
-                        <AppText style={{margin: 5}}>Kiệt 82 Nguyễn Lương Bằng</AppText>
+                        <AppText style={{fontSize: 17, fontWeight: "bold", color: "black"}}>{name}</AppText>
+                        <AppText style={{margin: 5}}>{address}</AppText>
                         <View style={{flexDirection: "row"}}>
                             <AppText style={{marginLeft: 5, color: "blue"}}>20</AppText>
                             <AppText style={{marginLeft: 5, color: "#111111"}}>món ăn</AppText>
@@ -66,7 +78,7 @@ export default class DetailCooker extends Component {
                 </View>
                 <FlatList
                     style={{flex: 1}}
-                    data={this.state.data}
+                    data={this.props.listFoodCooker}
                     numColumns={2}
                     keyExtractor={(item, index) => item._id}
                     renderItem={this.renderItem}
@@ -107,3 +119,10 @@ const styles = StyleSheet.create({
         textAlignVertical: "center"
     },
 });
+
+function mapState(state) {
+    return {
+        listFoodCooker: state.cookerState.listFoodCooker,
+    }
+}
+export default connect(mapState, {navigateToPage,actionGetListFoodCookers})(DetailCooker);

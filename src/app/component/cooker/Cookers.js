@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {FlatList, View, StyleSheet, TouchableOpacity, Image} from "react-native";
 import ToolBar from "../common/ToolBar";
 import BackIcon from "../common/BackIcon";
-import MenuItemCooker from "./MenuItemCooker";
+import MenuItemCooker from "../first/MenuItemCooker";
 import {Cooker} from "../../model/Cooker";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import Text from "../common/Text";
@@ -15,7 +15,7 @@ class Cookers extends Component {
     constructor(props) {
         super(props);
         this.props.actionGetListCookers();
-        this.state = {
+        /*this.state = {
             data: [
                 new Cooker(1, "Nguyen Van A", require("../../../res/img/ba1.jpg"), 5),
                 new Cooker(1, "Nguyen Van A", require("../../../res/img/ba2.jpg"), 2),
@@ -30,7 +30,7 @@ class Cookers extends Component {
                 new Cooker(1, "Nguyen Van A", require("../../../res/img/ba1.jpg"), 5),
                 new Cooker(1, "Nguyen Van A", require("../../../res/img/ba7.jpg"), 5),
             ]
-        }
+        }*/
     }
 
     renderItem = ({item}) => (

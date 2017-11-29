@@ -60,7 +60,10 @@ class DetailComponent extends Component {
         const name = item && item.tenmonan ? item.tenmonan : "";
         const preview = item && item.chitiet ? item.chitiet : mota;
         const price = item && item.gia ? item.gia : '0';
-        const image = item && item.loaimonan && item.loaimonan.hinhanh;
+        const image = item  && item.hinhanh;
+        const cooker = item && item.noitro;
+        const nameCooker = item && item.noitro && item.noitro.fullname;
+        const imageCooker = item && item.noitro && item.noitro.hinhanh;
         return (
             <View style={{flex: 1, backgroundColor: '#f5f5f5'}}>
                 <ToolBar left={this.renderLeftToolBar()}
@@ -95,12 +98,12 @@ class DetailComponent extends Component {
                             </WrapText>
                         </View>
 
-                        <TouchableOpacity onPress={() => this.props.navigateToPage('DetailCooker')}
+                        <TouchableOpacity onPress={() => this.props.navigateToPage('DetailCooker',{item:cooker})}
                                           style={{flexDirection: 'row', marginHorizontal: 20, marginVertical: 20}}>
-                            <Image style={{height: 60, width: 60, borderRadius: 30}}
-                                   source={require('../../../res/img/pho.jpg')}/>
+                            <FetchImage style={{height: 60, width: 60, borderRadius: 30}}
+                                   uri={imageCooker}/>
                             <View style={{marginLeft: 10, alignSelf: 'center'}}>
-                                <Text style={{fontSize: 15}}>Nguyễn Trung Định</Text>
+                                <Text style={{fontSize: 15}}>{nameCooker}</Text>
                                 <Text>
                                     <Text style={{color: 'blue'}}>854 </Text>
                                     món ăn *
