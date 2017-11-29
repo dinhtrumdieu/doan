@@ -10,6 +10,8 @@ import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import {navigateToPage} from "../../router/NavigationAction";
 import {connect} from "react-redux";
 import {sizeFont, sizeWidth} from "../../utils/Size";
+import {order} from "../../api/Api";
+import {actionOrder} from "../../redux/order/OrderAction";
 
 class OrderComponent extends Component {
 
@@ -40,6 +42,10 @@ class OrderComponent extends Component {
       this.setState({
           number:this.state.number+1,
       });
+    };
+
+    handleOrder = ()=>{
+        this.props.actionOrder();
     };
 
     render() {
@@ -212,4 +218,4 @@ const styles = StyleSheet.create({
         flex: 1,
     }
 });
-export default connect(null, {navigateToPage})(OrderComponent)
+export default connect(null, {navigateToPage,actionOrder})(OrderComponent)

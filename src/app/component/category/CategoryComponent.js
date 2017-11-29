@@ -13,6 +13,7 @@ import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import {getListCategory} from "../../api/Api";
+import {actionGetListCategory} from "../../redux/category/CategoryAction";
 
 const preview = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắn sẽ chinh phục vị giác bất kì ai ngay từ lần đầu thưởng thức.' +
     ' Từng miếng bánh vàng ươm, bóng bẩy trông cực kì bắt mắt';
@@ -21,7 +22,7 @@ class CategoryComponent extends Component {
 
     constructor(props) {
         super(props);
-        this.props.getListCategory();
+        this.props.actionGetListCategory();
         this.state = {
             data: [
                 new Food(1, 'Soup', preview, '15.000', require('../../../res/img/pho.jpg')),
@@ -61,7 +62,7 @@ class CategoryComponent extends Component {
                 <ToolBar center={this.renderCenter()}
                          right={this.renderRight()}/>
                 <FlatList
-                    data={this.state.data}
+                    data={this.props.listCategory}
                     keyExtractor={(item, index) => item._id}
                     renderItem={this.renderItem}/>
             </View>
@@ -77,4 +78,10 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null ,{navigateToPage,getListCategory})(CategoryComponent);
+function mapState(state) {
+    return {
+        listCategory: state.categoryState.listCategory,
+    }
+}
+
+export default connect(mapState ,{navigateToPage,actionGetListCategory})(CategoryComponent);

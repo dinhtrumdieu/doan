@@ -7,7 +7,9 @@ import WrapText from "./WrapText";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import {fMoney} from "../../utils/MoneyFormat";
-
+import FetchImage from "./FetchImage";
+const mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắn sẽ chinh phục vị giác bất kì ai ngay từ lần đầu thưởng thức.' +
+    ' Từng miếng bánh vàng ươm, bóng bẩy trông cực kì bắt mắt';
 class ItemFood extends Component {
 
     onClick = (item)=>{
@@ -16,9 +18,10 @@ class ItemFood extends Component {
 
     render() {
         const {item} = this.props;
-        const name = item && item.name ? item.name:'';
-        const preview = item && item.preview ? item.preview:'';
-        const price = item && item.price ? item.price:'0';
+        const name = item && item.tenmonan ? item.tenmonan:'';
+        const preview = item && item.chitiet ? item.chitiet : mota;
+        const price = item && item.gia ? item.gia:'0';
+        const img = item && item.loaimonan  && item.loaimonan.hinhanh;
         const image = item && item.images ? item.images : require('../../../res/img/pho.jpg');
         return (
             <TouchableOpacity onPress={()=>this.onClick(item)} style={styles.Container}>
@@ -41,8 +44,12 @@ class ItemFood extends Component {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <Image style={{height: 85, width: 85, borderRadius: 10, position: 'absolute'}}
-                       source={image}/>
+                <FetchImage
+                    uri={img}
+                    style={{height: 85, width: 85, borderRadius: 10, position: 'absolute'}}
+                />
+                {/*<Image style={{height: 85, width: 85, borderRadius: 10, position: 'absolute'}}
+                       source={image}/>*/}
                 <View style={{position: 'absolute', flexDirection: 'row',width:'100%'}}>
                     <View style={{flex: 1}}/>
                     <View style={{flex: 3, justifyContent: 'space-between',flexDirection: 'row',marginHorizontal:10,paddingLeft:15}}>

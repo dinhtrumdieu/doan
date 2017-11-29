@@ -13,6 +13,7 @@ import {navigateToPage} from "../../router/NavigationAction";
 import {Food} from "../../model/Food";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import BackIcon from "../common/BackIcon";
+import {actionGetListItemCategory} from "../../redux/category/CategoryAction";
 
 const preview = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắn sẽ chinh phục vị giác bất kì ai ngay từ lần đầu thưởng thức.' +
     ' Từng miếng bánh vàng ươm, bóng bẩy trông cực kì bắt mắt';
@@ -21,6 +22,9 @@ class ListCategory extends Component {
 
     constructor(props) {
         super(props);
+        const {item} = this.props.navigation.state.params;
+        let id = item && item.id;
+        this.props.actionGetListItemCategory(id);
         this.state = {
             data: [
                 new Food(1, 'Soup', preview, '15.000', require('../../../res/img/pho.jpg')),
@@ -41,8 +45,10 @@ class ListCategory extends Component {
     };
 
     _centerToolBar = () => {
+        const {item} = this.props.navigation.state.params;
+        let name = item && item.name;
         return (
-            <Text style={TOOL_BAR_TEXT}>CÁC LOẠI SOUP</Text>
+            <Text style={TOOL_BAR_TEXT}>CÁC LOẠI {name}</Text>
         )
     };
 
@@ -62,7 +68,7 @@ class ListCategory extends Component {
                 />
                 <ScrollView>
                     <FlatList
-                        data={this.state.data}
+                        data={this.props.listItemCategory}
                         scrollEnabled={false}
                         keyExtractor={(item, index) => item._id}
                         renderItem={this.renderItem}/>
@@ -99,4 +105,11 @@ const styles = StyleSheet.create({
         color: '#aaa',
     },
 });
-export default connect(null, {navigateToPage})(ListCategory);
+
+function mapState(state) {
+    return {
+        listItemCategory: state.categoryState.listItemCategory,
+    }
+}
+
+export default connect(mapState, {navigateToPage,actionGetListItemCategory})(ListCategory);

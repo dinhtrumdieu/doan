@@ -8,11 +8,13 @@ import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import Text from "../common/Text";
 import {navigateToPage} from "../../router/NavigationAction";
 import {connect} from "react-redux";
+import {actionGetListCookers} from "../../redux/cooker/CookerAction";
 
 class Cookers extends Component {
 
     constructor(props) {
         super(props);
+        this.props.actionGetListCookers();
         this.state = {
             data: [
                 new Cooker(1, "Nguyen Van A", require("../../../res/img/ba1.jpg"), 5),
@@ -51,7 +53,7 @@ class Cookers extends Component {
                 <ToolBar center={this.renderCenter()}
                          right={this.renderRight()}/>
                 <FlatList
-                    data={this.state.data}
+                    data={this.props.listCooker}
                     numColumns={3}
                     keyExtractor={(item, index) => item._id}
                     renderItem={this.renderItem}
@@ -68,4 +70,10 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null, {navigateToPage})(Cookers);
+function mapState(state) {
+    return {
+        listCooker: state.cookerState.listCooker,
+    }
+}
+
+export default connect(mapState, {navigateToPage,actionGetListCookers})(Cookers);

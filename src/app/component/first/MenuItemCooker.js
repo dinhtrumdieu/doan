@@ -2,17 +2,12 @@ import React, {Component} from "react";
 import {Image, View, StyleSheet, Text, TouchableOpacity} from "react-native";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
+import FetchImage from "../common/FetchImage";
 
  class MenuItemCooker extends Component {
 
     constructor(props) {
         super(props);
-        let {item} = this.props;
-        this.state = {
-            imageCooker: item.image,
-            star: item.star,
-            nameCooker: item.name,
-        }
     }
 
     renderStar = (key) => (
@@ -21,18 +16,18 @@ import {navigateToPage} from "../../router/NavigationAction";
                source={require('../../../res/img/star.png')}/>
     );
 
-    renderCooker = () => (
+    renderCooker = (name,image) => (
         <View style={{flex: 1}}>
             <TouchableOpacity onPress={this.navigateDetail}>
-                <Image style={{borderRadius: 50, width: 100, height: 100}} source={this.state.imageCooker}/>
+                <FetchImage style={{borderRadius: 50, width: 100, height: 100}} uri={image}/>
             </TouchableOpacity>
-            <Text style={{color: "#083A0E"}}> {this.state.nameCooker}</Text>
+            <Text style={{color: "#083A0E"}}> {name}</Text>
         </View>
     );
 
     tinhStar = () => {
         let rowStar = [];
-        for (i = 0; i < this.state.star; i++) {
+        for (i = 0; i < 3; i++) {
             rowStar.push(this.renderStar(i))
         }
         return rowStar
@@ -44,9 +39,12 @@ import {navigateToPage} from "../../router/NavigationAction";
     };
 
     render() {
+        let {item} = this.props;
+        let image = item && item.hinhanh;
+        let name =  item && item.fullname;
         return (
             <View style={{flex: 1, alignItems: "center", marginTop: 25}}>
-                {this.renderCooker()}
+                {this.renderCooker(name,image)}
                 <View  style={{flexDirection: "row"}}>
                     {this.tinhStar()}
                 </View>

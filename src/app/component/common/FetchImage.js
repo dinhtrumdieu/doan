@@ -8,7 +8,6 @@ export default class FetchImage extends Component {
         super(props);
     }
 
-
     renderPlaceHolder = () => {
         const {style, resizeMode} = this.props;
         const placeholder = this.props.placeholder || require('../../../res/img/empty-image.png');
@@ -53,7 +52,6 @@ export default class FetchImage extends Component {
             return this.renderPlaceHolder();
         }
     }
-
 }
 
 FetchImage.propTypes = {

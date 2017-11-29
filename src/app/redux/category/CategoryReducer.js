@@ -1,13 +1,16 @@
-import {ACTION_LOGIN_SUCCESS} from "../Action";
+import {ACTION_GET_LIST_CATEGORY, ACTION_LOGIN_SUCCESS, GET_LIST_ITEM_CATEGORY} from "../Action";
 
-export const loginState = {
-    loginToken: null
+export const categoryState = {
+    listCategory: null,
+    listItemCategory:null,
 };
 
-export const loginReducer = (state = loginState, action) => {
+export const categoryReducer = (state = categoryState, action) => {
     switch (action.type) {
-        case ACTION_LOGIN_SUCCESS:
-            return {...state,loginToken:action.data};
+        case ACTION_GET_LIST_CATEGORY:
+            return {...state,listCategory:action.data};
+        case GET_LIST_ITEM_CATEGORY:
+            return {...state,listItemCategory:action.data};
         default:
             return state;
     }

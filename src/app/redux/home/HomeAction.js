@@ -5,7 +5,6 @@ import {ACTION_GET_LIST} from "../Action";
 export const actionGetList = () => {
     return dispatch => {
         getListFood().then((data) => {
-            alert(JSON.stringify(data));
             dispatch(getListSuccess(data))
         }).catch(error => dispatch(alert(error)))
     }

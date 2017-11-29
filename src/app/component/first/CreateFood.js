@@ -12,10 +12,11 @@ import {createFood, uploadImage} from "../../api/Api";
 import {Loaimonan} from "../../model/Loaimonan";
 import {NoiTro} from "../../model/NoiTro";
 import {actionCreate} from "../../redux/CreateAction";
+import {getImage} from "../../utils/Store";
 
 
-let loaimonan = new Loaimonan(1, "Món gà", "");
-let noitro = new NoiTro(7, "dinhtrum@gmail.com", "123456", "Nguyễn Trung Định", 1, "Hòa Khánh", "01982772", 0, 0);
+let loaimonan = new Loaimonan(2, "Món khai vị", "jjfjskafksafa","1321323");
+let noitro = new NoiTro(7, "dinhtrum@gmail.com", "123456", "Nguyễn Trung Định","123231", "Hòa Khánh", "01982772", 0, 0,true);
 
 class CreateFood extends Component {
     constructor(props) {
@@ -91,9 +92,6 @@ class CreateFood extends Component {
                             this.state.imageUri ?
                                 <Image style={{width: "100%", height: "100%"}} source={this.state.imageUri}/> :
                                 <Image style={{flex: 1}} source={require("../../../res/img/pho.jpg")}/>
-                            // this.state.imageUri !== undefined ?
-                            // <Image style={{flex: 1}} source={this.state.imageUri}/> :
-                            // <Image style={{flex: 1}} source={require("../../../res/img/ic_food.png")}/>
                         }
                     </View>
 
@@ -168,7 +166,13 @@ class CreateFood extends Component {
     }
 
     onClick = (name, preview, price) => {
-        createFood(name, preview, "1232", price, image.file, 5, "asdsds", loaimonan, noitro);
+        getImage().then(data=>{
+            alert(JSON.stringify(data));
+            if(data){
+                createFood(name, preview, price, data, "asdsds", loaimonan, noitro);
+            }
+        });
+
     }
 }
 
