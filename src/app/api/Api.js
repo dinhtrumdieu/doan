@@ -1,8 +1,8 @@
 import RNFetchBlob from "react-native-fetch-blob";
 import {saveImage} from "../utils/Store";
 
-//export const SERVER_ADDRESS = 'http://192.168.0.156:8080';
-export const SERVER_ADDRESS = 'http://demo6916417.mockable.io';
+export const SERVER_ADDRESS = 'http://192.168.43.207:8080';
+//export const SERVER_ADDRESS = 'http://demo6916417.mockable.io';
 const API_ENDPOINT = SERVER_ADDRESS + '/api/';
 
 
@@ -64,6 +64,10 @@ export const getListCooker = () => {
 
 export const getListFoodCooker = (id) => {
     return request('mon-an/noi-tro/'+id, 'GET')
+};
+
+export const getListFoodSeach = (keyword) => {
+    return request('mon-an/name/'+keyword, 'GET')
 };
 
 export const uploadImage = async (path: string) => {

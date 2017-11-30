@@ -12,6 +12,7 @@ import {connect} from "react-redux";
 import {sizeFont, sizeWidth} from "../../utils/Size";
 import {order} from "../../api/Api";
 import {actionOrder} from "../../redux/order/OrderAction";
+import FetchImage from "../common/FetchImage";
 
 class OrderComponent extends Component {
 
@@ -45,15 +46,20 @@ class OrderComponent extends Component {
     };
 
     handleOrder = ()=>{
-        this.props.actionOrder();
+        alert(JSON.stringify(this.props.user))
+       // this.props.actionOrder();
+        //this.props.navigateToPage('ThankYou')
     };
 
     render() {
         const {item} = this.props.navigation.state.params;
-        const name = item && item.name ? item.name : "";
-        const preview = item && item.preview ? item.preview : "";
-        const price = item && item.price ? item.price : 0;
-        const image = item && item.images ? item.images : require('../../../res/img/pho.jpg');
+        const name = item && item.tenmonan ? item.tenmonan : "";
+        const preview = item && item.chitiet;
+        const price = item && item.gia ? item.gia : 0;
+        const image = item && item.hinhanh ;
+        const cooker = item && item.noitro;
+        const nameCooker = item && item.noitro && item.noitro.fullname;
+        const imageCooker = item && item.noitro && item.noitro.hinhanh;
         return (
             <View style={styles.Container}>
                 <ToolBar left={this.renderLeft()}
@@ -68,10 +74,10 @@ class OrderComponent extends Component {
                         }}>
                             <Text>
                                 <Text s>Bà nội trợ : </Text>
-                                <Text style={{color: 'green'}}>Nguyễn Trung Định</Text>
+                                <Text style={{color: 'green'}}>{nameCooker}</Text>
                             </Text>
-                            <Image style={{width: 15, height: 15}}
-                                   source={require('../../../res/img/ic_pikalong.png')}/>
+                            <FetchImage style={{width: 15, height: 15}}
+                                   uri={imageCooker}/>
                         </View>
                         <View style={{
                             height: 1,
@@ -88,7 +94,7 @@ class OrderComponent extends Component {
                             marginVertical: 10,
                         }}>
                             <Text style={{flex: 1}}>{name}</Text>
-                            <Image style={{width: 45, height: 45}} source={image}/>
+                            <FetchImage style={{width: 45, height: 45}} uri={image}/>
                         </View>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Text>Số lượng:</Text>
@@ -188,9 +194,7 @@ class OrderComponent extends Component {
                                 tiền:</Text>
                             <Text style={{fontSize: 16, color: 'red'}}>x {price*this.state.number} đ</Text>
                         </View>
-                        <TouchableOpacity onPress={() => {
-                            this.props.navigateToPage('ThankYou')
-                        }} style={{
+                        <TouchableOpacity onPress={this.handleOrder} style={{
                             height: 40,
                             justifyContent: 'center',
                             alignItems: 'center',
@@ -218,4 +222,11 @@ const styles = StyleSheet.create({
         flex: 1,
     }
 });
-export default connect(null, {navigateToPage,actionOrder})(OrderComponent)
+
+function mapState(state) {
+    return {
+        user: state.meState.user,
+    }
+}
+
+export default connect(mapState, {navigateToPage,actionOrder})(OrderComponent)

@@ -6,6 +6,7 @@ import {meReducer} from "./you/YouReducer";
 import {homeReducer} from "./home/HomeReducer";
 import {categoryReducer} from "./category/CategoryReducer";
 import {cookerReducer} from "./cooker/CookerReducer";
+import {searchReducer} from "./search/SearchReducer";
 
 const reducer = combineReducers({
     nav: navigationReducer,
@@ -13,7 +14,8 @@ const reducer = combineReducers({
     meState:meReducer,
     homeState:homeReducer,
     categoryState:categoryReducer,
-    cookerState:cookerReducer
+    cookerState:cookerReducer,
+    searchState: searchReducer
 });
 
 export const store = createStore(reducer,applyMiddleware(thunk));

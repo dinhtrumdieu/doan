@@ -36,8 +36,6 @@ class ThankComponent extends Component {
                         marginVertical: 10
                     }}/>
                     <Text>Yêu cầu của quý khách đã gửi</Text>
-                    <Text>Bạn sẽ nhận được phản hồi sau :</Text>
-                    <Text style={{fontSize: 24, marginTop: 10, marginBottom: 25}}>18:30</Text>
                     <Text style={{fontSize: 14}}>Cảm ơn đã chọn chúng tôi!</Text>
                 </View>
                 <TouchableOpacity onPress={()=>{this.props.resetPage('Main')}} style={{

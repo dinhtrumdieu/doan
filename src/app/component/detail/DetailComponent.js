@@ -13,6 +13,7 @@ import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import {fMoney} from "../../utils/MoneyFormat";
 import FetchImage from "../common/FetchImage";
+import {checkLogin} from "../../redux/login/LoginAction";
 
 let test = '300g khoai tây\n' +
     '\n' +
@@ -42,7 +43,7 @@ class DetailComponent extends Component {
     );
 
     renderCenterToolBar = (name) => (
-        <Text style={TOOL_BAR_TEXT}>{name}</Text>
+        <Text style={TOOL_BAR_TEXT}>{name.toUpperCase()}</Text>
     );
 
     renderStar = () => (
@@ -52,7 +53,10 @@ class DetailComponent extends Component {
     );
 
     onNavigate = (item) => {
-        this.props.navigateToPage('Order', {item});
+       // this.props.checkLogin(()=>{
+            this.props.navigateToPage('Order', {item});
+        //});
+
     };
 
     render() {
@@ -166,4 +170,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null, {navigateToPage})(DetailComponent);
+export default connect(null, {navigateToPage,checkLogin})(DetailComponent);

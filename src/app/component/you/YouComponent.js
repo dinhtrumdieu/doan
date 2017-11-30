@@ -62,6 +62,7 @@ class YouComponent extends Component {
         let {navigateToPage} = this.props;
         switch (id) {
             case 0:
+                navigateToPage('DetailCooker');
                 break;
             case 1:
                 this.props.checkLogin(() => {
@@ -89,11 +90,10 @@ class YouComponent extends Component {
         let {navigateToPage} = this.props;
         switch (id) {
             case 0:
+                this.props.navigateToPage('DetailCooker', {item: this.props.user})
                 break;
             case 1:
-                this.props.checkLogin(() => {
-                    navigateToPage('OrderHistory')
-                });
+                navigateToPage('OrderHistory')
                 break;
             case 2:
                 navigateToPage('CreateFood');
@@ -120,8 +120,10 @@ class YouComponent extends Component {
 
     keyExtractor = (item) => item.id;
 
-    renderHeader = (avatar, name) => (
-        <ImageBackground source={require('../../../res/img/bg_cookerfood.jpg')} style={{
+    renderHeader = (user) => {
+        const avatar = user && user.hinhanh;
+        const name = user && user.fullname;
+        return (<ImageBackground source={require('../../../res/img/bg_cookerfood.jpg')} style={{
             alignItems: 'center',
             justifyContent: 'center',
         }}>
@@ -135,14 +137,15 @@ class YouComponent extends Component {
             }}/>
             <View style={{justifyContent: 'center', alignItems: 'center', marginVertical: 25, position: 'absolute',}}>
                 <TouchableOpacity onPress={() => {
-                    this.props.navigateToPage('InforYou')
+                    this.props.navigateToPage('InforYou', {user})
                 }}>
-                    <FetchImage style={{width: 80, height: 80, borderRadius: 40, marginTop: 15, marginLeft: 100}}/>
+                    <FetchImage style={{width: 80, height: 80, borderRadius: 40, marginTop: 15, marginLeft: 100}}
+                                uri={avatar}/>
                 </TouchableOpacity>
                 <Text style={{fontSize: 17, marginVertical: 15, marginLeft: 100, color: "#ffffff"}}>{name}</Text>
             </View>
-        </ImageBackground>
-    );
+        </ImageBackground>)
+    };
 
     renderList = (isCooker) => {
         const data = isCooker ? this.state.data1 : this.state.data2;
@@ -158,13 +161,11 @@ class YouComponent extends Component {
 
     render() {
         if (this.props.isLogin) {
-            const user: Cookers = this.props.user;
-            const avatar = user && user.image;
-            const name = user && user.name;
-            const isCooker = user && user.isCooker;
+            const user = this.props.user;
+            const isCooker = user && user.role;
             return (
                 <View style={styles.Container}>
-                    {this.renderHeader(avatar, name)}
+                    {this.renderHeader(user)}
                     {this.renderList(isCooker)}
                 </View>
             );
@@ -217,4 +218,4 @@ function mapState(state) {
     }
 }
 
-export default connect(mapState, {navigateToPage, checkLogin, loginTokenSuccess,actionGetProfile})(YouComponent);
+export default connect(mapState, {navigateToPage, checkLogin, loginTokenSuccess, actionGetProfile})(YouComponent);

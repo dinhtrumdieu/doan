@@ -48,12 +48,10 @@ export const actionLogin = (username, password) => {
     return dispatch => {
         login(username, password).then(data => {
             if(data){
-                const user = new Cooker(data.id,data.fullname, "12323", 5, 6, 6, data.role);
-                alert(JSON.stringify(user));
-                saveToken(data.id);
+                saveToken(data);
                 dispatch(loginTokenSuccess(data.id));
-                saveProfileInfo(JSON.stringify(user));
-                dispatch(profileSuccess(user));
+                saveProfileInfo(JSON.stringify(data));
+                dispatch(profileSuccess(data));
                 dispatch(goBack());
             }else{
                 alert("email sai");
@@ -70,6 +68,7 @@ export const checkLogin = (action) => {
             if (token) {
                 action();
             } else {
+                alert("erro1");
                 dispatch(navigateToPage('login'))
             }
         }).catch(error => {

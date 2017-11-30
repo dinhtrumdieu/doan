@@ -1,7 +1,7 @@
 import {
     AsyncStorage
 } from 'react-native';
-const KEY_TOKEN = 'access_token';
+const KEY_TOKEN = 'access_token1';
 const PROFILE_INFO = 'profile_info';
 const KEY_IMAGE = 'image';
 

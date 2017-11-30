@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {
-    View, StyleSheet, TextInput, Image, TouchableOpacity, Keyboard, TouchableWithoutFeedback
+    View, StyleSheet, TextInput, Image, TouchableOpacity, Keyboard, TouchableWithoutFeedback, FlatList
 } from 'react-native';
 import BackIcon from "../common/BackIcon";
 import ToolBar from "../common/ToolBar";
@@ -9,6 +9,8 @@ import Text from "../common/Text";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import {SEARCH_HEIGHT} from "../home/HomeComponent";
+import {actionGetListSearch} from "../../redux/search/SearchAction";
+import ItemFood from "../common/ItemFood";
 
 class SearchComponent extends Component {
 
@@ -19,11 +21,19 @@ class SearchComponent extends Component {
         }
     }
 
+    renderItem = ({item}) => {
+        return <ItemFood item={item}/>
+    };
+
     render() {
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.Container}>
                     {this.renderToolBar()}
+                    <FlatList
+                        data={this.props.listFoodSearch}
+                        keyExtractor={(item, index) => item._id}
+                        renderItem={this.renderItem}/>
                 </View>
             </TouchableWithoutFeedback>
         );
@@ -37,7 +47,7 @@ class SearchComponent extends Component {
         return (
             <View style={styles.ViewSearch}>
                 <TouchableOpacity onPress={() => {
-                    this.showSearchResult(this.state.keyword, 1)
+                    this.showSearchResult(this.state.keyword)
                 }}>
                     <Image style={styles.IconSearch} source={require('../../../res/img/search.png')}/>
                 </TouchableOpacity>
@@ -60,18 +70,16 @@ class SearchComponent extends Component {
         />
     );
 
-    showSearchResult = (keyword, page) => {
+    showSearchResult = (keyword) => {
         Keyboard.dismiss();
         if (keyword.trim() !== '') {
-            this.props.actionSearchAuction(keyword, page);
-            this.props.navigateToPage('SearchResult',{keyword});
-        } else {
+            this.props.actionGetListSearch(keyword);
+           // this.props.navigateToPage('SearchResult',{keyword});
         }
-
     };
 
     _keyboardSearch = () => {
-        this.showSearchResult(this.state.keyword, 1)
+        this.showSearchResult(this.state.keyword)
     };
 
     renderButton = (keyword) => {
@@ -125,6 +133,12 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null,
-    {navigateToPage}
+function mapState(state) {
+    return {
+        listFoodSearch: state.searchState.listFoodSearch,
+    }
+}
+
+export default connect(mapState,
+    {navigateToPage,actionGetListSearch}
 )(SearchComponent);

@@ -15,7 +15,7 @@ import {actionCreate} from "../../redux/CreateAction";
 import {getImage} from "../../utils/Store";
 
 
-let loaimonan = new Loaimonan(2, "Món khai vị", "jjfjskafksafa","1321323");
+let loaimonan = new Loaimonan(3, "Món khai vị", "jjfjskafksafa","1321323");
 let noitro = new NoiTro(7, "dinhtrum@gmail.com", "123456", "Nguyễn Trung Định","123231", "Hòa Khánh", "01982772", 0, 0,true);
 
 class CreateFood extends Component {
@@ -167,9 +167,10 @@ class CreateFood extends Component {
 
     onClick = (name, preview, price) => {
         getImage().then(data=>{
-            alert(JSON.stringify(data));
             if(data){
-                createFood(name, preview, price, data, "asdsds", loaimonan, noitro);
+                createFood(name, preview, price, data, "asdsds", loaimonan, this.props.user).then(data=>{
+                    this.props.navigateToPage('Detail',{item:data})
+                });
             }
         });
 
@@ -214,4 +215,12 @@ const styles = StyleSheet.create({
 
 });
 
-export default connect(null, {navigateToPage, actionCreate})(CreateFood);
+function mapState(state) {
+    return {
+        isLogin: state.loginState.loginToken,
+        user: state.meState.user,
+        listCategory: state.categoryState.listCategory,
+    }
+}
+
+export default connect(mapState, {navigateToPage, actionCreate})(CreateFood);

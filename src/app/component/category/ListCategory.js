@@ -48,7 +48,7 @@ class ListCategory extends Component {
         const {item} = this.props.navigation.state.params;
         let name = item && item.name;
         return (
-            <Text style={TOOL_BAR_TEXT}>CÁC LOẠI {name}</Text>
+            <Text style={TOOL_BAR_TEXT}>CÁC LOẠI {name.toUpperCase()}</Text>
         )
     };
 
