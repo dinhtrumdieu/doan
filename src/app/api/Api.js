@@ -39,7 +39,7 @@ export const createFood = (tenmonan, chitiet, gia, hinhanh, nguyenlieu, loaimona
 };
 
 export const updateFood = (id,tenmonan, chitiet, gia, hinhanh, nguyenlieu, loaimonan, noitro) => {
-    return request('mon-an/update', 'POST', {id,tenmonan, chitiet, gia, hinhanh, nguyenlieu, loaimonan, noitro});
+    return request('mon-an/update', 'PUT', {id,tenmonan, chitiet, gia, hinhanh, nguyenlieu, loaimonan, noitro});
 };
 
 export const order = (thoigian,khachhang,noitro,chitietdonhang,trangthai) => {

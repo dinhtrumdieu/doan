@@ -25,7 +25,7 @@ class YouComponent extends Component {
                 {id: 1, name: "Tạo món", image: require('../../../res/img/cutlery.png')},
                 {id: 2, name: "Bếp của tôi", image: require('../../../res/img/settings.png')},
                 {id: 3, name: "Đơn đặt hàng", image: require('../../../res/img/list.png')},
-                {id: 5, name: "Món ăn của tôi", image: require('../../../res/img/groceries.png')},
+                {id: 4, name: "Món ăn của tôi", image: require('../../../res/img/groceries.png')},
             ],
             data2: [
                 {id: 0, name: "Thông tin cá nhân", image: require('../../../res/img/information.png')},

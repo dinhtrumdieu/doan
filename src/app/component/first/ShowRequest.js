@@ -10,7 +10,7 @@ import {navigateToPage,goBack} from "../../router/NavigationAction";
 import {IMAGE_ADDRESS} from "../../api/Api";
 import FetchImage from "../common/FetchImage";
 import DateTimeUtil from "../../utils/DateTimeUtil";
-import {actionAccept} from "../../redux/order/OrderAction";
+import {actionAccept, getAcceptOrder} from "../../redux/order/OrderAction";
 
 class ShowRequest extends Component {
     constructor(props) {
@@ -34,8 +34,14 @@ class ShowRequest extends Component {
         }
     };
 
+    componentWillMount(){
+        const {item} = this.props.navigation.state.params;
+        const status = item && item.trangthai;
+        this.props.getAcceptOrder(status);
+    }
+
     renderStatus = (id)=>{
-        const status = this.props.accept;
+        let status = this.props.accept;
         if(status === 0){
             return (
                 <View style={{flexDirection: "row", marginTop: 5}}>
@@ -68,6 +74,7 @@ class ShowRequest extends Component {
         const imageFood = item && item.chitietdonhang[0] && IMAGE_ADDRESS + item.chitietdonhang[0].hinhanh;
         const thoigian = item && item.thoigian;
         const id = item && item.id;
+        const status = item && item.trangthai;
         let time = DateTimeUtil.convertDateToStringYYYYmmDDhhMMss(new Date(thoigian));
         return (
             <View style={styles.container}>
@@ -171,4 +178,4 @@ function mapState(state) {
     }
 }
 
-export default connect(mapState, {navigateToPage, actionAccept,goBack})(ShowRequest);
+export default connect(mapState, {navigateToPage, actionAccept,goBack,getAcceptOrder})(ShowRequest);

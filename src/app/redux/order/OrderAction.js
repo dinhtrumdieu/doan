@@ -22,7 +22,6 @@ export const actionGetListOrder = (id) => {
 export const actionAccept = (id,trangthai) => {
     return dispatch => {
         acceptOrder(id,trangthai).then((data) => {
-            alert(data.trangthai);
             dispatch(getAcceptOrder(data.trangthai))
         }).catch(error => dispatch(alert(error)))
     }
