@@ -46,7 +46,7 @@ class ItemFood extends Component {
                 </View>
                 <FetchImage
                     uri={image}
-                    style={{height: 85, width: 85, borderRadius: 10, position: 'absolute'}}
+                    style={{height: 95, width: 95, borderRadius: 10, position: 'absolute'}}
                 />
                 {/*<Image style={{height: 85, width: 85, borderRadius: 10, position: 'absolute'}}
                        source={image}/>*/}

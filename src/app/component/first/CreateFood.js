@@ -7,7 +7,7 @@ import ImagePicker from "react-native-image-picker";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import {sizeWidth} from "../../utils/Size";
-import {createFood, SERVER_ADDRESS, updateFood, uploadImage} from "../../api/Api";
+import {createFood, IMAGE_ADDRESS, SERVER_ADDRESS, updateFood, uploadImage} from "../../api/Api";
 import {Loaimonan} from "../../model/Loaimonan";
 import {NoiTro} from "../../model/NoiTro";
 import {actionCreate} from "../../redux/CreateAction";
@@ -22,11 +22,11 @@ class CreateFood extends Component {
         const name = item && item.tenmonan ? item.tenmonan : "";
         const preview = item && item.chitiet ? item.chitiet : "";
         const price = item && item.gia ? item.gia.toString() : '0';
-        const image = item && item.hinhanh || null;
+        const image = item && item.hinhanh && IMAGE_ADDRESS + item.hinhanh || null;
         this.state = {
             id: id,
             content: '',
-            imageUri: 'uri:'+image,
+            imageUri: "uri:"+image,
             path: '',
             nameFood: name,
             preview: preview,
@@ -199,16 +199,14 @@ class CreateFood extends Component {
                 const theloaimon = this.props.listCategory[this.state.index];
                 const {item} = this.props.navigation.state.params;
                 if (item) {
-                    updateFood(id, name, preview, price, SERVER_ADDRESS + '/files/' + data, "nguyenlieu", theloaimon, this.props.user).then(data => {
+                    updateFood(id, name, preview, price,  data, "nguyenlieu", theloaimon, this.props.user).then(data => {
                         this.props.navigateToPage('Detail', {item: data})
                     });
                 } else {
-                    createFood(name, preview, price, SERVER_ADDRESS + '/files/' + data, "nguyenlieu", theloaimon, this.props.user).then(data => {
+                    createFood(name, preview, price,  data, "nguyenlieu", theloaimon, this.props.user).then(data => {
                         this.props.navigateToPage('Detail', {item: data})
                     });
                 }
-            }{
-                alert("Vui lòng chọn ảnh");
             }
         });
 

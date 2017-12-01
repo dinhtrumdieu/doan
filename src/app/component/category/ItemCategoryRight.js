@@ -46,7 +46,7 @@ class ItemCategoryRight extends Component {
                     </View>
                     <View style={{flex: 1}}/>
                 </View>
-                <FetchImage style={{height: 75, width: 75, borderRadius: 10, position: 'absolute',right:0}}
+                <FetchImage style={{height: 95, width: 95, borderRadius: 10, position: 'absolute',right:0}}
                        uri={image}/>
             </TouchableOpacity>
         );
