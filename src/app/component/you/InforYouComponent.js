@@ -35,7 +35,7 @@ class InforYouComponent extends Component {
                 <ImageBackground style={styles.ViewTop} source={require('../../../res/img/bg_app.jpg')}>
                     <View style={{flexDirection: 'row'}}>
                         <FetchImage style={{width: 70, height: 70, borderRadius: 35}}
-                               uri={avatar}/>
+                                    uri={avatar}/>
                         <Text style={{fontSize: 18, color: '#000', marginTop: 20, marginLeft: 20}}>{name}</Text>
                     </View>
                 </ImageBackground>
@@ -57,17 +57,19 @@ class InforYouComponent extends Component {
                     <View style={{width: '100%', borderWidth: 0.8, borderColor: '#c6c6c6', marginVertical: 10}}/>
                 </View>
                 <TouchableOpacity
-                    onPress={()=>{this.props.navigateToPage('ChangeInfor',{user})}}
+                    onPress={() => {
+                        this.props.navigateToPage('ChangeInfor', {user})
+                    }}
                     style={{
-                    width: 200,
-                    height: 35,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: 'green',
-                    borderRadius: 5,
-                    alignSelf: 'center',
-                    marginTop: 30
-                }}>
+                        width: 200,
+                        height: 35,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        backgroundColor: 'green',
+                        borderRadius: 5,
+                        alignSelf: 'center',
+                        marginTop: 30
+                    }}>
                     <Text style={{color: 'white', fontSize: 14}}>Đổi thông tin</Text>
                 </TouchableOpacity>
             </View>
@@ -88,4 +90,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null,{navigateToPage})(InforYouComponent);
+export default connect(null, {navigateToPage})(InforYouComponent);

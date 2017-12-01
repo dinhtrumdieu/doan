@@ -10,7 +10,7 @@ import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import {navigateToPage} from "../../router/NavigationAction";
 import {connect} from "react-redux";
 import {sizeFont, sizeWidth} from "../../utils/Size";
-import {order} from "../../api/Api";
+import {IMAGE_ADDRESS, order} from "../../api/Api";
 import {actionOrder} from "../../redux/order/OrderAction";
 import FetchImage from "../common/FetchImage";
 
@@ -61,10 +61,10 @@ class OrderComponent extends Component {
         const name = item && item.tenmonan ? item.tenmonan : "";
         const preview = item && item.chitiet;
         const price = item && item.gia ? item.gia : 0;
-        const image = item && item.hinhanh ;
+        const image = item  && item.hinhanh && IMAGE_ADDRESS+item.hinhanh;
         const cooker = item && item.noitro;
         const nameCooker = item && item.noitro && item.noitro.fullname;
-        const imageCooker = item && item.noitro && item.noitro.hinhanh;
+        const imageCooker = item && item.noitro && IMAGE_ADDRESS+ item.noitro.hinhanh;
         return (
             <View style={styles.Container}>
                 <ToolBar left={this.renderLeft()}

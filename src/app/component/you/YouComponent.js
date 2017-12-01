@@ -140,7 +140,9 @@ class YouComponent extends Component {
             }}/>
             <View style={{justifyContent: 'center', alignItems: 'center', marginVertical: 25, position: 'absolute',}}>
                 <TouchableOpacity onPress={() => {
-                    this.props.navigateToPage('InforYou', {user})
+                    this.props.checkLogin(()=>{
+                        this.props.navigateToPage('InforYou', {user})
+                    })
                 }}>
                     <FetchImage style={{width: 80, height: 80, borderRadius: 40, marginTop: 15, marginLeft: 100}}
                                 uri={avatar}/>
