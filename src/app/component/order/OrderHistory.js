@@ -1,12 +1,12 @@
 import React, {Component} from "react";
-import {View, StyleSheet, FlatList, TouchableOpacity, Text} from "react-native";
+import {View, StyleSheet, FlatList, TouchableOpacity, Text, Image} from "react-native";
 import ToolBar from "../common/ToolBar";
-import {OrderItem} from "../../model/OrderItem";
 import {Order} from "../../model/Order";
 import AppText from "../common/Text";
 import BackIcon from "../common/BackIcon";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import {connect} from "react-redux";
+import FetchImage from "../common/FetchImage";
 
 class OrderHistory extends Component {
     constructor(props) {
@@ -14,47 +14,17 @@ class OrderHistory extends Component {
 
         this.state = {
             data: [
-                new Order(1, "Feb 16,2017", [
-                    new OrderItem(1, "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM"),
-                    new OrderItem(2, "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM"),
-                    new OrderItem(3, "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM"),
-                    new OrderItem(4, "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM"),
-                    new OrderItem(5, "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM"),
-                ]),
-                new Order(2, "Feb 16,2017", [
-                    new OrderItem(1, "Phở hà nội", "Nguyễn Văn A", 2, "237.000d", "12:03 AM"),
-                    new OrderItem(2, "Phở hà nội", "Nguyễn Văn A", 2, "237.000d", "12:03 AM"),
-                    new OrderItem(3, "Phở hà nội", "Nguyễn Văn A", 2, "237.000d", "12:03 AM"),
-                    new OrderItem(4, "Phở hà nội", "Nguyễn Văn A", 2, "237.000d", "12:03 AM"),
-                    new OrderItem(5, "Phở hà nội", "Nguyễn Văn A", 2, "237.000d", "12:03 AM"),
-                ]),
-                new Order(3, "Feb 16,2017", [
-                    new OrderItem(1, "Phở hà nội", "Nguyễn Văn A", 2, "237.000d", "12:03 AM"),
-                    new OrderItem(2, "Phở hà nội", "Nguyễn Văn A", 2, "237.000d", "12:03 AM"),
-                    new OrderItem(3, "Phở hà nội", "Nguyễn Văn A", 2, "237.000d", "12:03 AM"),
-                    new OrderItem(4, "Phở hà nội", "Nguyễn Văn A", 2, "237.000d", "12:03 AM"),
-                    new OrderItem(5, "Phở hà nội", "Nguyễn Văn A", 2, "237.000d", "12:03 AM"),
-                ])
+                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 0),
+                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 1),
+                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 2),
+                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 2),
+                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 1),
+                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 0),
+                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 2),
+                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 1),
             ],
 
         }
-    }
-
-    renderOrderItem = ({item}) => {
-        return (
-            <View style={styles.listfood}>
-                <View style={{flexDirection: "row"}}>
-                    <AppText
-                        style={{flex: 2, fontSize: 18, fontWeight: "bold", color: "#47473F"}}>{item.foodname}</AppText>
-                    <AppText style={{flex: 1, fontSize: 16}}>{item.quantity}</AppText>
-                    <AppText style={{flex: 1, fontSize: 16}}>{item.price}</AppText>
-                </View>
-                <View style={{flexDirection: "row"}}>
-                    <AppText style={{color: "#A3A3A3", fontWeight: "bold"}}>{item.time} - </AppText>
-                    <AppText>{item.cookername}</AppText>
-                </View>
-            </View>
-        )
     }
 
     renderItem = ({item}) => {
@@ -67,21 +37,37 @@ class OrderHistory extends Component {
                     color: "red",
                     fontWeight: "bold"
                 }}>{item.day}</AppText>
-                <FlatList
-                    style={{marginTop: 10}}
-                    data={item.orderItem}
-                    keyExtractor={(item, index) => item._id}
-                    renderItem={this.renderOrderItem}
-                />
-                <View style={{flexDirection: "row", marginTop: 10, marginBottom: 10}}>
+                <View style={styles.listfood}>
+                    <Image style={{borderRadius: 5, width: 30, height: 30}}
+                           source={item.image}/>
+                    <View style={{flexDirection: "row"}}>
+                        <AppText
+                            style={{
+                                flex: 2,
+                                fontSize: 18,
+                                fontWeight: "bold",
+                                color: "#47473F"
+                            }}>{item.foodname}</AppText>
+                        <AppText style={{flex: 1, fontSize: 16}}>{item.quantity}</AppText>
+                        <AppText style={{flex: 1, fontSize: 16}}>{item.price}</AppText>
+                    </View>
+                    <View style={{flexDirection: "row"}}>
+                        <AppText style={{color: "#A3A3A3", fontWeight: "bold"}}>{item.time} - </AppText>
+                        <AppText>{item.cookername}</AppText>
+                    </View>
+                </View>
+                <View style={{flexDirection: "row", marginTop: 5, marginBottom: 10}}>
+                    <AppText style={{color: "#111111", fontSize: 15, marginLeft: 10, marginTop: 5}}>Trạng
+                        thái:</AppText>
+                    <AppText style={{
+                        color: "#172E79", fontWeight: "bold", fontSize: 20, marginLeft: 5
+                    }}>{item.status}</AppText>
                     <TouchableOpacity style={{flex: 2}}>
                         <AppText style={{
                             borderRadius: 15, width: 30, height: 30, textAlignVertical: "center", textAlign: "center",
-                            color: "#FFFFFF", backgroundColor: "#8AF205", marginLeft: 20
+                            color: "#FFFFFF", backgroundColor: "#8AF205", marginLeft: 70
                         }}>Xóa</AppText>
                     </TouchableOpacity>
-                    <AppText style={{flex: 1, textAlign: "right", marginTop: 5,marginRight:10}}> Tổng</AppText>
-                    <AppText style={{flex: 1, fontWeight: "bold", color: "#47473F", fontSize: 18}}>539.000d</AppText>
                 </View>
             </View>
         )
