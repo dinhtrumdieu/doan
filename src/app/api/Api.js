@@ -1,8 +1,8 @@
 import RNFetchBlob from "react-native-fetch-blob";
 import {saveImage} from "../utils/Store";
 
-export const SERVER_ADDRESS = 'http://192.168.141.229:8080';
-export const IMAGE_ADDRESS = 'http://192.168.141.229:8080/files/';
+export const SERVER_ADDRESS = 'http://192.168.1.121:8080';
+export const IMAGE_ADDRESS = 'http://192.168.1.121:8080/files/';
 //export const SERVER_ADDRESS = 'http://demo6916417.mockable.io';
 const API_ENDPOINT = SERVER_ADDRESS + '/api/';
 
