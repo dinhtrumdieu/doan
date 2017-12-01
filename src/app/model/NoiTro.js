@@ -1,6 +1,6 @@
 export class NoiTro {
     constructor(id, email: string, matkhau: string, fullname: string,hinhanh:string,
-                diachi: string, sodienthoai: string, somon: Number, soluotquantam: Number,role:Boolean) {
+                diachi: string, sodienthoai: string, somon: Number, soluotquantam: Number,role:Boolean,isquantam:Boolean) {
         this.id = id;
         this.email = email;
         this.matkhau = matkhau;
@@ -11,5 +11,6 @@ export class NoiTro {
         this.somon = somon;
         this.soluotquantam = soluotquantam;
         this.role = role;
+        this.isquantam = isquantam;
     }
 }

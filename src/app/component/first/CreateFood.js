@@ -205,7 +205,7 @@ class CreateFood extends Component {
                     });
                 } else {
                     createFood(name, preview, price,  data, "nguyenlieu", theloaimon, this.props.user).then(data => {
-                        his.props.resetPage('Main')
+                        this.props.resetPage('Main')
                     });
                 }
             }
