@@ -23,15 +23,13 @@ class YouComponent extends Component {
             data1: [
                 {id: 0, name: "Thông tin cá nhân", image: require('../../../res/img/information.png')},
                 {id: 1, name: "Tạo món", image: require('../../../res/img/cutlery.png')},
-                {id: 2, name: "Trang cá nhân", image: require('../../../res/img/settings.png')},
-                {id: 3, name: "Món ăn ưa thích", image: require('../../../res/img/ic_list_like.png')},
-                {id: 4, name: "Đơn đặt hàng", image: require('../../../res/img/list.png')},
+                {id: 2, name: "Bếp của tôi", image: require('../../../res/img/settings.png')},
+                {id: 3, name: "Đơn đặt hàng", image: require('../../../res/img/list.png')},
                 {id: 5, name: "Món ăn của tôi", image: require('../../../res/img/groceries.png')},
             ],
             data2: [
                 {id: 0, name: "Thông tin cá nhân", image: require('../../../res/img/information.png')},
                 {id: 1, name: "Lịch sử đặt hàng", image: require('../../../res/img/history.png')},
-                {id: 2, name: "Món ăn ưa thích", image: require('../../../res/img/ic_list_like.png')},
             ],
         }
     }
@@ -67,12 +65,9 @@ class YouComponent extends Component {
                 navigateToPage('DetailCooker', {item: this.props.user});
                 break;
             case 3:
-                //navigateToPage('GetRequest');
-                break;
-            case 4:
                 navigateToPage('GetRequest');
                 break;
-            case 5:
+            case 4:
                 navigateToPage('FoodLikes');
                 break;
         }
@@ -86,8 +81,6 @@ class YouComponent extends Component {
                 break;
             case 1:
                 navigateToPage('OrderHistory');
-                break;
-            case 2:
                 break;
         }
     };

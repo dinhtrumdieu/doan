@@ -82,6 +82,10 @@ export const getListOrder = (id) => {
     return request('don-hang/noi-tro/'+id, 'GET')
 };
 
+export const acceptOrder = (id,trangthai) => {
+    return request('don-hang/set-trang-thai/'+id+'-tt'+trangthai, 'GET')
+};
+
 export const uploadImage = async (path: string) => {
     return RNFetchBlob.fetch('POST', API_ENDPOINT+'/upload', {
         'Accept': 'application/json',

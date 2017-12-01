@@ -25,23 +25,12 @@ class ListCategory extends Component {
         const {item} = this.props.navigation.state.params;
         let id = item && item.id;
         this.props.actionGetListItemCategory(id);
-        this.state = {
-            data: [
-                new Food(1, 'Soup', preview, '15.000', require('../../../res/img/pho.jpg')),
-                new Food(2, 'Phở', preview, '35.000', require('../../../res/img/food1.jpg')),
-                new Food(3, 'Cháo Hành', preview, '55.000', require('../../../res/img/goi.jpg')),
-                new Food(4, 'Mì tôm', preview, '25.000', require('../../../res/img/nuong.jpg')),
-                new Food(5, 'Mỡ hành', preview, '65.000', require('../../../res/img/food1.jpg')),
-                new Food(6, 'Gà rán', preview, '75.000', require('../../../res/img/pho.jpg')),
-                new Food(7, 'Soup', preview, '35.000', require('../../../res/img/nuong.jpg')),
-            ],
-        }
     }
 
-    _leftToolBar = ()=>{
-      return(
-          <BackIcon/>
-      )
+    _leftToolBar = () => {
+        return (
+            <BackIcon/>
+        )
     };
 
     _centerToolBar = () => {
@@ -51,8 +40,6 @@ class ListCategory extends Component {
             <Text style={TOOL_BAR_TEXT}>CÁC LOẠI {name.toUpperCase()}</Text>
         )
     };
-
-    _rightToolBar = () => (<CartIcon/>);
 
     renderItem = ({item}) => {
         return <ItemFood item={item}/>
@@ -64,7 +51,6 @@ class ListCategory extends Component {
                 <ToolBar
                     left={this._leftToolBar()}
                     center={this._centerToolBar()}
-                    right={this._rightToolBar()}
                 />
                 <ScrollView>
                     <FlatList
@@ -112,4 +98,4 @@ function mapState(state) {
     }
 }
 
-export default connect(mapState, {navigateToPage,actionGetListItemCategory})(ListCategory);
+export default connect(mapState, {navigateToPage, actionGetListItemCategory})(ListCategory);

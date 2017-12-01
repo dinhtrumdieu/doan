@@ -6,10 +6,11 @@ import {Request} from "../../model/Request";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import BackIcon from "../common/BackIcon";
 import {connect} from "react-redux";
-import {navigateToPage} from "../../router/NavigationAction";
+import {navigateToPage,goBack} from "../../router/NavigationAction";
 import {IMAGE_ADDRESS} from "../../api/Api";
 import FetchImage from "../common/FetchImage";
 import DateTimeUtil from "../../utils/DateTimeUtil";
+import {actionAccept} from "../../redux/order/OrderAction";
 
 class ShowRequest extends Component {
     constructor(props) {
@@ -24,6 +25,37 @@ class ShowRequest extends Component {
         <Text style={TOOL_BAR_TEXT}>Chi tiết đặt hàng</Text>
     );
 
+    handleAccept = (id, trangthai) => {
+        if(trangthai === 2){
+            this.props.actionAccept(id, trangthai);
+            this.props.goBack();
+        }else{
+            this.props.actionAccept(id, trangthai);
+        }
+    };
+
+    renderStatus = (id)=>{
+        const status = this.props.accept;
+        if(status === 0){
+            return (
+                <View style={{flexDirection: "row", marginTop: 5}}>
+                    <TouchableOpacity onPress={()=>this.handleAccept(id,1)}>
+                        <AppText style={styles.button}>Đồng ý</AppText>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>this.handleAccept(id,2)}>
+                        <AppText style={styles.button}>Từ chối</AppText>
+                    </TouchableOpacity>
+                </View>
+            );
+        }else if(status === 1){
+            return (
+                <View style={{flexDirection: "row", marginTop: 5}}>
+                    <Text style={{fontSize:15,color:'red'}}>Đã xác nhận</Text>
+                </View>
+            );
+        }
+    };
+
     render() {
         const {item} = this.props.navigation.state.params;
         const nameKhachHang = item && item.khachhang && item.khachhang.fullname;
@@ -35,6 +67,7 @@ class ShowRequest extends Component {
         const mota = item && item.chitietdonhang[0] && item.chitietdonhang[0].mota;
         const imageFood = item && item.chitietdonhang[0] && IMAGE_ADDRESS + item.chitietdonhang[0].hinhanh;
         const thoigian = item && item.thoigian;
+        const id = item && item.id;
         let time = DateTimeUtil.convertDateToStringYYYYmmDDhhMMss(new Date(thoigian));
         return (
             <View style={styles.container}>
@@ -48,14 +81,7 @@ class ShowRequest extends Component {
                                 style={{fontSize: 17, fontWeight: "bold", color: "black"}}>{nameKhachHang}</AppText>
                             <AppText style={{margin: 5, color: "#A63139"}}>{sodienthoai}</AppText>
                             <AppText style={{marginLeft: 5}}>{diachi}</AppText>
-                            <View style={{flexDirection: "row", marginTop: 5}}>
-                                <TouchableOpacity>
-                                    <AppText style={styles.button}>Đồng ý</AppText>
-                                </TouchableOpacity>
-                                <TouchableOpacity>
-                                    <AppText style={styles.button}>Từ chối</AppText>
-                                </TouchableOpacity>
-                            </View>
+                            {this.renderStatus(id)}
                         </View>
                     </View>
                     <AppText style={{height: 2, backgroundColor: "#B6BEC1"}}/>
@@ -138,4 +164,11 @@ const styles = StyleSheet.create({
         marginRight: 5
     }
 });
-export default connect(null, {navigateToPage})(ShowRequest);
+
+function mapState(state) {
+    return {
+        accept: state.orderState.accept,
+    }
+}
+
+export default connect(mapState, {navigateToPage, actionAccept,goBack})(ShowRequest);

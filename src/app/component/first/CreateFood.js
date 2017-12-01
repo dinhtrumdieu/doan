@@ -5,7 +5,7 @@ import ToolBar from "../common/ToolBar";
 import BackIcon from "../common/BackIcon";
 import ImagePicker from "react-native-image-picker";
 import {connect} from "react-redux";
-import {navigateToPage} from "../../router/NavigationAction";
+import {navigateToPage, resetPage} from "../../router/NavigationAction";
 import {sizeWidth} from "../../utils/Size";
 import {createFood, IMAGE_ADDRESS, SERVER_ADDRESS, updateFood, uploadImage} from "../../api/Api";
 import {Loaimonan} from "../../model/Loaimonan";
@@ -260,4 +260,4 @@ function mapState(state) {
     }
 }
 
-export default connect(mapState, {navigateToPage, actionCreate})(CreateFood);
+export default connect(mapState, {navigateToPage, actionCreate,resetPage})(CreateFood);
