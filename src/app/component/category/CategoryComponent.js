@@ -27,9 +27,9 @@ class CategoryComponent extends Component {
 
     renderItem = ({item}) => {
         if (random = !random) {
-            return <ItemCategoryLeft item={item}/>
+            return <ItemCategoryLeft key={item.id} item={item}/>
         } else {
-            return <ItemCategoryRight item={item}/>
+            return <ItemCategoryRight key={item.id} item={item}/>
         }
 
     };
@@ -51,7 +51,7 @@ class CategoryComponent extends Component {
                 <ToolBar center={this.renderCenter()}/>
                 <FlatList
                     data={this.props.listCategory}
-                    keyExtractor={(item, index) => item._id}
+                    keyExtractor={(item, index) => item.id}
                     renderItem={this.renderItem}/>
             </View>
 
