@@ -16,10 +16,11 @@ import FetchImage from "../common/FetchImage";
 
 class OrderComponent extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            number:1,
+            number: 1,
+            ghichu:'',
         }
     }
 
@@ -31,29 +32,30 @@ class OrderComponent extends Component {
         <Text style={TOOL_BAR_TEXT}>THÔNG TIN ĐƠN HÀNG</Text>
     );
 
-    tru = ()=>{
-        if(this.state.number > 1){
+    tru = () => {
+        if (this.state.number > 1) {
             this.setState({
-                number:this.state.number-1,
+                number: this.state.number - 1,
             });
         }
     };
 
-    add = ()=>{
-      this.setState({
-          number:this.state.number+1,
-      });
+    add = () => {
+        this.setState({
+            number: this.state.number + 1,
+        });
     };
 
-    handleOrder = (item)=>{
+    handleOrder = (item) => {
         const cooker = item && item.noitro;
-        alert(JSON.stringify(this.props.user));
         const name = item && item.tenmonan ? item.tenmonan : "";
         const preview = item && item.chitiet;
         const price = item && item.gia ? item.gia : 0;
-        const image = item && item.hinhanh ;
-        this.props.actionOrder(this.props.user,cooker,);
-        //this.props.navigateToPage('ThankYou')
+        const image = item && item.hinhanh;
+        const chitietdonhang = [{tenmonan: name, gia: price, mota: this.state.ghichu, soluong: this.state.number}];
+        const time = new Date();
+        this.props.actionOrder(time,this.props.user, cooker, chitietdonhang,0);
+        this.props.navigateToPage('ThankYou')
     };
 
     render() {
@@ -61,10 +63,10 @@ class OrderComponent extends Component {
         const name = item && item.tenmonan ? item.tenmonan : "";
         const preview = item && item.chitiet;
         const price = item && item.gia ? item.gia : 0;
-        const image = item  && item.hinhanh && IMAGE_ADDRESS+item.hinhanh;
+        const image = item && item.hinhanh && IMAGE_ADDRESS + item.hinhanh;
         const cooker = item && item.noitro;
         const nameCooker = item && item.noitro && item.noitro.fullname;
-        const imageCooker = item && item.noitro && IMAGE_ADDRESS+ item.noitro.hinhanh;
+        const imageCooker = item && item.noitro && IMAGE_ADDRESS + item.noitro.hinhanh;
         return (
             <View style={styles.Container}>
                 <ToolBar left={this.renderLeft()}
@@ -82,7 +84,7 @@ class OrderComponent extends Component {
                                 <Text style={{color: 'green'}}>{nameCooker}</Text>
                             </Text>
                             <FetchImage style={{width: 15, height: 15}}
-                                   uri={imageCooker}/>
+                                        uri={imageCooker}/>
                         </View>
                         <View style={{
                             height: 1,
@@ -103,35 +105,35 @@ class OrderComponent extends Component {
                         </View>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <Text>Số lượng:</Text>
-                            <View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
-                                    <TouchableOpacity
-                                        onPress={this.tru}
-                                        style={{flex:1,paddingVertical: sizeWidth(2)}}>
-                                        <Text style={{
-                                            fontSize: sizeFont(4),
-                                            textAlign: 'center',
-                                            textAlignVertical: 'center'
-                                        }}>-</Text>
-                                    </TouchableOpacity>
-                                    <View>
-                                        <Text style={{
-                                            fontSize: sizeFont(3.5),
-                                            textAlign: 'center',
-                                            textAlignVertical: 'center',
-                                            color: 'black',
-                                        }}>{this.state.number}</Text>
-                                    </View>
-                                    <TouchableOpacity
-                                        onPress={this.add}
-                                        style={{flex:1,paddingVertical: sizeWidth(2)}}>
-                                        <Text style={{
-                                            fontSize: sizeFont(4),
-                                            textAlign: 'center',
-                                            textAlignVertical: 'center'
-                                        }}>+</Text>
-                                    </TouchableOpacity>
+                            <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+                                <TouchableOpacity
+                                    onPress={this.tru}
+                                    style={{flex: 1, paddingVertical: sizeWidth(2)}}>
+                                    <Text style={{
+                                        fontSize: sizeFont(4),
+                                        textAlign: 'center',
+                                        textAlignVertical: 'center'
+                                    }}>-</Text>
+                                </TouchableOpacity>
+                                <View>
+                                    <Text style={{
+                                        fontSize: sizeFont(3.5),
+                                        textAlign: 'center',
+                                        textAlignVertical: 'center',
+                                        color: 'black',
+                                    }}>{this.state.number}</Text>
+                                </View>
+                                <TouchableOpacity
+                                    onPress={this.add}
+                                    style={{flex: 1, paddingVertical: sizeWidth(2)}}>
+                                    <Text style={{
+                                        fontSize: sizeFont(4),
+                                        textAlign: 'center',
+                                        textAlignVertical: 'center'
+                                    }}>+</Text>
+                                </TouchableOpacity>
                             </View>
-                            <Text style={{marginLeft:40}}>x {price*this.state.number} đ</Text>
+                            <Text style={{marginLeft: 40}}>x {price * this.state.number} đ</Text>
                         </View>
                         <View style={{
                             height: 1,
@@ -143,8 +145,8 @@ class OrderComponent extends Component {
                             borderRadius: 0.1
                         }}/>
                         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                            <Text >Tổng đơn hàng:</Text>
-                            <Text >x {price*this.state.number} đ</Text>
+                            <Text>Tổng đơn hàng:</Text>
+                            <Text>x {price * this.state.number} đ</Text>
                         </View>
                         <View style={{
                             height: 1,
@@ -195,11 +197,11 @@ class OrderComponent extends Component {
                             borderRadius: 0.1
                         }}/>
                         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                            <Text style={{fontSize: 16 , color: 'red'}}>Tổng thành
+                            <Text style={{fontSize: 16, color: 'red'}}>Tổng thành
                                 tiền:</Text>
-                            <Text style={{fontSize: 16, color: 'red'}}>x {price*this.state.number} đ</Text>
+                            <Text style={{fontSize: 16, color: 'red'}}>x {price * this.state.number} đ</Text>
                         </View>
-                        <TouchableOpacity onPress={()=>this.handleOrder(item)} style={{
+                        <TouchableOpacity onPress={() => this.handleOrder(item)} style={{
                             height: 40,
                             justifyContent: 'center',
                             alignItems: 'center',
@@ -213,6 +215,7 @@ class OrderComponent extends Component {
                             <Text style={{fontSize: 14, color: '#000'}}>Ghi chú :</Text>
                             <TextInput style={{height: 100, backgroundColor: '#aaa', textAlignVertical: 'top'}}
                                        multiline={true} underlineColorAndroid="transparent"
+                                       onChangeText={(ghichu)=>{this.setState({ghichu})}}
                                        placeholder="Nếu có yêu cầu hay khác thì gõ vô đây"/>
                         </View>
                     </View>
@@ -234,4 +237,4 @@ function mapState(state) {
     }
 }
 
-export default connect(mapState, {navigateToPage,actionOrder})(OrderComponent)
+export default connect(mapState, {navigateToPage, actionOrder})(OrderComponent)

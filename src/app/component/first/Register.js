@@ -23,6 +23,10 @@ class Register extends Component {
         }
     }
 
+    handleRegister = ()=>{
+
+    };
+
     render() {
         return (
             <View style={styles.container}>
@@ -70,9 +74,7 @@ class Register extends Component {
                                        onChangeText={(confirmPassword) => this.setState({confirmPassword})}/>
                         </View>
                         <TouchableOpacity>
-                            <Text style={styles.login} onPress={() => {
-                                this.props.navigation.navigate("mainTabRouter")
-                            }}>Register</Text>
+                            <Text style={styles.login} onPress={this.handleRegister}>Register</Text>
                         </TouchableOpacity>
                     </View>
                 </ImageBackground>

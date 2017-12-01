@@ -29,19 +29,19 @@ class GetRequest extends Component {
         }
     }
 
-    handleOnPress = ()=>{
-      this.props.navigateToPage('ShowRequest');
+    handleOnPress = (item)=>{
+      this.props.navigateToPage('ShowRequest',{item});
     };
 
     renderItem = ({item}) => {
         const nameKhachHang = item && item.khachhang && item.khachhang.fullname;
         const avatar = item && item.khachhang && IMAGE_ADDRESS+ item.khachhang.hinhanh;
-        const nameFood = item && item.chitietdonhang && item.chitietdonhang[0].tenmonan;
-        const soluong = item && item.chitietdonhang && item.chitietdonhang[0].soluong;
+        const nameFood = item && item.chitietdonhang[0] && item.chitietdonhang[0].tenmonan;
+        const soluong = item && item.chitietdonhang[0] && item.chitietdonhang[0].soluong;
         const thoigian = item && item.thoigian;
         let time = DateTimeUtil.convertDateToStringYYYYmmDDhhMMss(new Date(thoigian));
         return (
-            <TouchableOpacity onPress={this.handleOnPress} style={styles.container}>
+            <TouchableOpacity onPress={()=>this.handleOnPress(item)} style={styles.container}>
                 <FetchImage style={styles.avatar} uri={avatar}/>
                 <View style={styles.centerItem}>
                     <AppText style={styles.user}>{nameKhachHang}</AppText>

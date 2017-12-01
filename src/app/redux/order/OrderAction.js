@@ -1,10 +1,12 @@
 import {getListOrder, order} from "../../api/Api";
 import {ACTION_GET_LIST_ORDER} from "../Action";
 
-export const actionOrder = (path)=>{
+export const actionOrder = (thoigian,khachhang , cooker , chitietdonhang,trangthai)=>{
     return dispatch =>{
-        order(path).then(data=>{
-            //  alert(JSON.stringify(data));
+        order(thoigian,khachhang,cooker,chitietdonhang,trangthai).then(data=>{
+             alert(JSON.stringify(data));
+        }).catch((error)=>{
+            alert(error);
         });
     }
 };

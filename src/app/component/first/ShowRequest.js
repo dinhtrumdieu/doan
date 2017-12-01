@@ -7,11 +7,13 @@ import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import BackIcon from "../common/BackIcon";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
+import {IMAGE_ADDRESS} from "../../api/Api";
+import FetchImage from "../common/FetchImage";
+import DateTimeUtil from "../../utils/DateTimeUtil";
 
 class ShowRequest extends Component {
     constructor(props) {
         super(props);
-        // const {request} = this.props
     }
 
     renderLeft = () => (
@@ -23,17 +25,29 @@ class ShowRequest extends Component {
     );
 
     render() {
+        const {item} = this.props.navigation.state.params;
+        const nameKhachHang = item && item.khachhang && item.khachhang.fullname;
+        const sodienthoai = item && item.khachhang && item.khachhang.sodienthoai;
+        const diachi = item && item.khachhang && item.khachhang.diachi;
+        const avatar = item && item.khachhang && IMAGE_ADDRESS + item.khachhang.hinhanh;
+        const nameFood = item && item.chitietdonhang[0] && item.chitietdonhang[0].tenmonan;
+        const soluong = item && item.chitietdonhang[0] && item.chitietdonhang[0].soluong;
+        const mota = item && item.chitietdonhang[0] && item.chitietdonhang[0].mota;
+        const imageFood = item && item.chitietdonhang[0] && IMAGE_ADDRESS + item.chitietdonhang[0].hinhanh;
+        const thoigian = item && item.thoigian;
+        let time = DateTimeUtil.convertDateToStringYYYYmmDDhhMMss(new Date(thoigian));
         return (
             <View style={styles.container}>
                 <ToolBar left={this.renderLeft()}
                          center={this.renderCenter()}/>
                 <View style={{flex: 1}}>
                     <View style={styles.user}>
-                        <Image style={styles.avatar} source={require("../../../res/img/cooker.jpg")}/>
+                        <FetchImage style={styles.avatar} uri={avatar}/>
                         <View style={{marginTop: 35}}>
-                            <AppText style={{fontSize: 17, fontWeight: "bold", color: "black"}}>Nguyen Van A</AppText>
-                            <AppText style={{margin: 5, color: "#A63139"}}>0967222369</AppText>
-                            <AppText style={{marginLeft: 5}}>Kiệt 82 Nguyễn Lương Bằng</AppText>
+                            <AppText
+                                style={{fontSize: 17, fontWeight: "bold", color: "black"}}>{nameKhachHang}</AppText>
+                            <AppText style={{margin: 5, color: "#A63139"}}>{sodienthoai}</AppText>
+                            <AppText style={{marginLeft: 5}}>{diachi}</AppText>
                             <View style={{flexDirection: "row", marginTop: 5}}>
                                 <TouchableOpacity>
                                     <AppText style={styles.button}>Đồng ý</AppText>
@@ -46,20 +60,20 @@ class ShowRequest extends Component {
                     </View>
                     <AppText style={{height: 2, backgroundColor: "#B6BEC1"}}/>
                     <View style={{flex: 3}}>
-                        <Image style={styles.image} source={require('../../../res/img/pho.jpg')}/>
+                        <FetchImage style={styles.image} uri={imageFood}/>
                         <View style={styles.bottomFood}>
-                            <AppText style={styles.foodname}>Phở Hà Nội</AppText>
+                            <AppText style={styles.foodname}>{nameFood}</AppText>
                             <View style={{flexDirection: "row"}}>
                                 <AppText style={{color: "#FFFFFF", marginLeft: 10, marginTop: 5}}>Số lượng : </AppText>
-                                <AppText style={styles.quantity}>3</AppText>
+                                <AppText style={styles.quantity}>{soluong}</AppText>
                             </View>
                             <View style={{flexDirection: "row", marginLeft: 10}}>
                                 <AppText style={{color: "#FFFFFF"}}>Yêu cầu: </AppText>
-                                <AppText style={{color: "#FFFFFF"}}> Không cay, ít nước, nhiều hành </AppText>
+                                <AppText style={{color: "#FFFFFF"}}> {mota}</AppText>
                             </View>
                         </View>
                     </View>
-                    <AppText style={styles.time}>12:03 PM, Oct 20 2017</AppText>
+                    <AppText style={styles.time}>{time}</AppText>
                 </View>
             </View>
         )
