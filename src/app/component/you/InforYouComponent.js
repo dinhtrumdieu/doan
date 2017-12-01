@@ -41,11 +41,6 @@ class InforYouComponent extends Component {
                 </ImageBackground>
                 <View style={{marginHorizontal: 20, marginTop: 20}}>
                     <View style={{flexDirection: 'row'}}>
-                        <Text style={{flex: 2}}>Giới tính :</Text>
-                        <Text style={{flex: 4}}>Nam</Text>
-                    </View>
-                    <View style={{width: '100%', borderWidth: 0.8, borderColor: '#bcbcbc', marginVertical: 10}}/>
-                    <View style={{flexDirection: 'row'}}>
                         <Text style={{flex: 2}}>Số điện thoại :</Text>
                         <Text style={{flex: 4}}>{sodienthoai}</Text>
                     </View>
@@ -57,9 +52,6 @@ class InforYouComponent extends Component {
                     <View style={{width: '100%', borderWidth: 0.8, borderColor: '#c6c6c6', marginVertical: 10}}/>
                 </View>
                 <TouchableOpacity
-                    onPress={() => {
-                        this.props.navigateToPage('ChangeInfor', {user})
-                    }}
                     style={{
                         width: 200,
                         height: 35,

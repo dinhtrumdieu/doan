@@ -4,7 +4,6 @@ import {ACTION_ACCEPT_ORDER, ACTION_GET_LIST_ORDER} from "../Action";
 export const actionOrder = (thoigian,khachhang , cooker , chitietdonhang,trangthai)=>{
     return dispatch =>{
         order(thoigian,khachhang,cooker,chitietdonhang,trangthai).then(data=>{
-             alert(JSON.stringify(data));
         }).catch((error)=>{
             alert(error);
         });

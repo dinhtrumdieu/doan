@@ -59,7 +59,7 @@ class YouComponent extends Component {
                 navigateToPage('InforYou', {user});
                 break;
             case 1:
-                navigateToPage('CreateFood', {item: null});
+                navigateToPage('CreateFood', {item: null, isUpdate: false});
                 break;
             case 2:
                 navigateToPage('DetailCooker', {item: this.props.user});

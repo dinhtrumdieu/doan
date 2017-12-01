@@ -27,13 +27,14 @@ class CreateFood extends Component {
         this.state = {
             id: id,
             content: '',
-            imageUri: {uri:image} ,
+            imageUri: {uri: image},
             path: '',
             nameFood: name,
             preview: preview,
             price: price,
             category: 'Thể loại',
             index: 0,
+            update:false,
         }
     }
 
@@ -72,6 +73,7 @@ class CreateFood extends Component {
                 this.setState({
                     imageUri,
                     path: response.uri,
+                    update:true,
                 });
                 this.props.actionCreate(this.state.path);
             }
@@ -103,7 +105,28 @@ class CreateFood extends Component {
         });
     };
 
+    renderButton = (isUpdate) => {
+        if (!isUpdate) {
+            return (
+                <TouchableOpacity onPress={() => {
+                    this.onClick(this.state.id, this.state.nameFood, this.state.preview, this.state.price)
+                }}>
+                    <Text style={styles.create}> Create </Text>
+                </TouchableOpacity>
+            );
+        } else {
+            return (
+                <TouchableOpacity onPress={() => {
+                    this.onUpdateFood(this.state.id, this.state.nameFood, this.state.preview, this.state.price)
+                }}>
+                    <Text style={styles.create}> Update </Text>
+                </TouchableOpacity>
+            );
+        }
+    };
+
     render() {
+        const {isUpdate} = this.props.navigation.state.params;
         return (
             <View style={styles.container}>
                 <ToolBar
@@ -182,12 +205,7 @@ class CreateFood extends Component {
                                    multiline={true}
                                    onChangeText={(preview) => this.setState({preview})}
                                    underlineColorAndroid="transparent"/>
-
-                        <TouchableOpacity onPress={() => {
-                            this.onClick(this.state.id, this.state.nameFood, this.state.preview, this.state.price)
-                        }}>
-                            <Text style={styles.create}> Create </Text>
-                        </TouchableOpacity>
+                        {this.renderButton(isUpdate)}
                     </View>
                 </View>
             </View>
@@ -198,19 +216,31 @@ class CreateFood extends Component {
         getImage().then(data => {
             if (data) {
                 const theloaimon = this.props.listCategory[this.state.index];
-                const {item} = this.props.navigation.state.params;
-                if (item) {
-                    updateFood(id, name, preview, price,  data, "nguyenlieu", theloaimon, this.props.user).then(data => {
-                        this.props.resetPage('Main')
-                    });
-                } else {
-                    createFood(name, preview, price,  data, "nguyenlieu", theloaimon, this.props.user).then(data => {
-                        this.props.resetPage('Main')
-                    });
-                }
+                createFood(name, preview, price, data, "nguyenlieu", theloaimon, this.props.user).then(data => {
+                    this.props.resetPage('Main')
+                });
             }
         });
+    };
 
+    onUpdateFood = (id, name, preview, price) => {
+        if(this.state.update){
+            getImage().then(data => {
+                if (data) {
+                    const theloaimon = this.props.listCategory[this.state.index];
+                    updateFood(id, name, preview, price, data, "nguyenlieu", theloaimon, this.props.user).then(data => {
+                        this.props.resetPage('Main')
+                    })
+                }
+            });
+        }else{
+            const {item} = this.props.navigation.state.params;
+            const image = item && item.hinhanh || null;
+            const theloaimon = this.props.listCategory[this.state.index];
+            updateFood(id, name, preview, price, image, "nguyenlieu", theloaimon, this.props.user).then(data => {
+                this.props.resetPage('Main')
+            })
+        }
     }
 }
 
@@ -260,4 +290,4 @@ function mapState(state) {
     }
 }
 
-export default connect(mapState, {navigateToPage, actionCreate,resetPage})(CreateFood);
+export default connect(mapState, {navigateToPage, actionCreate, resetPage})(CreateFood);

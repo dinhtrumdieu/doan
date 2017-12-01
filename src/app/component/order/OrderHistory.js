@@ -7,6 +7,10 @@ import BackIcon from "../common/BackIcon";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import {connect} from "react-redux";
 import FetchImage from "../common/FetchImage";
+import {actionGetListOrderHistory} from "../../redux/you/YouAction";
+import DateTimeUtil from "../../utils/DateTimeUtil";
+import {IMAGE_ADDRESS} from "../../api/Api";
+import {fMoney} from "../../utils/MoneyFormat";
 
 class OrderHistory extends Component {
     constructor(props) {
@@ -27,7 +31,36 @@ class OrderHistory extends Component {
         }
     }
 
+    componentWillMount() {
+        const user = this.props.user;
+        this.props.actionGetListOrderHistory(user.id);
+    }
+
+    renderStatus = (status) => {
+        if (status === 1) {
+            return (
+                <AppText style={{color: "green", fontWeight: "bold", fontSize: 16, marginLeft: 5}}>Đã xác nhận</AppText>
+            );
+        }else if(status === 2){
+            return (
+                <AppText style={{color: "red", fontWeight: "bold", fontSize: 16, marginLeft: 5}}>Đã từ chối</AppText>
+            );
+        }else{
+            return (
+                <AppText style={{color: "blue", fontWeight: "bold", fontSize: 16, marginLeft: 5}}>Đang chờ</AppText>
+            );
+        }
+    };
+
     renderItem = ({item}) => {
+        const nameFood = item && item.chitietdonhang[0] && item.chitietdonhang[0].tenmonan;
+        const soluong = item && item.chitietdonhang[0] && item.chitietdonhang[0].soluong;
+        const gia = item && item.chitietdonhang[0] && item.chitietdonhang[0].gia;
+        const imageFood = item && item.chitietdonhang[0] && IMAGE_ADDRESS + item.chitietdonhang[0].hinhanh;
+        const thoigian = item && item.thoigian;
+        const status = item && item.trangthai;
+        const nameCooker = item && item.noitro && item.noitro.fullname;
+        let time = DateTimeUtil.convertDateToStringYYYYmmDDhhMMss(new Date(thoigian));
         return (
             <View style={styles.container}>
                 <AppText style={{
@@ -36,10 +69,10 @@ class OrderHistory extends Component {
                     marginTop: 5,
                     color: "red",
                     fontWeight: "bold"
-                }}>{item.day}</AppText>
+                }}>{time}</AppText>
                 <View style={styles.listfood}>
-                    <Image style={{borderRadius: 5, width: 30, height: 30}}
-                           source={item.image}/>
+                    <FetchImage style={{borderRadius: 5, width: 30, height: 30}}
+                                uri={imageFood}/>
                     <View style={{flexDirection: "row"}}>
                         <AppText
                             style={{
@@ -47,27 +80,19 @@ class OrderHistory extends Component {
                                 fontSize: 18,
                                 fontWeight: "bold",
                                 color: "#47473F"
-                            }}>{item.foodname}</AppText>
-                        <AppText style={{flex: 1, fontSize: 16}}>{item.quantity}</AppText>
-                        <AppText style={{flex: 1, fontSize: 16}}>{item.price}</AppText>
+                            }}>{nameFood}</AppText>
+                        <AppText style={{flex: 1, fontSize: 16}}>{soluong}</AppText>
+                        <AppText style={{flex: 1, fontSize: 16}}>{gia} vnđ</AppText>
                     </View>
                     <View style={{flexDirection: "row"}}>
-                        <AppText style={{color: "#A3A3A3", fontWeight: "bold"}}>{item.time} - </AppText>
-                        <AppText>{item.cookername}</AppText>
+                        <AppText style={{color: "#A3A3A3", fontWeight: "bold"}}>Tên người nội trợ : </AppText>
+                        <AppText>{nameCooker}</AppText>
                     </View>
                 </View>
                 <View style={{flexDirection: "row", marginTop: 5, marginBottom: 10}}>
                     <AppText style={{color: "#111111", fontSize: 15, marginLeft: 10, marginTop: 5}}>Trạng
                         thái:</AppText>
-                    <AppText style={{
-                        color: "#172E79", fontWeight: "bold", fontSize: 20, marginLeft: 5
-                    }}>{item.status}</AppText>
-                    <TouchableOpacity style={{flex: 2}}>
-                        <AppText style={{
-                            borderRadius: 15, width: 30, height: 30, textAlignVertical: "center", textAlign: "center",
-                            color: "#FFFFFF", backgroundColor: "#8AF205", marginLeft: 70
-                        }}>Xóa</AppText>
-                    </TouchableOpacity>
+                    {this.renderStatus(status)}
                 </View>
             </View>
         )
@@ -89,7 +114,7 @@ class OrderHistory extends Component {
                     center={this.renderCenter()}/>
                 <FlatList
                     style={{marginTop: 10}}
-                    data={this.state.data}
+                    data={this.props.listOrderHistory}
                     keyExtractor={(item, index) => item._id}
                     renderItem={this.renderItem}
                 />
@@ -112,4 +137,11 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null)(OrderHistory);
+function mapState(state) {
+    return {
+        listOrderHistory: state.meState.listOrderHistory,
+        user: state.meState.user,
+    }
+}
+
+export default connect(mapState, {actionGetListOrderHistory})(OrderHistory);

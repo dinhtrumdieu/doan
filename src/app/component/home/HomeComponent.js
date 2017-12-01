@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
         color: '#aaa',
     },
 });
+
 function mapState(state) {
     return {
         listFood: state.homeState.listFood,

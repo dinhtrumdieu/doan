@@ -12,8 +12,8 @@ class ItemUpdateFood extends Component {
     renderFood = (item) => {
         const image = item && item.hinhanh && IMAGE_ADDRESS + item.hinhanh;
         return (<View style={{flex: 1}}>
-            <TouchableOpacity onPress={() => this.props.navigateToPage('CreateFood', {item})}>
-                <FetchImage style={{borderRadius: 5, width: Dimensions.get("window").width / 2, height: 100}}
+            <TouchableOpacity onPress={() => this.props.navigateToPage('CreateFood', {item, isUpdate: true})}>
+                <FetchImage style={{borderRadius: 5, width: 150, height: 100}}
                             uri={image}/>
             </TouchableOpacity>
             <Text style={{color: "#083A0E", fontWeight: "bold"}}> {item.tenmonan}</Text>
@@ -31,4 +31,4 @@ class ItemUpdateFood extends Component {
     }
 }
 
-export default connect(null , {navigateToPage})(ItemUpdateFood);
+export default connect(null, {navigateToPage})(ItemUpdateFood);

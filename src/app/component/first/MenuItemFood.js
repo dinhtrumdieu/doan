@@ -13,7 +13,7 @@ class MenuItemFood extends Component {
         const image = item && item.hinhanh && IMAGE_ADDRESS + item.hinhanh;
         return (<View style={{flex: 1}}>
             <TouchableOpacity onPress={() => this.props.navigateToPage('Detail', {item})}>
-                <FetchImage style={{borderRadius: 5, width: Dimensions.get("window").width / 2, height: 100}}
+                <FetchImage style={{borderRadius: 5, width: 150, height: 100}}
                             uri={image}/>
             </TouchableOpacity>
             <Text style={{color: "#083A0E", fontWeight: "bold"}}> {item.tenmonan}</Text>
