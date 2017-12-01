@@ -48,12 +48,12 @@ export const actionLogin = (username, password) => {
     return dispatch => {
         login(username, password).then(data => {
             if(data){
-                saveToken(data);
-                dispatch(loginTokenSuccess(data.id));
+                saveToken("dinh");
+                dispatch(loginTokenSuccess("dinh"));
                 saveProfileInfo(JSON.stringify(data));
                 dispatch(profileSuccess(data));
                 dispatch(goBack());
-            }else{
+           }else{
                 alert("email sai");
             }
         }).catch(error => {
@@ -68,7 +68,6 @@ export const checkLogin = (action) => {
             if (token) {
                 action();
             } else {
-                alert("erro1");
                 dispatch(navigateToPage('login'))
             }
         }).catch(error => {

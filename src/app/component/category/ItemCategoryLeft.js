@@ -30,10 +30,12 @@ class ItemCategoryLeft extends Component {
                         <Text style={{fontSize: 16}}>{name}</Text>
                         <WrapText numberOfLines={3}>{preview}
                         </WrapText>
-                        <TouchableOpacity style={{
+                        <TouchableOpacity
+                            onPress={()=>this.onClick(item)}
+                            style={{
                             alignItems: 'center',
                             justifyContent: 'center',
-                            width: 60,
+                            width: 70,
                             height: 25,
                             backgroundColor: 'green',
                             borderRadius: 10,

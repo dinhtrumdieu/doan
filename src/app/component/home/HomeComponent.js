@@ -60,7 +60,6 @@ class HomeComponent extends Component {
             <View style={{flex: 1, backgroundColor: '#e5e5e5'}}>
                 <ToolBar
                     center={this._centerToolBar()}
-                    right={this._rightToolBar()}
                 />
                 <ScrollView>
                     <SwipeComponent/>

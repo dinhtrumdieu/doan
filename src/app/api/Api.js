@@ -1,10 +1,9 @@
 import RNFetchBlob from "react-native-fetch-blob";
 import {saveImage} from "../utils/Store";
 
-export const SERVER_ADDRESS = 'http://192.168.43.207:8080';
+export const SERVER_ADDRESS = 'http://192.168.141.229:8080';
 //export const SERVER_ADDRESS = 'http://demo6916417.mockable.io';
 const API_ENDPOINT = SERVER_ADDRESS + '/api/';
-
 
 const getParam = (method: string, data: any, token = null) => {
 
@@ -38,8 +37,8 @@ export const createFood = (tenmonan, chitiet, gia, hinhanh, nguyenlieu, loaimona
     return request('mon-an/add', 'POST', {tenmonan, chitiet, gia, hinhanh, nguyenlieu, loaimonan, noitro});
 };
 
-export const order = (tenmonan, mota, chitiet, gia, hinhanh, rate, nguyenlieu, loaimonan, noitro) => {
-    return request('mon-an/add', 'POST', {tenmonan, mota, chitiet, gia, hinhanh, rate, nguyenlieu, loaimonan, noitro});
+export const order = (khachhang,noitro,chitietdonhang) => {
+    return request('don-hang/add', 'POST', {khachhang,noitro,chitietdonhang});
 };
 
 export const login = (email, matkhau) => {
@@ -68,6 +67,10 @@ export const getListFoodCooker = (id) => {
 
 export const getListFoodSeach = (keyword) => {
     return request('mon-an/name/'+keyword, 'GET')
+};
+
+export const getListOrder = () => {
+    return request('mon-an/name/', 'GET')
 };
 
 export const uploadImage = async (path: string) => {

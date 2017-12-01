@@ -45,9 +45,14 @@ class OrderComponent extends Component {
       });
     };
 
-    handleOrder = ()=>{
-        alert(JSON.stringify(this.props.user))
-       // this.props.actionOrder();
+    handleOrder = (item)=>{
+        const cooker = item && item.noitro;
+        alert(JSON.stringify(this.props.user));
+        const name = item && item.tenmonan ? item.tenmonan : "";
+        const preview = item && item.chitiet;
+        const price = item && item.gia ? item.gia : 0;
+        const image = item && item.hinhanh ;
+        this.props.actionOrder(this.props.user,cooker,);
         //this.props.navigateToPage('ThankYou')
     };
 
@@ -194,7 +199,7 @@ class OrderComponent extends Component {
                                 tiền:</Text>
                             <Text style={{fontSize: 16, color: 'red'}}>x {price*this.state.number} đ</Text>
                         </View>
-                        <TouchableOpacity onPress={this.handleOrder} style={{
+                        <TouchableOpacity onPress={()=>this.handleOrder(item)} style={{
                             height: 40,
                             justifyContent: 'center',
                             alignItems: 'center',

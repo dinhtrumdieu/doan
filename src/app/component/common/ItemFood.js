@@ -22,6 +22,8 @@ class ItemFood extends Component {
         const preview = item && item.chitiet ? item.chitiet : mota;
         const price = item && item.gia ? item.gia:'0';
         const img = item && item.loaimonan  && item.loaimonan.hinhanh;
+        const cooker = item && item.noitro;
+        const nameCooker = item && item.noitro && item.noitro.fullname;
         const image = item && item.images ? item.images : require('../../../res/img/pho.jpg');
         return (
             <TouchableOpacity onPress={()=>this.onClick(item)} style={styles.Container}>
@@ -29,18 +31,16 @@ class ItemFood extends Component {
                     <View style={{flex: 1}}/>
                     <View style={styles.Content}>
                         <View style={{height: 1, backgroundColor: '#aaa', marginTop: 10, marginRight: 10}}/>
-                        <WrapText numberOfLines={4} >{preview}</WrapText>
-                        <TouchableOpacity style={{
+                        <WrapText style={{height:60}} numberOfLines={4} >{preview}</WrapText>
+                        <TouchableOpacity
+                            onPress={() => this.props.navigateToPage('DetailCooker',{item:cooker})}
+                            style={{
                             alignItems: 'center',
                             justifyContent: 'center',
-                            width: 60,
-                            height: 25,
-                            backgroundColor: 'green',
-                            borderRadius: 10,
-                            alignSelf: 'flex-end',
-                            margin: 5,
+                            alignSelf: 'flex-start',
+                            marginVertical: 5,
                         }}>
-                            <Text style={{color: '#fff'}}>Add card</Text>
+                            <Text style={{color: 'green'}}>{nameCooker}</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

@@ -1,9 +1,8 @@
 import React, {Component} from "react";
-import {View, StyleSheet, Text, Image, TextInput, Dimensions, TouchableOpacity} from "react-native";
+import {View, StyleSheet, Text, Image, TextInput, Dimensions, TouchableOpacity, Picker} from "react-native";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import ToolBar from "../common/ToolBar";
 import BackIcon from "../common/BackIcon";
-import {Dropdown} from 'react-native-material-dropdown';
 import ImagePicker from "react-native-image-picker";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
@@ -28,6 +27,8 @@ class CreateFood extends Component {
             nameFood: null,
             preview: null,
             price: null,
+            category:'Thể loại',
+            index:0,
         }
     }
 
@@ -70,6 +71,31 @@ class CreateFood extends Component {
                 this.props.actionCreate(this.state.path);
             }
         });
+    };
+
+    renderPickerItem = (loaimonan) => {
+        return (
+            <Picker.Item label={loaimonan.name} value={loaimonan.name}/>
+        );
+    };
+
+    renderItemPicker = () => {
+        const data = this.props.listCategory;
+        let listPickerItem = [];
+        if(data){
+            for (i = 0; i < data.length; i++) {
+                listPickerItem.push(this.renderPickerItem(data[i]))
+            }
+        }
+        return listPickerItem
+    };
+
+    getID = (itemValue,itemIndex)=>{
+        const data = this.props.listCategory;
+        this.setState({
+            language: itemValue,
+        });
+        alert(data[itemIndex].id)
     };
 
     render() {
@@ -123,13 +149,13 @@ class CreateFood extends Component {
                                    underlineColorAndroid="transparent"/>
 
                         <View style={{marginVertical: 5, flexDirection: "row", justifyContent: "center"}}>
-                            <Dropdown
-                                containerStyle={{width: 100, height: 70}}
-                                label='category'
-                                baseColor="#111109"
-                                textColor="#75753e"
-                                data={data}
-                            />
+                            <Picker
+                                style={{width:150}}
+                                mode="dropdown"
+                                selectedValue={this.state.language}
+                                onValueChange={(itemValue, itemIndex) => this.getID(itemValue,itemIndex)}>
+                                {this.renderItemPicker()}
+                            </Picker>
                             <TextInput style={styles.price}
                                        multiline={true}
                                        maxLength={7}
@@ -168,7 +194,8 @@ class CreateFood extends Component {
     onClick = (name, preview, price) => {
         getImage().then(data=>{
             if(data){
-                createFood(name, preview, price, data, "asdsds", loaimonan, this.props.user).then(data=>{
+                const theloaimon = this.props.listCategory[this.state.index];
+                createFood(name, preview, price, data, "asdsds", theloaimon, this.props.user).then(data=>{
                     this.props.navigateToPage('Detail',{item:data})
                 });
             }

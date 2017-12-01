@@ -53,9 +53,9 @@ class DetailComponent extends Component {
     );
 
     onNavigate = (item) => {
-       // this.props.checkLogin(()=>{
+       this.props.checkLogin(()=>{
             this.props.navigateToPage('Order', {item});
-        //});
+        });
 
     };
 

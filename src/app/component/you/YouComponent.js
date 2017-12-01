@@ -32,7 +32,6 @@ class YouComponent extends Component {
             data2: [
                 {id: 0, name: "Thông tin", image: require('../../../res/img/information.png')},
                 {id: 1, name: "Lịch sử đặt hàng", image: require('../../../res/img/history.png')},
-                {id: 2, name: "Tạo món", image: require('../../../res/img/cutlery.png')},
                 {id: 3, name: "Món ăn ưa thích", image: require('../../../res/img/ic_list_like.png')},
                 {id: 4, name: "Cài đặt", image: require('../../../res/img/settings.png')},
                 {id: 5, name: "Góp ý", image: require('../../../res/img/ic_note.png')},
@@ -62,7 +61,7 @@ class YouComponent extends Component {
         let {navigateToPage} = this.props;
         switch (id) {
             case 0:
-                navigateToPage('DetailCooker');
+                navigateToPage('DetailCooker',{item: this.props.user});
                 break;
             case 1:
                 this.props.checkLogin(() => {
@@ -73,12 +72,13 @@ class YouComponent extends Component {
                 navigateToPage('CreateFood');
                 break;
             case 3:
+                alert("Hello");
                 break;
             case 4:
-                navigateToPage('GetRequest');
+                //navigateToPage('GetRequest');
                 break;
             case 5:
-                navigateToPage('CoinHistory');
+                navigateToPage('GetRequest');
                 break;
             case 6:
                 removeToken();
@@ -90,15 +90,16 @@ class YouComponent extends Component {
         let {navigateToPage} = this.props;
         switch (id) {
             case 0:
-                this.props.navigateToPage('DetailCooker', {item: this.props.user})
+                this.props.navigateToPage('DetailCooker', {item: this.props.user});
                 break;
             case 1:
-                navigateToPage('OrderHistory')
+                navigateToPage('OrderHistory');
                 break;
             case 2:
                 navigateToPage('CreateFood');
                 break;
             case 3:
+                alert("Hello1");
                 break;
             case 4:
                 navigateToPage('GetRequest');
@@ -114,7 +115,8 @@ class YouComponent extends Component {
     renderItem = ({item}) => {
         return <MenuItem
             item={item}
-            onItemClick={() => this.handleItemClick(item.id)}
+            onItemClick={() =>
+            {this.isCheck ? this.handleItemClick1(item.id):this.handleItemClick(item.id)}}
         />
     };
 
@@ -149,6 +151,7 @@ class YouComponent extends Component {
 
     renderList = (isCooker) => {
         const data = isCooker ? this.state.data1 : this.state.data2;
+        this.isCheck = isCooker;
         return (
             <FlatList
                 style={styles.ViewFlatList}
