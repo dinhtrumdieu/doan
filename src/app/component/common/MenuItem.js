@@ -4,7 +4,7 @@ import Text from "../common/Text";
 import {sizeWidth} from "../../utils/Size";
 
 const deviceW = Dimensions.get('window').width;
-const containerW = (deviceW - sizeWidth(8.52)) / 3;
+const containerW = (deviceW - sizeWidth(8.52)) / 2.75;
 
 export default class MenuItem extends React.PureComponent {
 

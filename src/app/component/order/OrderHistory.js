@@ -11,25 +11,9 @@ import {actionGetListOrderHistory} from "../../redux/you/YouAction";
 import DateTimeUtil from "../../utils/DateTimeUtil";
 import {IMAGE_ADDRESS} from "../../api/Api";
 import {fMoney} from "../../utils/MoneyFormat";
+import {navigateToPage} from "../../router/NavigationAction";
 
 class OrderHistory extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            data: [
-                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 0),
-                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 1),
-                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 2),
-                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 2),
-                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 1),
-                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 0),
-                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 2),
-                new Order(1, "Feb 16,2017", "Phở hà nội", "Nguyễn Văn A", 2, "37.000d", "12:03 AM", require("../../../res/img/pho.jpg"), 1),
-            ],
-
-        }
-    }
 
     componentWillMount() {
         const user = this.props.user;
@@ -39,15 +23,15 @@ class OrderHistory extends Component {
     renderStatus = (status) => {
         if (status === 1) {
             return (
-                <AppText style={{color: "green", fontWeight: "bold", fontSize: 16, marginLeft: 5}}>Đã xác nhận</AppText>
+                <Text style={{color: "green"}}>Đã xác nhận</Text>
             );
-        }else if(status === 2){
+        } else if (status === 2) {
             return (
-                <AppText style={{color: "red", fontWeight: "bold", fontSize: 16, marginLeft: 5}}>Đã từ chối</AppText>
+                <Text style={{color: "red"}}>Đã từ chối</Text>
             );
-        }else{
+        } else {
             return (
-                <AppText style={{color: "blue", fontWeight: "bold", fontSize: 16, marginLeft: 5}}>Đang chờ</AppText>
+                <Text style={{color: "blue"}}>Đang chờ</Text>
             );
         }
     };
@@ -60,40 +44,30 @@ class OrderHistory extends Component {
         const thoigian = item && item.thoigian;
         const status = item && item.trangthai;
         const nameCooker = item && item.noitro && item.noitro.fullname;
+        const noitro = item && item.noitro;
         let time = DateTimeUtil.convertDateToStringYYYYmmDDhhMMss(new Date(thoigian));
         return (
-            <View style={styles.container}>
-                <AppText style={{
-                    alignSelf: "flex-end",
-                    marginRight: 15,
-                    marginTop: 5,
-                    color: "red",
-                    fontWeight: "bold"
-                }}>{time}</AppText>
-                <View style={styles.listfood}>
-                    <FetchImage style={{borderRadius: 5, width: 30, height: 30}}
+            <View style={styles.Container}>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <AppText style={{color: "#47473F"}}>{nameFood}</AppText>
+                    <AppText>{time}</AppText>
+                </View>
+
+                <View style={styles.ListFood}>
+                    <FetchImage style={{borderRadius: 5, width: 60, height: 60}}
                                 uri={imageFood}/>
-                    <View style={{flexDirection: "row"}}>
-                        <AppText
-                            style={{
-                                flex: 2,
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                color: "#47473F"
-                            }}>{nameFood}</AppText>
-                        <AppText style={{flex: 1, fontSize: 16}}>{soluong}</AppText>
-                        <AppText style={{flex: 1, fontSize: 16}}>{gia} vnđ</AppText>
-                    </View>
-                    <View style={{flexDirection: "row"}}>
-                        <AppText style={{color: "#A3A3A3", fontWeight: "bold"}}>Tên người nội trợ : </AppText>
-                        <AppText>{nameCooker}</AppText>
+                    <View>
+                        <AppText style={{flex: 1}}>Số lượng : {soluong}</AppText>
+                        <AppText>Giá: {fMoney(gia.toString())} vnđ</AppText>
                     </View>
                 </View>
-                <View style={{flexDirection: "row", marginTop: 5, marginBottom: 10}}>
-                    <AppText style={{color: "#111111", fontSize: 15, marginLeft: 10, marginTop: 5}}>Trạng
-                        thái:</AppText>
-                    {this.renderStatus(status)}
+                <View style={{flexDirection: "row"}}>
+                    <AppText>Tên người nội trợ : </AppText>
+                    <TouchableOpacity onPress={()=>{this.props.navigateToPage('DetailCooker',{item:noitro})}}>
+                        <AppText style={{color: 'blue'}}>{nameCooker}</AppText>
+                    </TouchableOpacity>
                 </View>
+                <Text>Trạng thái: {this.renderStatus(status)}</Text>
             </View>
         )
     };
@@ -124,16 +98,19 @@ class OrderHistory extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    Container: {
         flex: 1,
-        marginRight: 10,
-        marginLeft: 10,
+        marginHorizontal: 10,
         marginBottom: 10,
-        backgroundColor: "#FFFFFF"
+        backgroundColor: "#FFFFFF",
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+        borderRadius: 5,
     },
-    listfood: {
-        marginBottom: 15,
-        marginLeft: 10
+    ListFood: {
+        marginVertical: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     }
 });
 
@@ -144,4 +121,4 @@ function mapState(state) {
     }
 }
 
-export default connect(mapState, {actionGetListOrderHistory})(OrderHistory);
+export default connect(mapState, {actionGetListOrderHistory,navigateToPage})(OrderHistory);

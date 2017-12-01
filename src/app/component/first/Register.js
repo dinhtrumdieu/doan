@@ -3,13 +3,18 @@ import {
     View,
     TextInput, Text,
     TouchableOpacity,
-    Image, Dimensions, StyleSheet, ImageBackground
+    Image, Dimensions, StyleSheet, ImageBackground, Picker
 } from 'react-native';
 import {styles} from "./Login";
 import {APP_COLOR} from "../../../res/style/AppStyle";
 import {sizeWidth} from "../../utils/Size";
 import {connect} from "react-redux";
 import {goBack} from "../../router/NavigationAction";
+
+const data = [
+    {name: "Khách hàng", role: false},
+    {name: "Nội trợ", role: true},
+];
 
 class Register extends Component {
 
@@ -19,12 +24,45 @@ class Register extends Component {
             username: "",
             password: "",
             email: "",
-            confirmPassword: ""
+            phone: "",
+            address: "",
+            value: "",
+            role:0,
         }
     }
 
-    handleRegister = ()=>{
+    handleRegister = () => {
+        alert(this.state.username + this.state.password + this.state.email+this.state.phone+this.state.address+this.state.role)
+    };
 
+    renderPickerItem = (loaimonan) => {
+        return (
+            <Picker.Item label={loaimonan.name} value={loaimonan.name}/>
+        );
+    };
+
+    renderItem = () => {
+        let listPickerItem = [];
+        for (i = 0; i < data.length; i++) {
+            listPickerItem.push(this.renderPickerItem(data[i]))
+        }
+        return listPickerItem
+    };
+
+    getID = (itemValue, itemIndex) => {
+        this.setState({
+            value: itemValue,
+        });
+
+        if(itemIndex === 1){
+           this.setState({
+               role:true
+           });
+        }else{
+            this.setState({
+                role:false
+            });
+        }
     };
 
     render() {
@@ -46,7 +84,8 @@ class Register extends Component {
                     <View style={{marginLeft: 40, marginRight: 40}}>
                         <View style={styles.text_input}>
                             <Image style={{margin: 10}} source={require("../../../res/img/avatar.png")}/>
-                            <TextInput style={style.text_input} placeholder="username"
+                            <TextInput style={style.text_input}
+                                       placeholder="Tên đầy đủ"
                                        underlineColorAndroid="transparent"
                                        placeholderTextColor="#FFFFFF"
                                        onChangeText={(username) => this.setState({username})}/>
@@ -54,14 +93,14 @@ class Register extends Component {
                         <View style={styles.text_input}>
                             <Image style={{margin: 10}} source={require("../../../res/img/mail.png")}/>
                             <TextInput style={style.text_input} placeholderTextColor="#FFFFFF"
-                                       placeholder="email"
+                                       placeholder="Email"
                                        underlineColorAndroid="transparent"
                                        onChangeText={(email) => this.setState({email})}/>
                         </View>
                         <View style={styles.text_input}>
                             <Image style={{margin: 10}} source={require("../../../res/img/lock.png")}/>
                             <TextInput style={style.text_input} placeholderTextColor="#FFFFFF"
-                                       placeholder="password"
+                                       placeholder="Password"
                                        underlineColorAndroid="transparent"
                                        onChangeText={(password) => this.setState({password})}/>
                         </View>
@@ -69,17 +108,33 @@ class Register extends Component {
                             <Image style={{margin: 10}}
                                    source={require("../../../res/img/locked.png")}/>
                             <TextInput style={style.text_input} placeholderTextColor="#FFFFFF"
-                                       placeholder="confirm password"
+                                       placeholder="Số điện thoại"
                                        underlineColorAndroid="transparent"
-                                       onChangeText={(confirmPassword) => this.setState({confirmPassword})}/>
+                                       onChangeText={(phone) => this.setState({phone})}/>
                         </View>
-                        <TouchableOpacity>
-                            <Text style={styles.login} onPress={this.handleRegister}>Register</Text>
+                        <View style={styles.text_input}>
+                            <Image style={{margin: 10}}
+                                   source={require("../../../res/img/locked.png")}/>
+                            <TextInput style={style.text_input} placeholderTextColor="#FFFFFF"
+                                       placeholder="Địa chỉ"
+                                       underlineColorAndroid="transparent"
+                                       onChangeText={(address) => this.setState({address})}/>
+                        </View>
+                        <Picker
+                            style={{marginBottom:20}}
+                            mode="dropdown"
+                            selectedValue={this.state.value}
+                            onValueChange={(itemValue, itemIndex) => this.getID(itemValue, itemIndex)}>
+                            {this.renderItem()}
+                        </Picker>
+
+                        <TouchableOpacity onPress={this.handleRegister}>
+                            <Text style={styles.login}>Register</Text>
                         </TouchableOpacity>
                     </View>
                 </ImageBackground>
-                <TouchableOpacity style={{padding: sizeWidth(2.13),position:'absolute'}} onPress={this.props.goBack}>
-                    <Image style={{width: sizeWidth(6.4), height: sizeWidth(5),tintColor:APP_COLOR}}
+                <TouchableOpacity style={{padding: sizeWidth(2.13), position: 'absolute'}} onPress={this.props.goBack}>
+                    <Image style={{width: sizeWidth(6.4), height: sizeWidth(5), tintColor: APP_COLOR}}
                            resizeMode='contain'
                            source={require('../../../res/img/ic_back_white.png')}/>
                 </TouchableOpacity>
@@ -97,6 +152,6 @@ const style = StyleSheet.create({
         fontSize: 17,
         color: "#FFFFFF"
     }
-})
+});
 
-export default connect(null,{goBack})(Register);
+export default connect(null, {goBack})(Register);

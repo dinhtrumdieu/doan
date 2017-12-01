@@ -136,7 +136,8 @@ export const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     bottom: {
-        margin: 10,
+        marginTop:40,
+        marginHorizontal: 10,
         flexDirection: "row",
         justifyContent: "center"
     },

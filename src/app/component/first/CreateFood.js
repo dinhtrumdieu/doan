@@ -13,6 +13,7 @@ import {NoiTro} from "../../model/NoiTro";
 import {actionCreate} from "../../redux/CreateAction";
 import {getImage} from "../../utils/Store";
 import {fMoney} from "../../utils/MoneyFormat";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 class CreateFood extends Component {
     constructor(props) {
@@ -34,7 +35,7 @@ class CreateFood extends Component {
             price: price,
             category: 'Thể loại',
             index: 0,
-            update:false,
+            update: false,
         }
     }
 
@@ -73,7 +74,7 @@ class CreateFood extends Component {
                 this.setState({
                     imageUri,
                     path: response.uri,
-                    update:true,
+                    update: true,
                 });
                 this.props.actionCreate(this.state.path);
             }
@@ -154,59 +155,58 @@ class CreateFood extends Component {
                     }]}>
                         <Image source={require("../../../res/img/ic_camera.png")}/>
                     </TouchableOpacity>
-
-                    <View style={{
-                        flex: 2,
-                        width: Dimensions.get("window").width,
-                        marginVertical: 20,
-                        paddingHorizontal: 30
-                    }}>
-                        <TextInput style={{
-                            borderColor: "#99994d",
-                            borderWidth: 1,
-                            borderRadius: 5,
-                            paddingLeft: 10,
-                            paddingVertical: 10
-                        }}
-                                   placeholder=" food name"
-                                   maxLength={40}
-                                   value={this.state.nameFood}
-                                   onChangeText={(nameFood) => this.setState({nameFood})}
-                                   underlineColorAndroid="transparent"/>
-
-                        <View style={{marginVertical: 5, flexDirection: "row", justifyContent: "center"}}>
-                            <Picker
-                                style={{width: 150}}
-                                mode="dropdown"
-                                selectedValue={this.state.category}
-                                onValueChange={(itemValue, itemIndex) => this.getID(itemValue, itemIndex)}>
-                                {this.renderItemPicker()}
-                            </Picker>
-                            <TextInput style={styles.price}
-                                       multiline={true}
-                                       maxLength={7}
-                                       value={this.state.price}
-                                       onChangeText={(price) => this.setState({price})}
-                                       placeholder=" price..."
+                    <KeyboardAwareScrollView enableOnAndroid={true}>
+                        <View style={{
+                            flex: 2,
+                            width: Dimensions.get("window").width,
+                            marginVertical: 20,
+                            paddingHorizontal: 30
+                        }}>
+                            <TextInput style={{
+                                borderColor: "#99994d",
+                                borderWidth: 1,
+                                borderRadius: 5,
+                                paddingLeft: 10,
+                                paddingVertical: 10
+                            }}
+                                       placeholder=" food name"
+                                       maxLength={40}
+                                       value={this.state.nameFood}
+                                       onChangeText={(nameFood) => this.setState({nameFood})}
                                        underlineColorAndroid="transparent"/>
+                            <View style={{marginVertical: 5, flexDirection: "row", justifyContent: "center"}}>
+                                <Picker
+                                    style={{width: 150}}
+                                    mode="dropdown"
+                                    selectedValue={this.state.category}
+                                    onValueChange={(itemValue, itemIndex) => this.getID(itemValue, itemIndex)}>
+                                    {this.renderItemPicker()}
+                                </Picker>
+                                <TextInput style={styles.price}
+                                           multiline={true}
+                                           maxLength={7}
+                                           value={this.state.price}
+                                           onChangeText={(price) => this.setState({price})}
+                                           placeholder=" price..."
+                                           underlineColorAndroid="transparent"/>
+                            </View>
+                            <TextInput style={{
+                                borderColor: "#99994d",
+                                textAlignVertical: 'top',
+                                borderWidth: 1,
+                                borderRadius: 5,
+                                marginTop: 10,
+                                paddingLeft: 10,
+                                height: 100
+                            }}
+                                       placeholder=" description..."
+                                       value={this.state.preview}
+                                       multiline={true}
+                                       onChangeText={(preview) => this.setState({preview})}
+                                       underlineColorAndroid="transparent"/>
+                            {this.renderButton(isUpdate)}
                         </View>
-
-                        <TextInput style={{
-                            borderColor: "#99994d",
-                            textAlignVertical: 'top',
-                            borderWidth: 1,
-                            borderRadius: 5,
-                            marginTop: 10,
-                            paddingLeft: 10,
-                            height: 100
-                        }}
-                                   placeholder=" description..."
-                                   value={this.state.preview}
-                                   multiline={true}
-                                   onChangeText={(preview) => this.setState({preview})}
-                                   underlineColorAndroid="transparent"/>
-                        {this.renderButton(isUpdate)}
-                    </View>
+                    </KeyboardAwareScrollView>
                 </View>
             </View>
         )
@@ -224,16 +224,18 @@ class CreateFood extends Component {
     };
 
     onUpdateFood = (id, name, preview, price) => {
-        if(this.state.update){
+        if (this.state.update) {
             getImage().then(data => {
                 if (data) {
+                    alert(JSON.stringify(data))
+                    l
                     const theloaimon = this.props.listCategory[this.state.index];
                     updateFood(id, name, preview, price, data, "nguyenlieu", theloaimon, this.props.user).then(data => {
                         this.props.resetPage('Main')
                     })
                 }
             });
-        }else{
+        } else {
             const {item} = this.props.navigation.state.params;
             const image = item && item.hinhanh || null;
             const theloaimon = this.props.listCategory[this.state.index];
