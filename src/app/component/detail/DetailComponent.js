@@ -69,6 +69,7 @@ class DetailComponent extends Component {
         const cooker = item && item.noitro;
         const nameCooker = item && item.noitro && item.noitro.fullname;
         const imageCooker = item && item.noitro && IMAGE_ADDRESS+ item.noitro.hinhanh;
+        const somon = item && item.noitro && item.noitro.somon;
         return (
             <View style={{flex: 1, backgroundColor: '#f5f5f5'}}>
                 <ToolBar left={this.renderLeftToolBar()}
@@ -110,7 +111,7 @@ class DetailComponent extends Component {
                             <View style={{marginLeft: 10, alignSelf: 'center'}}>
                                 <Text style={{fontSize: 15}}>{nameCooker}</Text>
                                 <Text>
-                                    <Text style={{color: 'blue'}}>854 </Text>
+                                    <Text style={{color: 'blue'}}>{somon} </Text>
                                     món ăn *
                                     <Text style={{color: 'blue'}}> 9 </Text>
                                     quan tâm
@@ -123,12 +124,6 @@ class DetailComponent extends Component {
                                 </TouchableOpacity>
                             </View>
                         </TouchableOpacity>
-                        <View style={{marginHorizontal: 20}}>
-                            <Text style={styles.TextNameFood}>Nguyên liệu</Text>
-                            <WrapText>
-                                {test}
-                            </WrapText>
-                        </View>
                     </View>
                 </ScrollView>
                 <View style={{

@@ -38,8 +38,6 @@ class HomeComponent extends Component {
         )
     };
 
-    _rightToolBar = () => (<CartIcon/>);
-
     renderItem = ({item}) => {
         return <ItemFood item={item}/>
     };
