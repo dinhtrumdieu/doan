@@ -74,8 +74,8 @@ export const getListFoodSeach = (keyword) => {
     return request('mon-an/name/'+keyword, 'GET')
 };
 
-export const getListOrder = () => {
-    return request('mon-an/name/', 'GET')
+export const getListOrder = (id) => {
+    return request('don-hang/noi-tro/'+id, 'GET')
 };
 
 export const uploadImage = async (path: string) => {

@@ -9,9 +9,9 @@ export const actionOrder = (path)=>{
     }
 };
 
-export const actionGetListOrder = () => {
+export const actionGetListOrder = (id) => {
     return dispatch => {
-        getListOrder().then((data) => {
+        getListOrder(id).then((data) => {
             dispatch(getListOrderSuccess(data))
         }).catch(error => dispatch(alert(error)))
     }

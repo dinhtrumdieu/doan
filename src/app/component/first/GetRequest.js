@@ -7,20 +7,16 @@ import BackIcon from "../common/BackIcon";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
+import {actionGetListOrder} from "../../redux/order/OrderAction";
+import DateTimeUtil from "../../utils/DateTimeUtil";
+import {IMAGE_ADDRESS} from "../../api/Api";
+import FetchImage from "../common/FetchImage";
 
 class GetRequest extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            data: [
-                new Request(1, "Nguyễn Văn A", "", "", "../../../res/img/girl.png", "Phở Hà Nội", 2, "120000", "../../../res/img/pho.jpg", "4 giờ trước", "approved"),
-                new Request(2, "Nguyễn Văn A", "", "", "../../../res/img/girl.png", "Phở Hà Nội", 2, "120000", "../../../res/img/pho.jpg", "4 giờ trước", "rejected"),
-                new Request(3, "Nguyễn Văn A", "", "", "../../../res/img/girl.png", "Phở Hà Nội", 2, "120000", "../../../res/img/pho.jpg", "4 giờ trước", "approved"),
-                new Request(4, "Nguyễn Văn A", "", "", "../../../res/img/girl.png", "Phở Hà Nội", 2, "120000", "../../../res/img/pho.jpg", "4 giờ trước", ""),
-                new Request(5, "Nguyễn Văn A", "", "", "../../../res/img/girl.png", "Phở Hà Nội", 2, "120000", "../../../res/img/pho.jpg", "4 giờ trước", "rejected"),
-                new Request(6, "Nguyễn Văn A", "", "", "../../../res/img/girl.png", "Phở Hà Nội", 2, "120000", "../../../res/img/pho.jpg", "4 giờ trước", ""),
-            ]
-        }
+        const user = this.props.user;
+        this.props.actionGetListOrder(user.id);
     }
 
     static _renderStatus({item}) {
@@ -33,25 +29,31 @@ class GetRequest extends Component {
         }
     }
 
-    handleOnpress = ()=>{
+    handleOnPress = ()=>{
       this.props.navigateToPage('ShowRequest');
     };
 
     renderItem = ({item}) => {
+        const nameKhachHang = item && item.khachhang && item.khachhang.fullname;
+        const avatar = item && item.khachhang && IMAGE_ADDRESS+ item.khachhang.hinhanh;
+        const nameFood = item && item.chitietdonhang && item.chitietdonhang[0].tenmonan;
+        const soluong = item && item.chitietdonhang && item.chitietdonhang[0].soluong;
+        const thoigian = item && item.thoigian;
+        let time = DateTimeUtil.convertDateToStringYYYYmmDDhhMMss(new Date(thoigian));
         return (
-            <TouchableOpacity onPress={this.handleOnpress} style={styles.container}>
-                <Image style={styles.avatar} source={require("../../../res/img/cooker.jpg")}/>
+            <TouchableOpacity onPress={this.handleOnPress} style={styles.container}>
+                <FetchImage style={styles.avatar} uri={avatar}/>
                 <View style={styles.centerItem}>
-                    <AppText style={styles.user}>{item.username}</AppText>
+                    <AppText style={styles.user}>{nameKhachHang}</AppText>
                     <View style={styles.food}>
                         <AppText style={styles.order}>Order for >> </AppText>
-                        <AppText style={styles.foodname}>{item.foodname}</AppText>
-                        <AppText style={styles.quantity}>{item.quantity}</AppText>
+                        <AppText style={styles.foodname}>{nameFood}</AppText>
+                        <AppText style={styles.quantity}>{soluong}</AppText>
                         <TouchableOpacity>
                             {GetRequest._renderStatus({item})}
                         </TouchableOpacity>
                     </View>
-                    <AppText>{item.time}</AppText>
+                    <AppText>{time}</AppText>
                 </View>
                 <AppText style={{fontWeight:"bold"}}>X</AppText>
             </TouchableOpacity>
@@ -73,7 +75,7 @@ class GetRequest extends Component {
                          center={this.renderCenter()}/>
                 <FlatList
                     style={{marginTop: 20}}
-                    data={this.state.data}
+                    data={this.props.listOrder}
                     keyExtractor={(item, index) => item._id}
                     renderItem={this.renderItem}/>
             </View>
@@ -133,5 +135,12 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null,{navigateToPage})(GetRequest);
+function mapState(state) {
+    return {
+        listOrder: state.orderState.listOrder,
+        user: state.meState.user,
+    }
+}
+
+export default connect(mapState,{navigateToPage,actionGetListOrder})(GetRequest);
 

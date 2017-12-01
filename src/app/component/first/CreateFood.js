@@ -23,10 +23,11 @@ class CreateFood extends Component {
         const preview = item && item.chitiet ? item.chitiet : "";
         const price = item && item.gia ? item.gia.toString() : '0';
         const image = item && item.hinhanh && IMAGE_ADDRESS + item.hinhanh || null;
+
         this.state = {
             id: id,
             content: '',
-            imageUri: "uri:"+image,
+            imageUri: {uri:image} ,
             path: '',
             nameFood: name,
             preview: preview,
@@ -200,11 +201,11 @@ class CreateFood extends Component {
                 const {item} = this.props.navigation.state.params;
                 if (item) {
                     updateFood(id, name, preview, price,  data, "nguyenlieu", theloaimon, this.props.user).then(data => {
-                        this.props.navigateToPage('Detail', {item: data})
+                        this.props.resetPage('Main')
                     });
                 } else {
                     createFood(name, preview, price,  data, "nguyenlieu", theloaimon, this.props.user).then(data => {
-                        this.props.navigateToPage('Detail', {item: data})
+                        his.props.resetPage('Main')
                     });
                 }
             }

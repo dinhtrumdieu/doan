@@ -21,21 +21,17 @@ class YouComponent extends Component {
 
         this.state = {
             data1: [
-                {id: 0, name: "Thông tin", image: require('../../../res/img/information.png')},
-                {id: 1, name: "Lịch sử đặt hàng", image: require('../../../res/img/history.png')},
-                {id: 2, name: "Tạo món", image: require('../../../res/img/cutlery.png')},
-                {id: 3, name: "Cài đặt", image: require('../../../res/img/settings.png')},
-                {id: 4, name: "Món ăn ưa thích", image: require('../../../res/img/ic_list_like.png')},
-                {id: 5, name: "Đơn đặt hàng", image: require('../../../res/img/list.png')},
-                {id: 6, name: "Món ăn của tôi", image: require('../../../res/img/groceries.png')},
-                {id: 7, name: "Góp ý", image: require('../../../res/img/ic_note.png')},
+                {id: 0, name: "Thông tin cá nhân", image: require('../../../res/img/information.png')},
+                {id: 1, name: "Tạo món", image: require('../../../res/img/cutlery.png')},
+                {id: 2, name: "Trang cá nhân", image: require('../../../res/img/settings.png')},
+                {id: 3, name: "Món ăn ưa thích", image: require('../../../res/img/ic_list_like.png')},
+                {id: 4, name: "Đơn đặt hàng", image: require('../../../res/img/list.png')},
+                {id: 5, name: "Món ăn của tôi", image: require('../../../res/img/groceries.png')},
             ],
             data2: [
-                {id: 0, name: "Thông tin", image: require('../../../res/img/information.png')},
+                {id: 0, name: "Thông tin cá nhân", image: require('../../../res/img/information.png')},
                 {id: 1, name: "Lịch sử đặt hàng", image: require('../../../res/img/history.png')},
-                {id: 3, name: "Món ăn ưa thích", image: require('../../../res/img/ic_list_like.png')},
-                {id: 4, name: "Cài đặt", image: require('../../../res/img/settings.png')},
-                {id: 5, name: "Góp ý", image: require('../../../res/img/ic_note.png')},
+                {id: 2, name: "Món ăn ưa thích", image: require('../../../res/img/ic_list_like.png')},
             ],
         }
     }
@@ -59,56 +55,39 @@ class YouComponent extends Component {
     }
 
     handleItemClick1 = (id) => {
-        let {navigateToPage} = this.props;
+        let {navigateToPage, user} = this.props;
         switch (id) {
             case 0:
-                navigateToPage('DetailCooker', {item: this.props.user});
+                navigateToPage('InforYou', {user});
                 break;
             case 1:
-                this.props.checkLogin(() => {
-                    navigateToPage('OrderHistory')
-                });
+                navigateToPage('CreateFood', {item: null});
                 break;
             case 2:
-                navigateToPage('CreateFood',{item:null});
+                navigateToPage('DetailCooker', {item: this.props.user});
                 break;
             case 3:
-                alert("Hello");
-                break;
-            case 4:
                 //navigateToPage('GetRequest');
                 break;
-            case 5:
+            case 4:
                 navigateToPage('GetRequest');
                 break;
-            case 6:
+            case 5:
                 navigateToPage('FoodLikes');
                 break;
         }
     };
 
     handleItemClick = (id) => {
-        let {navigateToPage} = this.props;
+        let {navigateToPage, user} = this.props;
         switch (id) {
             case 0:
-                this.props.navigateToPage('DetailCooker', {item: this.props.user});
+                navigateToPage('InforYou', {user});
                 break;
             case 1:
                 navigateToPage('OrderHistory');
                 break;
             case 2:
-                navigateToPage('CreateFood',{item:null});
-                break;
-            case 3:
-                alert("Hello1");
-                break;
-            case 4:
-                //navigateToPage('GetRequest');
-                break;
-            case 5:
-                navigateToPage('CoinHistory');
-                break;
-            case 6:
                 break;
         }
     };
@@ -140,7 +119,7 @@ class YouComponent extends Component {
             }}/>
             <View style={{justifyContent: 'center', alignItems: 'center', marginVertical: 25, position: 'absolute',}}>
                 <TouchableOpacity onPress={() => {
-                    this.props.checkLogin(()=>{
+                    this.props.checkLogin(() => {
                         this.props.navigateToPage('InforYou', {user})
                     })
                 }}>
@@ -180,11 +159,11 @@ class YouComponent extends Component {
                     {this.renderList(isCooker)}
                     <TouchableOpacity onPress={this.logout} style={{
                         paddingLeft: 20,
-                        paddingRight:5,
+                        paddingRight: 5,
                         paddingVertical: 6,
-                        alignItems:'flex-end',
-                        borderRadius:5,
-                        justifyContent:'center',
+                        alignItems: 'flex-end',
+                        borderRadius: 5,
+                        justifyContent: 'center',
                         position: 'absolute',
                         top: 5,
                         right: 5,
