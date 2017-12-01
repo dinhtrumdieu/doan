@@ -39,7 +39,7 @@ class HomeComponent extends Component {
     };
 
     renderItem = ({item}) => {
-        return <ItemFood item={item}/>
+        return <ItemFood key={item.id} item={item}/>
     };
 
     render() {
@@ -53,7 +53,7 @@ class HomeComponent extends Component {
                     <FlatList
                         data={this.props.listFood}
                         scrollEnabled={false}
-                        keyExtractor={(item, index) => item._id}
+                        keyExtractor={(item, index) => item.id}
                         renderItem={this.renderItem}/>
                 </ScrollView>
             </View>
