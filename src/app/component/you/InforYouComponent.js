@@ -9,6 +9,7 @@ import {navigateToPage} from "../../router/NavigationAction";
 import BackIcon from "../common/BackIcon";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import FetchImage from "../common/FetchImage";
+import {IMAGE_ADDRESS} from "../../api/Api";
 
 class InforYouComponent extends Component {
 
@@ -17,12 +18,12 @@ class InforYouComponent extends Component {
     );
 
     renderCenterToolBar = () => (
-        <Text style={TOOL_BAR_TEXT}>Account</Text>
+        <Text style={TOOL_BAR_TEXT}>Thông tin cá nhân</Text>
     );
 
     render() {
         const {user} = this.props.navigation.state.params;
-        const avatar = user && user.hinhanh;
+        const avatar = user && user.hinhanh && IMAGE_ADDRESS + user.hinhanh;
         const name = user && user.fullname;
         const diachi = user && user.diachi;
         const sodienthoai = user && user.sodienthoai;
@@ -56,7 +57,7 @@ class InforYouComponent extends Component {
                     <View style={{width: '100%', borderWidth: 0.8, borderColor: '#c6c6c6', marginVertical: 10}}/>
                 </View>
                 <TouchableOpacity
-                    onPress={()=>{this.props.navigateToPage('ChangeInfor')}}
+                    onPress={()=>{this.props.navigateToPage('ChangeInfor',{user})}}
                     style={{
                     width: 200,
                     height: 35,

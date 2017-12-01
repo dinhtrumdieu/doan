@@ -3,11 +3,15 @@ import {
     View,
     TextInput, Text,
     TouchableOpacity,
-    Image, Dimensions, StyleSheet
+    Image, Dimensions, StyleSheet, ImageBackground
 } from 'react-native';
 import {styles} from "./Login";
+import {APP_COLOR} from "../../../res/style/AppStyle";
+import {sizeWidth} from "../../utils/Size";
+import {connect} from "react-redux";
+import {goBack} from "../../router/NavigationAction";
 
-export class Register extends Component {
+class Register extends Component {
 
     constructor(props) {
         super(props);
@@ -22,7 +26,7 @@ export class Register extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Image style={{
+                <ImageBackground style={{
                     flex: 1,
                     width: Dimensions.get('window').width,
                     height: Dimensions.get('window').height,
@@ -71,16 +75,26 @@ export class Register extends Component {
                             }}>Register</Text>
                         </TouchableOpacity>
                     </View>
-                </Image>
+                </ImageBackground>
+                <TouchableOpacity style={{padding: sizeWidth(2.13),position:'absolute'}} onPress={this.props.goBack}>
+                    <Image style={{width: sizeWidth(6.4), height: sizeWidth(5),tintColor:APP_COLOR}}
+                           resizeMode='contain'
+                           source={require('../../../res/img/ic_back_white.png')}/>
+                </TouchableOpacity>
             </View>
         );
     }
 }
 
 const style = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
     text_input: {
         flex: 1,
         fontSize: 17,
         color: "#FFFFFF"
     }
 })
+
+export default connect(null,{goBack})(Register);

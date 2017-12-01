@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import {fMoney} from "../../utils/MoneyFormat";
 import FetchImage from "./FetchImage";
+import {IMAGE_ADDRESS} from "../../api/Api";
 const mota = 'Bánh khoai cay với cách làm khá đơn giản này chắc chắn sẽ chinh phục vị giác bất kì ai ngay từ lần đầu thưởng thức.' +
     ' Từng miếng bánh vàng ươm, bóng bẩy trông cực kì bắt mắt';
 class ItemFood extends Component {
@@ -21,10 +22,9 @@ class ItemFood extends Component {
         const name = item && item.tenmonan ? item.tenmonan:'';
         const preview = item && item.chitiet ? item.chitiet : mota;
         const price = item && item.gia ? item.gia:'0';
-        const img = item && item.loaimonan  && item.loaimonan.hinhanh;
         const cooker = item && item.noitro;
         const nameCooker = item && item.noitro && item.noitro.fullname;
-        const image = item && item.images ? item.images : require('../../../res/img/pho.jpg');
+        const image = item  && item.hinhanh && IMAGE_ADDRESS+item.hinhanh;
         return (
             <TouchableOpacity onPress={()=>this.onClick(item)} style={styles.Container}>
                 <View style={{flex: 1, flexDirection: 'row', marginLeft: 25, marginTop: 10, backgroundColor: '#f3f3f3',borderRadius:5}}>
@@ -45,7 +45,7 @@ class ItemFood extends Component {
                     </View>
                 </View>
                 <FetchImage
-                    uri={img}
+                    uri={image}
                     style={{height: 85, width: 85, borderRadius: 10, position: 'absolute'}}
                 />
                 {/*<Image style={{height: 85, width: 85, borderRadius: 10, position: 'absolute'}}

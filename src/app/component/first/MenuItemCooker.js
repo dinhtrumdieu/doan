@@ -3,6 +3,7 @@ import {Image, View, StyleSheet, Text, TouchableOpacity} from "react-native";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import FetchImage from "../common/FetchImage";
+import {IMAGE_ADDRESS} from "../../api/Api";
 
  class MenuItemCooker extends Component {
 
@@ -40,7 +41,7 @@ import FetchImage from "../common/FetchImage";
 
     render() {
         let {item} = this.props;
-        let image = item && item.hinhanh;
+        const image = item && item.hinhanh && IMAGE_ADDRESS + item.hinhanh;
         let name =  item && item.fullname;
         return (
             <View style={{flex: 1, alignItems: "center", marginTop: 25}}>

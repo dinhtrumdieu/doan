@@ -7,12 +7,12 @@ import FetchImage from "../common/FetchImage";
 import {fMoney} from "../../utils/MoneyFormat";
 import {IMAGE_ADDRESS} from "../../api/Api";
 
-class MenuItemFood extends Component {
+class ItemUpdateFood extends Component {
 
     renderFood = (item) => {
         const image = item && item.hinhanh && IMAGE_ADDRESS + item.hinhanh;
         return (<View style={{flex: 1}}>
-            <TouchableOpacity onPress={() => this.props.navigateToPage('Detail', {item})}>
+            <TouchableOpacity onPress={() => this.props.navigateToPage('CreateFood', {item})}>
                 <FetchImage style={{borderRadius: 5, width: Dimensions.get("window").width / 2, height: 100}}
                             uri={image}/>
             </TouchableOpacity>
@@ -31,4 +31,4 @@ class MenuItemFood extends Component {
     }
 }
 
-export default connect(null, {navigateToPage})(MenuItemFood);
+export default connect(null , {navigateToPage})(ItemUpdateFood);

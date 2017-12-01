@@ -53,11 +53,9 @@ export const actionLogin = (username, password) => {
                 saveProfileInfo(JSON.stringify(data));
                 dispatch(profileSuccess(data));
                 dispatch(goBack());
-           }else{
-                alert("email sai");
-            }
+           }
         }).catch(error => {
-            alert("Error" + error);
+            alert("Tài khoản không chính xác");
         })
     }
 };

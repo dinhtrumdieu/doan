@@ -7,28 +7,32 @@ import ImagePicker from "react-native-image-picker";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import {sizeWidth} from "../../utils/Size";
-import {createFood, uploadImage} from "../../api/Api";
+import {createFood, SERVER_ADDRESS, updateFood, uploadImage} from "../../api/Api";
 import {Loaimonan} from "../../model/Loaimonan";
 import {NoiTro} from "../../model/NoiTro";
 import {actionCreate} from "../../redux/CreateAction";
 import {getImage} from "../../utils/Store";
-
-
-let loaimonan = new Loaimonan(3, "Món khai vị", "jjfjskafksafa","1321323");
-let noitro = new NoiTro(7, "dinhtrum@gmail.com", "123456", "Nguyễn Trung Định","123231", "Hòa Khánh", "01982772", 0, 0,true);
+import {fMoney} from "../../utils/MoneyFormat";
 
 class CreateFood extends Component {
     constructor(props) {
         super(props);
+        const {item} = this.props.navigation.state.params;
+        const id = item && item.id;
+        const name = item && item.tenmonan ? item.tenmonan : "";
+        const preview = item && item.chitiet ? item.chitiet : "";
+        const price = item && item.gia ? item.gia.toString() : '0';
+        const image = item && item.hinhanh || null;
         this.state = {
+            id: id,
             content: '',
-            imageUri: null,
+            imageUri: 'uri:'+image,
             path: '',
-            nameFood: null,
-            preview: null,
-            price: null,
-            category:'Thể loại',
-            index:0,
+            nameFood: name,
+            preview: preview,
+            price: price,
+            category: 'Thể loại',
+            index: 0,
         }
     }
 
@@ -82,7 +86,7 @@ class CreateFood extends Component {
     renderItemPicker = () => {
         const data = this.props.listCategory;
         let listPickerItem = [];
-        if(data){
+        if (data) {
             for (i = 0; i < data.length; i++) {
                 listPickerItem.push(this.renderPickerItem(data[i]))
             }
@@ -90,23 +94,15 @@ class CreateFood extends Component {
         return listPickerItem
     };
 
-    getID = (itemValue,itemIndex)=>{
+    getID = (itemValue, itemIndex) => {
         const data = this.props.listCategory;
         this.setState({
-            language: itemValue,
+            category: itemValue,
+            index: itemIndex
         });
-        alert(data[itemIndex].id)
     };
 
     render() {
-        let data = [{
-            value: 'chicken',
-        }, {
-            value: 'fish',
-        }, {
-            value: 'pig',
-        }];
-
         return (
             <View style={styles.container}>
                 <ToolBar
@@ -141,7 +137,13 @@ class CreateFood extends Component {
                         marginVertical: 20,
                         paddingHorizontal: 30
                     }}>
-                        <TextInput style={{borderColor: "#99994d", borderWidth: 1, borderRadius: 5,paddingLeft:10,paddingVertical:10}}
+                        <TextInput style={{
+                            borderColor: "#99994d",
+                            borderWidth: 1,
+                            borderRadius: 5,
+                            paddingLeft: 10,
+                            paddingVertical: 10
+                        }}
                                    placeholder=" food name"
                                    maxLength={40}
                                    value={this.state.nameFood}
@@ -150,10 +152,10 @@ class CreateFood extends Component {
 
                         <View style={{marginVertical: 5, flexDirection: "row", justifyContent: "center"}}>
                             <Picker
-                                style={{width:150}}
+                                style={{width: 150}}
                                 mode="dropdown"
-                                selectedValue={this.state.language}
-                                onValueChange={(itemValue, itemIndex) => this.getID(itemValue,itemIndex)}>
+                                selectedValue={this.state.category}
+                                onValueChange={(itemValue, itemIndex) => this.getID(itemValue, itemIndex)}>
                                 {this.renderItemPicker()}
                             </Picker>
                             <TextInput style={styles.price}
@@ -171,7 +173,7 @@ class CreateFood extends Component {
                             borderWidth: 1,
                             borderRadius: 5,
                             marginTop: 10,
-                            paddingLeft:10,
+                            paddingLeft: 10,
                             height: 100
                         }}
                                    placeholder=" description..."
@@ -181,7 +183,7 @@ class CreateFood extends Component {
                                    underlineColorAndroid="transparent"/>
 
                         <TouchableOpacity onPress={() => {
-                            this.onClick(this.state.nameFood, this.state.preview, this.state.price)
+                            this.onClick(this.state.id, this.state.nameFood, this.state.preview, this.state.price)
                         }}>
                             <Text style={styles.create}> Create </Text>
                         </TouchableOpacity>
@@ -191,13 +193,22 @@ class CreateFood extends Component {
         )
     }
 
-    onClick = (name, preview, price) => {
-        getImage().then(data=>{
-            if(data){
+    onClick = (id, name, preview, price) => {
+        getImage().then(data => {
+            if (data) {
                 const theloaimon = this.props.listCategory[this.state.index];
-                createFood(name, preview, price, data, "asdsds", theloaimon, this.props.user).then(data=>{
-                    this.props.navigateToPage('Detail',{item:data})
-                });
+                const {item} = this.props.navigation.state.params;
+                if (item) {
+                    updateFood(id, name, preview, price, SERVER_ADDRESS + '/files/' + data, "nguyenlieu", theloaimon, this.props.user).then(data => {
+                        this.props.navigateToPage('Detail', {item: data})
+                    });
+                } else {
+                    createFood(name, preview, price, SERVER_ADDRESS + '/files/' + data, "nguyenlieu", theloaimon, this.props.user).then(data => {
+                        this.props.navigateToPage('Detail', {item: data})
+                    });
+                }
+            }{
+                alert("Vui lòng chọn ảnh");
             }
         });
 
@@ -220,7 +231,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginLeft: 10,
         borderRadius: 5,
-        paddingLeft:10,
+        paddingLeft: 10,
     },
     create: {
         borderRadius: 10,

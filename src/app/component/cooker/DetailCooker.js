@@ -10,6 +10,7 @@ import {navigateToPage} from "../../router/NavigationAction";
 import {connect} from "react-redux";
 import {actionGetListFoodCookers} from "../../redux/cooker/CookerAction";
 import FetchImage from "../common/FetchImage";
+import {IMAGE_ADDRESS} from "../../api/Api";
 
 class DetailCooker extends Component {
 
@@ -49,7 +50,7 @@ class DetailCooker extends Component {
 
     render() {
         const {item} = this.props.navigation.state.params;
-        const image = item && item.hinhanh;
+        const image = item && item.hinhanh && IMAGE_ADDRESS + item.hinhanh;
         const name =  item && item.fullname;
         const address =  item && item.diachi;
         return (

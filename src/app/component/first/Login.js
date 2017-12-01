@@ -6,11 +6,15 @@ import {
     TouchableOpacity,
     Image,
     Text,
-    Dimensions
+    Dimensions, ImageBackground
 } from 'react-native';
 import AppText from "../common/Text"
 import {connect} from "react-redux";
 import {actionLogin} from "../../redux/login/LoginAction";
+import {goBack} from "../../router/NavigationAction";
+import {sizeWidth} from "../../utils/Size";
+import {APP_COLOR} from "../../../res/style/AppStyle";
+
 
 class Login extends Component {
     constructor(props) {
@@ -24,8 +28,7 @@ class Login extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Image style={styles.background_image} source={require("../../../res/img/bg_general.png")}>
-
+                <ImageBackground style={styles.background_image} source={require("../../../res/img/bg_general.png")}>
                     <AppText style={styles.logo}>MommyCook</AppText>
                     <View style={{margin: 30}}>
                         <View style={styles.text_input}>
@@ -50,14 +53,18 @@ class Login extends Component {
                             }>Login</AppText>
                         </TouchableOpacity>
                         <View style={styles.bottom}>
-                            <AppText style={styles.forget}>Forgot_password</AppText>
                             <Text style={styles.register} onPress={() => {
                                 this.props.navigation.navigate("register")
                             }}>Register
                             </Text>
                         </View>
                     </View>
-                </Image>
+                </ImageBackground>
+                <TouchableOpacity style={{padding: sizeWidth(2.13),position:'absolute'}} onPress={this.props.goBack}>
+                    <Image style={{width: sizeWidth(6.4), height: sizeWidth(5),tintColor:APP_COLOR}}
+                           resizeMode='contain'
+                           source={require('../../../res/img/ic_back_white.png')}/>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -66,8 +73,6 @@ class Login extends Component {
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
     },
     background_image: {
         flex: 1,
@@ -116,8 +121,9 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 17,
         marginLeft: 10,
+        color:'blue',
         textDecorationLine: "underline"
     }
 });
 
-export default connect(null,{actionLogin})(Login);
+export default connect(null,{actionLogin,goBack})(Login);

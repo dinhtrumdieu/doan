@@ -12,6 +12,7 @@ import YouNotLoginComponent from "./YouNotLoginComponent";
 import Cookers from "../cooker/Cookers";
 import FetchImage from "../common/FetchImage";
 import {actionGetProfile} from "../../redux/you/YouAction";
+import {IMAGE_ADDRESS} from "../../api/Api";
 
 class YouComponent extends Component {
 
@@ -61,7 +62,7 @@ class YouComponent extends Component {
         let {navigateToPage} = this.props;
         switch (id) {
             case 0:
-                navigateToPage('DetailCooker',{item: this.props.user});
+                navigateToPage('DetailCooker', {item: this.props.user});
                 break;
             case 1:
                 this.props.checkLogin(() => {
@@ -69,7 +70,7 @@ class YouComponent extends Component {
                 });
                 break;
             case 2:
-                navigateToPage('CreateFood');
+                navigateToPage('CreateFood',{item:null});
                 break;
             case 3:
                 alert("Hello");
@@ -81,7 +82,7 @@ class YouComponent extends Component {
                 navigateToPage('GetRequest');
                 break;
             case 6:
-                removeToken();
+                navigateToPage('FoodLikes');
                 break;
         }
     };
@@ -96,34 +97,34 @@ class YouComponent extends Component {
                 navigateToPage('OrderHistory');
                 break;
             case 2:
-                navigateToPage('CreateFood');
+                navigateToPage('CreateFood',{item:null});
                 break;
             case 3:
                 alert("Hello1");
                 break;
             case 4:
-                navigateToPage('GetRequest');
+                //navigateToPage('GetRequest');
                 break;
             case 5:
                 navigateToPage('CoinHistory');
                 break;
             case 6:
-                removeToken();
                 break;
         }
     };
     renderItem = ({item}) => {
         return <MenuItem
             item={item}
-            onItemClick={() =>
-            {this.isCheck ? this.handleItemClick1(item.id):this.handleItemClick(item.id)}}
+            onItemClick={() => {
+                this.isCheck ? this.handleItemClick1(item.id) : this.handleItemClick(item.id)
+            }}
         />
     };
 
     keyExtractor = (item) => item.id;
 
     renderHeader = (user) => {
-        const avatar = user && user.hinhanh;
+        const avatar = user && user.hinhanh && IMAGE_ADDRESS + user.hinhanh;
         const name = user && user.fullname;
         return (<ImageBackground source={require('../../../res/img/bg_cookerfood.jpg')} style={{
             alignItems: 'center',
@@ -162,6 +163,11 @@ class YouComponent extends Component {
             />)
     };
 
+    logout = () => {
+        removeToken();
+        this.props.loginTokenSuccess(null);
+    };
+
     render() {
         if (this.props.isLogin) {
             const user = this.props.user;
@@ -170,6 +176,19 @@ class YouComponent extends Component {
                 <View style={styles.Container}>
                     {this.renderHeader(user)}
                     {this.renderList(isCooker)}
+                    <TouchableOpacity onPress={this.logout} style={{
+                        paddingLeft: 20,
+                        paddingRight:5,
+                        paddingVertical: 6,
+                        alignItems:'flex-end',
+                        borderRadius:5,
+                        justifyContent:'center',
+                        position: 'absolute',
+                        top: 5,
+                        right: 5,
+                    }}>
+                        <Text style={{color: '#fff'}}>Đăng xuất</Text>
+                    </TouchableOpacity>
                 </View>
             );
         } else {

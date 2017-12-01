@@ -7,6 +7,7 @@ import WrapText from "../common/WrapText";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
 import FetchImage from "../common/FetchImage";
+import {IMAGE_ADDRESS} from "../../api/Api";
 
 class ItemCategoryLeft extends Component {
 
@@ -20,8 +21,7 @@ class ItemCategoryLeft extends Component {
         const name = item && item.name ? item.name:'';
         const preview = item && item.mota ? item.mota:'';
         const price = item && item.price ? item.price:'0';
-        const img = item && item.hinhanh;
-        const image = item && item.images ? item.images : require('../../../res/img/pho.jpg');
+        const image = item && item.hinhanh && IMAGE_ADDRESS + item.hinhanh;
         return (
             <TouchableOpacity onPress={()=>this.onClick(item)} style={styles.Container}>
                 <View style={{flex: 1, flexDirection: 'row', marginLeft: 25, marginTop: 10, backgroundColor: '#fff',borderRadius:5}}>
@@ -47,7 +47,7 @@ class ItemCategoryLeft extends Component {
                     </View>
                 </View>
                 <FetchImage style={{height: 75, width: 75, borderRadius: 10, position: 'absolute'}}
-                       uri={img}/>
+                       uri={image}/>
             </TouchableOpacity>
         );
     }

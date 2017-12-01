@@ -8,6 +8,8 @@ import BackIcon from "../common/BackIcon";
 import {TOOL_BAR_TEXT} from "../../../res/style/AppStyle";
 import {connect} from "react-redux";
 import {navigateToPage} from "../../router/NavigationAction";
+import FetchImage from "../common/FetchImage";
+import {IMAGE_ADDRESS} from "../../api/Api";
 
 class ChangeInforComponent extends Component {
     renderLeftToolBar = () => (
@@ -19,14 +21,19 @@ class ChangeInforComponent extends Component {
     );
 
     render() {
+        const {user} = this.props.navigation.state.params;
+        const avatar = user && user.hinhanh && IMAGE_ADDRESS + user.hinhanh;
+        const name = user && user.fullname;
+        const diachi = user && user.diachi;
+        const sodienthoai = user && user.sodienthoai;
         return (
             <View style={{flex: 1, backgroundColor: '#d3d3d3'}}>
                 <ToolBar left={this.renderLeftToolBar()}
                          center={this.renderCenterToolBar()}/>
                 <View style={{flexDirection: 'row', backgroundColor: '#fff', paddingVertical: 15}}>
-                    <Image source={require('../../../res/img/empty-image.png')} style={styles.Left}/>
+                    <FetchImage uri={avatar} style={styles.Left}/>
                     <View style={{flex: 1}}>
-                        <Text>Nguyễn Trung Định</Text>
+                        <Text>{name}</Text>
                         <View style={{width: '100%', borderWidth: 0.8, borderColor: '#c6c6c6', marginVertical: 10}}/>
                         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             <CheckBox/>
@@ -35,7 +42,7 @@ class ChangeInforComponent extends Component {
                             <Text>Nữ</Text>
                         </View>
                         <View style={{width: '100%', borderWidth: 0.8, borderColor: '#c6c6c6', marginVertical: 10}}/>
-                        <Text>35 Nguyen Chanh</Text>
+                        <Text>{diachi}</Text>
                     </View>
                 </View>
                 <TouchableOpacity style={{

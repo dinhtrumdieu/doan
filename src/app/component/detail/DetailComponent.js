@@ -14,6 +14,7 @@ import {navigateToPage} from "../../router/NavigationAction";
 import {fMoney} from "../../utils/MoneyFormat";
 import FetchImage from "../common/FetchImage";
 import {checkLogin} from "../../redux/login/LoginAction";
+import {IMAGE_ADDRESS} from "../../api/Api";
 
 let test = '300g khoai tây\n' +
     '\n' +
@@ -64,10 +65,10 @@ class DetailComponent extends Component {
         const name = item && item.tenmonan ? item.tenmonan : "";
         const preview = item && item.chitiet ? item.chitiet : mota;
         const price = item && item.gia ? item.gia : '0';
-        const image = item  && item.hinhanh;
+        const image = item  && item.hinhanh && IMAGE_ADDRESS+item.hinhanh;
         const cooker = item && item.noitro;
         const nameCooker = item && item.noitro && item.noitro.fullname;
-        const imageCooker = item && item.noitro && item.noitro.hinhanh;
+        const imageCooker = item && item.noitro && IMAGE_ADDRESS+ item.noitro.hinhanh;
         return (
             <View style={{flex: 1, backgroundColor: '#f5f5f5'}}>
                 <ToolBar left={this.renderLeftToolBar()}

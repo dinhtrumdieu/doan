@@ -2,6 +2,7 @@ import RNFetchBlob from "react-native-fetch-blob";
 import {saveImage} from "../utils/Store";
 
 export const SERVER_ADDRESS = 'http://192.168.141.229:8080';
+export const IMAGE_ADDRESS = 'http://192.168.141.229:8080/files/';
 //export const SERVER_ADDRESS = 'http://demo6916417.mockable.io';
 const API_ENDPOINT = SERVER_ADDRESS + '/api/';
 
@@ -35,6 +36,10 @@ export const request = async (endpoint: string, method: string, body: any) => {
 
 export const createFood = (tenmonan, chitiet, gia, hinhanh, nguyenlieu, loaimonan, noitro) => {
     return request('mon-an/add', 'POST', {tenmonan, chitiet, gia, hinhanh, nguyenlieu, loaimonan, noitro});
+};
+
+export const updateFood = (id,tenmonan, chitiet, gia, hinhanh, nguyenlieu, loaimonan, noitro) => {
+    return request('mon-an/update', 'POST', {id,tenmonan, chitiet, gia, hinhanh, nguyenlieu, loaimonan, noitro});
 };
 
 export const order = (khachhang,noitro,chitietdonhang) => {

@@ -10,7 +10,6 @@ import ThankComponent from "../component/order/ThankComponent";
 import InforYouComponent from "../component/you/InforYouComponent";
 import ChangeInforComponent from "../component/you/ChangeInforComponent";
 import CartComponent from "../component/order/CartComponent";
-import {Register} from "../component/first/Register";
 import SearchComponent from "../component/search/SearchComponent";
 import OrderHistory from "../component/order/OrderHistory";
 import GetRequest from "../component/first/GetRequest";
@@ -18,6 +17,8 @@ import ShowRequest from "../component/first/ShowRequest";
 import DetailCooker from "../component/cooker/DetailCooker";
 import CreateFood from "../component/first/CreateFood";
 import Login from "../component/first/Login";
+import FoodLikes from "../component/you/FoodLikes";
+import Register from "../component/first/Register";
 
 export const AppRouter = StackNavigator({
     Main: {
@@ -118,6 +119,12 @@ export const AppRouter = StackNavigator({
     },
     CreateFood:{
         screen: CreateFood,
+        navigationOptions: {
+            header: null
+        }
+    },
+    FoodLikes:{
+        screen: FoodLikes,
         navigationOptions: {
             header: null
         }

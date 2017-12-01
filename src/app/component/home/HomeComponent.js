@@ -44,7 +44,7 @@ class HomeComponent extends Component {
                 onPress={()=>{this.props.navigateToPage('Search')}}
                 style={styles.ViewSearch}>
                 <Image style={styles.IconSearch} source={require('../../../res/img/search.png')}/>
-                <Text style={styles.TextPlaceHolder}>Search</Text>
+                <Text style={styles.TextPlaceHolder}>Tìm kiếm</Text>
             </TouchableOpacity>
         )
     };
